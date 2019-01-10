@@ -15,10 +15,10 @@ import com.squareup.leakcanary.RefWatcher
 abstract class BaseActivity : AppCompatActivity() {
     private var refWatcher: RefWatcher? = null
 
-    lateinit var  mContext : Context
+    lateinit var mContext: Context
     lateinit var mActivity: BaseActivity
 
-    open var isUseEventBus : Boolean = false
+    open var isUseEventBus: Boolean = false
     open var hasEnterTranslateAnim = true
     open var hasExitTranslateAnim = true
 
@@ -30,8 +30,8 @@ abstract class BaseActivity : AppCompatActivity() {
         mContext = mContext.applicationContext
         mActivity = this
 
-        if(isUseEventBus)
-           registerEventBus(this)
+        if (isUseEventBus)
+            registerEventBus(this)
 
         refWatcher = BaseApplication.getRefWatcher(this)
 
@@ -41,7 +41,7 @@ abstract class BaseActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        if(isUseEventBus)
+        if (isUseEventBus)
             unregisterEventBus(this)
         refWatcher?.watch(this)
 
@@ -49,22 +49,22 @@ abstract class BaseActivity : AppCompatActivity() {
 
     override fun startActivity(intent: Intent?) {
         super.startActivity(intent)
-        if(hasEnterTranslateAnim)
-           overridePendingTransitionEnter()
+        if (hasEnterTranslateAnim)
+            overridePendingTransitionEnter()
     }
 
     override fun finish() {
         super.finish()
-        if(hasExitTranslateAnim)
+        if (hasExitTranslateAnim)
             overridePendingTransitionExit()
     }
 
     @LayoutRes
     abstract fun getLayoutId(): Int
 
-    abstract fun initData()
+    protected open fun initData() {}
 
-    abstract fun initView()
+    protected open fun initView() {}
 
     private fun overridePendingTransitionEnter() {
         overridePendingTransition(R.anim.in_from_right, R.anim.out_from_left)
