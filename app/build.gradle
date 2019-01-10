@@ -61,4 +61,7 @@ dependencies {
     //eventbus
     implementation 'org.greenrobot:eventbus:3.0.0'
 
+    //Logger
+    implementation 'com.orhanobut:logger:2.2.0'
+
 }
