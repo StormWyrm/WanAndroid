@@ -4,8 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.os.Bundle
-import android.support.annotation.LayoutRes
-import android.support.v7.app.AppCompatActivity
+import androidx.annotation.LayoutRes
+import androidx.appcompat.app.AppCompatActivity
 import com.github.StormWyrm.wanandroid.R
 import com.github.StormWyrm.wanandroid.base.BaseApplication
 import com.github.StormWyrm.wanandroid.registerEventBus
@@ -27,7 +27,7 @@ abstract class BaseActivity : AppCompatActivity() {
         setContentView(getLayoutId())
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT//保持竖屏
 
-        mContext = mContext.applicationContext
+        mContext = applicationContext
         mActivity = this
 
         if (isUseEventBus)
@@ -36,6 +36,7 @@ abstract class BaseActivity : AppCompatActivity() {
         refWatcher = BaseApplication.getRefWatcher(this)
 
         initData()
+        initLisenter()
         initView()
     }
 
@@ -63,6 +64,8 @@ abstract class BaseActivity : AppCompatActivity() {
     abstract fun getLayoutId(): Int
 
     protected open fun initData() {}
+
+    protected open fun initLisenter() {}
 
     protected open fun initView() {}
 

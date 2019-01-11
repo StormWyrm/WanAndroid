@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/main_left_collect"
+          android:title="@string/main_collect_title"
+          android:icon="@drawable/ic_collect"/>
+
+    <item android:id="@+id/main_left_setting"
+          android:title="@string/main_setting_title"
+          android:icon="@drawable/ic_setting"/>
+
+    <item android:id="@+id/main_left_about"
+          android:title="@string/main_about_title"
+          android:icon="@drawable/ic_about"/>
+
+    <item android:id="@+id/main_left_logout"
+          android:title="@string/main_logout_title"
+          android:icon="@drawable/ic_logout"/>
+
+</menu>
