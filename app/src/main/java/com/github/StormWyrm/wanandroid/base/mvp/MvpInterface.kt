@@ -1,6 +1,9 @@
 package com.github.StormWyrm.wanandroid.base.mvp
 
 import android.content.Context
+import androidx.recyclerview.widget.RecyclerView
+import com.exmple.corelib.state.IStateView
+import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 
@@ -63,4 +66,15 @@ interface IModel : ITopModel{
         if(!mDisposablePool.isDisposed)
             mDisposablePool.clear()
     }
+}
+
+interface IListView<P : ITopPresenter> : IView<P>{
+    val mRecyclerView: RecyclerView?
+    val mStateView: IStateView?
+    val mRefreshLayout: SmartRefreshLayout
+
+    fun loadDataError()
+    fun noData()
+    fun loadMoreError()
+    fun noMoreData()
 }
