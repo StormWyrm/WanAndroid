@@ -22,6 +22,8 @@ interface ITopPresenter {
 }
 
 interface ITopModel {
+    fun addDisposable(disposable: Disposable)
+
     fun detach()
 }
 
@@ -58,7 +60,7 @@ interface IPresenter<V : ITopView,M : ITopModel> :ITopPresenter{
 interface IModel : ITopModel{
     val mDisposablePool : CompositeDisposable
 
-    fun addDisposable(disposable: Disposable) {
+    override fun addDisposable(disposable: Disposable) {
         mDisposablePool.add(disposable)
     }
 

@@ -49,7 +49,7 @@ interface WanAndroidApis {
      */
 
     @GET("article/list/{pageNum}/json")
-    fun articleList(@Path("pageNum") pageNum: Int): Observable<ArticleBean>
+    fun articleList(@Path("pageNum") pageNum: Int): Observable<BaseResponse<ArticleBean>>
 
 
     /**
@@ -57,42 +57,42 @@ interface WanAndroidApis {
      */
 
     @GET("project/tree/json")
-    fun projectCategory(): Observable<List<ProjectCategoryBean>>
+    fun projectCategory(): Observable<BaseResponse<List<ProjectCategoryBean>>>
 
 
     /**
      * 某个项目类别下项目列表
      */
     @GET("project/list/{pageNum}/json")
-    fun projectList(@Query("cid") cid: Int): Observable<ProjectBean>
+    fun projectList(@Query("cid") cid: Int): Observable<BaseResponse<ProjectBean>>
 
 
     /**
      * 体系数据
      */
     @GET("tree/json")
-    fun treeList(): Observable<TreeBean>
+    fun treeList(): Observable<BaseResponse<TreeBean>>
 
 
     /**
      * 体系文章列表
      */
     @GET("article/list/{pageNum}/json")
-    fun treeDetailList(@Path("pageNum") pageNum: Int, @Query("cid") cid: Int): Observable<TreeDetailBean>
+    fun treeDetailList(@Path("pageNum") pageNum: Int, @Query("cid") cid: Int): Observable<BaseResponse<TreeDetailBean>>
 
 
     /**
      * 导航数据
      */
     @GET("navi/json")
-    fun naviList(): Observable<NaviBean>
+    fun naviList(): Observable<BaseResponse<NaviBean>>
 
 
     /**
      * 微信公众号列表
      */
     @GET("wxarticle/chapters/json")
-    fun chapter(): io.reactivex.Observable<BaseResponse<List<ChapterBean>>>
+    fun chapter(): Observable<BaseResponse<List<ChapterBean>>>
 
     /**
      * 微信公众号文章列表
@@ -129,8 +129,7 @@ interface WanAndroidApis {
      * 热搜词
      */
     @GET("hotkey/json")
-    fun hotKey(): Observable<List<HotKeyBean>>
-
+    fun hotKey(): Observable<BaseResponse<List<HotKeyBean>>>
 
 
     /**
@@ -138,7 +137,6 @@ interface WanAndroidApis {
      */
     @POST("article/query/{pageNum}/json")
     fun query(@Path("pageNum") pageNum: Int, @Query("k") k: String): Observable<BaseResponse<QueryBean>>
-
 
 
 }
