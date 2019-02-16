@@ -1,5 +1,6 @@
 package com.github.StormWyrm.wanandroid.base.activity
 
+import android.content.Context
 import androidx.recyclerview.widget.RecyclerView
 import com.exmple.corelib.state.IStateView
 import com.github.StormWyrm.wanandroid.R
@@ -31,6 +32,15 @@ abstract class BaseMvpListActivity<V : ITopView,P : ITopPresenter> : BaseActivit
         refreshLayout.isEnableRefresh = isEnableRefresh
         refreshLayout.isEnableLoadMore = isEnableLoadmore
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mPresenter.detachView()
+    }
+
+    override fun getContext(): Context? = mActivity
+
+    override fun finishActivity() = finish()
 
     override fun loadDataError() {
         list_sv.showError()

@@ -1,4 +1,4 @@
-package com.shehuan.wanandroid.bean.query
+package com.github.StormWyrm.wanandroid.bean.query
 
 data class QueryDataItem(
     val superChapterName: String = "",

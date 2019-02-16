@@ -1,4 +1,4 @@
-package com.shehuan.wanandroid.bean.article
+package com.github.StormWyrm.wanandroid.bean.article
 
 data class ArticleTagItem(
     val name: String = "",

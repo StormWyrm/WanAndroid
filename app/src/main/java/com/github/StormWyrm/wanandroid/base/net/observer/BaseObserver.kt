@@ -1,7 +1,7 @@
 package com.github.StormWyrm.wanandroid.base.net.observer
 
 import android.content.Context
-import com.github.StormWyrm.wanandroid.base.BaseApplication
+import com.github.StormWyrm.wanandroid.App
 import com.github.StormWyrm.wanandroid.base.exception.ResponseException
 import com.github.StormWyrm.wanandroid.utils.ToastUtil
 import io.reactivex.Observer
@@ -9,7 +9,7 @@ import io.reactivex.disposables.Disposable
 import java.lang.ref.WeakReference
 
 abstract class BaseObserver<E>(private val showErrorTip: Boolean = true) : Observer<E> {
-    private val wrContext: WeakReference<Context> = WeakReference(BaseApplication.getApp())
+    private val wrContext: WeakReference<Context> = WeakReference(App.getApp())
 
     private lateinit var disposable: Disposable
 

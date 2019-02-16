@@ -4,5 +4,5 @@ import com.github.StormWyrm.wanandroid.utils.RetrofitHelper
 
 object WanAndroidRetrofitHelper : RetrofitHelper<WanAndroidApis>() {
     override val baseUrl: String = "http://www.wanandroid.com/"
-    override val clazz: Class<WanAndroidApis> = WanAndroidApis::class.java
+    override fun getClazz(): Class<WanAndroidApis> = WanAndroidApis::class.java
 }

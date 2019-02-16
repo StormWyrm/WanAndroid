@@ -1,4 +1,6 @@
-package com.shehuan.wanandroid.bean.chapter
+package com.github.StormWyrm.wanandroid.bean.chapter
+
+import com.github.StormWyrm.wanandroid.bean.chapter.detail.ChapterDetailTagItem
 
 data class ChapterDetailDataItem(
     val superChapterName: String = "",

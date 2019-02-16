@@ -3,15 +3,15 @@ package com.github.StormWyrm.wanandroid.apis
 import com.github.StormWyrm.wanandroid.bean.BannerBean
 import com.github.StormWyrm.wanandroid.bean.BaseResponse
 import com.github.StormWyrm.wanandroid.bean.HotKeyBean
+import com.github.StormWyrm.wanandroid.bean.article.ArticleBean
 import com.github.StormWyrm.wanandroid.bean.chapter.ChapterBean
+import com.github.StormWyrm.wanandroid.bean.chapter.detail.ChapterDetailBean
+import com.github.StormWyrm.wanandroid.bean.navi.NaviBean
 import com.github.StormWyrm.wanandroid.bean.project.ProjectBean
 import com.github.StormWyrm.wanandroid.bean.project.ProjectCategoryBean
+import com.github.StormWyrm.wanandroid.bean.query.QueryBean
 import com.github.StormWyrm.wanandroid.bean.tree.TreeBean
-import com.shehuan.wanandroid.bean.article.ArticleBean
-import com.shehuan.wanandroid.bean.chapter.ChapterDetailBean
-import com.shehuan.wanandroid.bean.navi.NaviBean
-import com.shehuan.wanandroid.bean.query.QueryBean
-import com.shehuan.wanandroid.bean.treeDetail.TreeDetailBean
+import com.github.StormWyrm.wanandroid.bean.tree.detail.TreeDetailBean
 import io.reactivex.Observable
 import retrofit2.http.*
 

@@ -1,4 +1,5 @@
 package com.github.StormWyrm.wanandroid.bean.tree
+
 data class TreeBean(
     val children: List<TreeDataItem>,
     val courseId: Int,

@@ -1,6 +1,5 @@
 package com.github.StormWyrm.wanandroid.bean.project
 
-
 data class ProjectBean(
     val curPage: Int,
     val datas: List<ProjectIDataItem>,

@@ -1,4 +1,4 @@
-package com.shehuan.wanandroid.bean.treeDetail
+package com.github.StormWyrm.wanandroid.bean.tree.detail
 
 data class TreeDetailDataItem(
     val superChapterName: String = "",

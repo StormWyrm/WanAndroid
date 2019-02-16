@@ -7,7 +7,7 @@ import android.os.Bundle
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import com.github.StormWyrm.wanandroid.R
-import com.github.StormWyrm.wanandroid.base.BaseApplication
+import com.github.StormWyrm.wanandroid.App
 import com.github.StormWyrm.wanandroid.registerEventBus
 import com.github.StormWyrm.wanandroid.unregisterEventBus
 import com.squareup.leakcanary.RefWatcher
@@ -33,7 +33,7 @@ abstract class BaseActivity : AppCompatActivity() {
         if (isUseEventBus)
             registerEventBus(this)
 
-        refWatcher = BaseApplication.getRefWatcher(this)
+        refWatcher = App.getRefWatcher(this)
 
         initData()
         initLisenter()

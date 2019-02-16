@@ -1,4 +1,4 @@
-package com.shehuan.wanandroid.bean.navi
+package com.github.StormWyrm.wanandroid.bean.navi
 
 data class NaviBean(
     val name: String = "",

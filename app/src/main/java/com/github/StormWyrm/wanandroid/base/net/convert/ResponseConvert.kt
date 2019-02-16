@@ -12,6 +12,7 @@ class ResponseConvert<T> : Function<BaseResponse<T>, T> {
      * @throws Exception on error
      */
     override fun apply(t: BaseResponse<T>): T {
+        Thread.sleep(3000)
         if (t.errorCode != 0) {
             throw ApiException(t.errorCode, t.errorMsg)
         }

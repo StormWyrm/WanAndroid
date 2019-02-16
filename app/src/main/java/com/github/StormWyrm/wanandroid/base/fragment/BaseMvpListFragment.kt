@@ -41,11 +41,11 @@ abstract class BaseMvpListFragment<V : ITopView, P : ITopPresenter> : BaseMvpFra
     }
 
     override fun loadMoreError() {
-        mRefreshLayout.finishLoadMore(false)
+        refreshLayout.finishLoadMore(false)
     }
 
     override fun noMoreData() {
-        mRefreshLayout.setNoMoreData(true)
+        refreshLayout.setNoMoreData(true)
     }
 
     abstract fun onRetry()

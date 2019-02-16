@@ -11,7 +11,6 @@ abstract class RetrofitHelper<T> {
     val instace: T
 
     abstract val baseUrl: String
-    abstract val clazz: Class<T>
 
     init {
         val httpClient = OkHttpClient.Builder()
@@ -29,6 +28,8 @@ abstract class RetrofitHelper<T> {
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(httpClient)
             .build()
-            .create(clazz)
+            .create(getClazz())
     }
+
+    abstract fun getClazz() : Class<T>
 }

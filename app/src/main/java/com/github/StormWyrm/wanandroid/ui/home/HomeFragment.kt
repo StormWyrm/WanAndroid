@@ -1,33 +1,36 @@
 package com.github.StormWyrm.wanandroid.ui.home
 
-import com.github.StormWyrm.wanandroid.R
-import com.github.StormWyrm.wanandroid.base.activity.BaseMvpActivity
-import kotlinx.android.synthetic.main.fragment_base.*
+import com.github.StormWyrm.wanandroid.base.fragment.BaseMvpListFragment
+import com.github.StormWyrm.wanandroid.bean.BannerBean
+import com.github.StormWyrm.wanandroid.bean.article.ArticleBean
+import com.orhanobut.logger.Logger
 
-class HomeFragment : BaseMvpActivity<HomeContract.View,HomeContract.Presenter>(),HomeContract.View {
-
+class HomeFragment : BaseMvpListFragment<HomeContract.View, HomeContract.Presenter>(), HomeContract.View {
     override var mPresenter: HomeContract.Presenter = HomePresenter()
 
     companion object {
         fun newInstance() = HomeFragment()
     }
 
-    override fun getLayoutId(): Int = R.layout.fragment_base
-
-    override fun initView() {
-        super.initView()
-        tvContent.setText(R.string.main_home_title)
+    override fun initLoad() {
+        super.initLoad()
+        mStateView.showLoading()
+        mPresenter.requestBanner()
+        mPresenter.requestArticleList()
     }
 
-    override fun onRequestBannerError() {
+    override fun onRetry() {
+        mPresenter.requestBanner()
+        mPresenter.requestArticleList()
     }
 
-    override fun onRequestBannerSuccess() {
+    override fun onRequestBannerSuccess(bannerList: List<BannerBean>) {
+        mStateView.showSuccess()
+        Logger.d(bannerList)
     }
 
-    override fun onRequestArticleSuccess() {
+    override fun onRequestArticleSuccess(articleList: ArticleBean) {
+        Logger.d(articleList)
     }
 
-    override fun onRequestArticleError() {
-    }
 }

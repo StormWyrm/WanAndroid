@@ -4,7 +4,7 @@ import com.github.StormWyrm.wanandroid.apis.WanAndroidRetrofitHelper
 import com.github.StormWyrm.wanandroid.base.mvp.BaseModelKt
 import com.github.StormWyrm.wanandroid.bean.BannerBean
 import com.github.StormWyrm.wanandroid.bean.BaseResponse
-import com.shehuan.wanandroid.bean.article.ArticleBean
+import com.github.StormWyrm.wanandroid.bean.article.ArticleBean
 import io.reactivex.Observable
 
 class HomeModel : BaseModelKt(), HomeContract.Model {
