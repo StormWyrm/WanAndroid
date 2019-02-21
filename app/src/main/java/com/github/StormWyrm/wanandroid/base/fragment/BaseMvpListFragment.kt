@@ -22,9 +22,9 @@ abstract class BaseMvpListFragment<V : ITopView, P : ITopPresenter> : BaseMvpFra
 
     override fun initView() {
         super.initView()
-        list_rv?.let {
-            it.setBackgroundColor(recyclerViewBgColor)
-        }
+//        list_rv?.let {
+//            it.setBackgroundColor(recyclerViewBgColor)
+//        }
         list_sv.onRetry = {
             onRetry()
         }

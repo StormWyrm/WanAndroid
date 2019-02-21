@@ -14,6 +14,7 @@ class ChapterFragment : BaseFragment() {
 
     override fun initView() {
         super.initView()
+
         tvContent.setText(R.string.main_chapter_title)
     }
 }

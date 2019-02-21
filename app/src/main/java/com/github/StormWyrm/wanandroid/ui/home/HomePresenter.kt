@@ -11,30 +11,43 @@ import com.orhanobut.logger.Logger
 class HomePresenter : BasePresenterKt<HomeContract.View>(), HomeContract.Presenter {
     override var mModel: HomeContract.Model? = HomeModel()
 
-    override fun requestArticleList() {
-        RequestManager.execute(this, mModel?.requestArticleList(1),
-            object : BaseObserver<ArticleBean>() {
+    override fun requestArticleList(pageNum: Int) {
+        RequestManager.execute(this, mModel?.requestArticleList(pageNum),
+            object : BaseObserver<ArticleBean>(false) {
                 override fun onSuccess(data: ArticleBean) {
-                    mView?.onRequestArticleSuccess(data)
+                    if (data.size == 0) {
+                        if (pageNum == 0) {
+                            mView?.noData()
+                        } else {
+                            mView?.noMoreData()
+                        }
+                    } else {
+                        mView?.onRequestArticleSuccess(data)
+
+                    }
                 }
 
                 override fun onError(e: ResponseException) {
                     Logger.d(e)
-                    mView?.loadDataError()
+                    if (pageNum == 0) {
+                        mView?.loadDataError()
+                    } else {
+                        mView?.loadMoreError()
+                    }
                 }
             })
     }
+
 
     override fun requestBanner() {
         RequestManager.execute(this, mModel?.reqeustBanner(),
             object : BaseObserver<List<BannerBean>>() {
                 override fun onSuccess(data: List<BannerBean>) {
-                    if(data == null || data.size == 0){
+                    if (data.isNullOrEmpty()) {
                         mView?.noData()
-                    }else{
-//                        mView?.
+                    } else {
+                        mView?.onRequestBannerSuccess(data)
                     }
-
                 }
 
                 override fun onError(e: ResponseException) {

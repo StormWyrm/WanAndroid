@@ -22,7 +22,7 @@ interface HomeContract {
     }
 
     interface Presenter : IPresenter<View, Model> {
-        fun requestArticleList()
+        fun requestArticleList(pageNum: Int)
 
         fun requestBanner()
     }

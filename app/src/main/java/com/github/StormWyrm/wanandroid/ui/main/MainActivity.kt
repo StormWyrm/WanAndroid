@@ -17,7 +17,7 @@ class MainActivity : BaseMvpActivity<MainContract.View, MainContract.Presenter>(
 
     override var mPresenter: MainContract.Presenter = MainPresenter()
 
-    val fragments: ArrayList<BaseFragment> by lazy {
+    private val fragments: ArrayList<BaseFragment> by lazy {
         arrayListOf(
             HomeFragment.newInstance(),
             ProjectFragment.newInstance(),
@@ -26,7 +26,7 @@ class MainActivity : BaseMvpActivity<MainContract.View, MainContract.Presenter>(
             ChapterFragment.newInstance()
         )
     }
-    val mAdapter: ViewPagerAdapter by lazy {
+    private val mAdapter: ViewPagerAdapter by lazy {
         ViewPagerAdapter(fragments = fragments, fm = supportFragmentManager)
     }
 
@@ -103,7 +103,7 @@ class MainActivity : BaseMvpActivity<MainContract.View, MainContract.Presenter>(
             3 -> tvHomeTitle.setText(R.string.main_navi_title)
             4 -> tvHomeTitle.setText(R.string.main_chapter_title)
         }
-        vpMain.setCurrentItem(position,false)
+        vpMain.setCurrentItem(position, false)
     }
 
     private fun onPageSelected(postion: Int) {
