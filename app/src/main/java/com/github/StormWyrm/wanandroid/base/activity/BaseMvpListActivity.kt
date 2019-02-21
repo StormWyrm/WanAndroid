@@ -2,11 +2,11 @@ package com.github.StormWyrm.wanandroid.base.activity
 
 import android.content.Context
 import androidx.recyclerview.widget.RecyclerView
-import com.exmple.corelib.state.IStateView
 import com.github.StormWyrm.wanandroid.R
 import com.github.StormWyrm.wanandroid.base.mvp.IListView
 import com.github.StormWyrm.wanandroid.base.mvp.ITopPresenter
 import com.github.StormWyrm.wanandroid.base.mvp.ITopView
+import com.github.StormWyrm.wanandroid.base.state.IStateView
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import kotlinx.android.synthetic.main.layout_list.*
 

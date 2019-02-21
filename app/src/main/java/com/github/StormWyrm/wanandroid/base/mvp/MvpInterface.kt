@@ -2,7 +2,7 @@ package com.github.StormWyrm.wanandroid.base.mvp
 
 import android.content.Context
 import androidx.recyclerview.widget.RecyclerView
-import com.exmple.corelib.state.IStateView
+import com.github.StormWyrm.wanandroid.base.state.IStateView
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable

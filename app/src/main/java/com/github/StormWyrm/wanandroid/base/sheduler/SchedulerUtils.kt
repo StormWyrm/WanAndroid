@@ -1,4 +1,4 @@
-package com.exmple.corelib.scheduler
+package com.github.StormWyrm.wanandroid.base.sheduler
 
 /**
  * Created by xuhao on 2017/11/17.

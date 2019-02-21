@@ -1,4 +1,4 @@
-package com.exmple.corelib.state
+package com.github.StormWyrm.wanandroid.base.state
 
 import android.content.Context
 import android.util.AttributeSet

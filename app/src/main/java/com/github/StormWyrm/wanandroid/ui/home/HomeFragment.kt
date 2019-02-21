@@ -11,6 +11,7 @@ import com.github.StormWyrm.wanandroid.base.fragment.BaseMvpListFragment
 import com.github.StormWyrm.wanandroid.bean.BannerBean
 import com.github.StormWyrm.wanandroid.bean.article.ArticleBean
 import com.github.StormWyrm.wanandroid.dp2px
+import com.github.StormWyrm.wanandroid.ui.detail.ArticleDetailActivity
 import com.github.StormWyrm.wanandroid.ui.home.adapter.HomeArticleAdapter
 import com.youth.banner.Banner
 import com.youth.banner.BannerConfig
@@ -45,16 +46,17 @@ class HomeFragment : BaseMvpListFragment<HomeContract.View, HomeContract.Present
                     }
                 })
                 setOnBannerListener { position ->
-                    val url = bannerList[position]
+                    bannerList[position].run {
+                        ArticleDetailActivity.start(mActivity, title, url)
+                    }
                 }
             }
         mAdapter = HomeArticleAdapter(null).apply {
             addHeaderView(banner)
-            setOnItemClickListener { _, _, _ ->
-
-            }
-            setOnItemChildClickListener { _, _, _ ->
-
+            setOnItemClickListener { _, _, positon ->
+                mAdapter.getItem(positon)?.run {
+                    ArticleDetailActivity.start(mActivity, title, link)
+                }
             }
         }
         mRecyclerView.layoutManager = LinearLayoutManager(mContext)

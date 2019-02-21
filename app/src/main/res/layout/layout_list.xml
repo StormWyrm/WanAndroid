@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.exmple.corelib.state.StateView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.github.StormWyrm.wanandroid.base.state.StateView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/list_sv"
     android:layout_width="match_parent"
@@ -34,4 +34,4 @@
 
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
-</com.exmple.corelib.state.StateView>
+</com.github.StormWyrm.wanandroid.base.state.StateView>

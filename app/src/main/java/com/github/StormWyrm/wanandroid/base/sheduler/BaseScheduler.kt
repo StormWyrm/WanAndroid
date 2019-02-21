@@ -1,4 +1,4 @@
-package com.qingfeng.kotlinmvp_lib.sheduler
+package com.github.StormWyrm.wanandroid.base.sheduler
 
 import io.reactivex.*
 import org.reactivestreams.Publisher

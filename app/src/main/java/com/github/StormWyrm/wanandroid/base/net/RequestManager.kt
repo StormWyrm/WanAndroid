@@ -1,10 +1,10 @@
 package com.github.StormWyrm.wanandroid.base.net
 
-import com.exmple.corelib.scheduler.IoMainScheduler
 import com.github.StormWyrm.wanandroid.base.mvp.IPresenter
 import com.github.StormWyrm.wanandroid.base.net.convert.ExceptionConvert
 import com.github.StormWyrm.wanandroid.base.net.convert.ResponseConvert
 import com.github.StormWyrm.wanandroid.base.net.observer.BaseObserver
+import com.github.StormWyrm.wanandroid.base.sheduler.IoMainScheduler
 import com.github.StormWyrm.wanandroid.bean.BaseResponse
 import io.reactivex.Observable
 
