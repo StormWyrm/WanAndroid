@@ -5,7 +5,6 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
-import com.github.StormWyrm.wanandroid.R
 import com.github.StormWyrm.wanandroid.base.fragment.BaseMvpListFragment
 import com.github.StormWyrm.wanandroid.bean.BannerBean
 import com.github.StormWyrm.wanandroid.bean.article.ArticleBean
