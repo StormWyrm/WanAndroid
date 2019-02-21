@@ -10,4 +10,10 @@
     <string name="main_about_title">关于</string>
     <string name="main_logout_title">退出</string>
     <string name="loading_msg">加载中...</string>
+    <string name="detail_share">分享项目</string>
+    <string name="detail_copy_link">复制链接</string>
+    <string name="detail_open_browser">浏览器打开</string>
+    <string name="detail_select_browser">请选择浏览器：</string>
+    <string name="detail_copy_success">已复制到剪切板！</string>
+    <string name="detail_select_share">分享到：</string>
 </resources>
