@@ -1,10 +1,12 @@
 package com.github.StormWyrm.wanandroid.ui.home
 
 import android.content.Context
+import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.github.StormWyrm.wanandroid.R
 import com.github.StormWyrm.wanandroid.base.fragment.BaseMvpListFragment
 import com.github.StormWyrm.wanandroid.bean.BannerBean
 import com.github.StormWyrm.wanandroid.bean.article.ArticleBean
@@ -29,22 +31,23 @@ class HomeFragment : BaseMvpListFragment<HomeContract.View, HomeContract.Present
 
     override fun initView() {
         super.initView()
-        banner = Banner(mContext).apply {
-            layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, dp2px(180f))
-            setBannerStyle(BannerConfig.NUM_INDICATOR_TITLE)//设置banner样式-数字+标题
-//            setIndicatorGravity(BannerConfig.RIGHT)//设置指针的位置
-            setBannerAnimation(Transformer.DepthPage)//设置切换动画
-            isAutoPlay(true)
-            setDelayTime(5000)
-            setImageLoader(object : ImageLoader() {
-                override fun displayImage(context: Context?, path: Any?, imageView: ImageView?) {
-                    Glide.with(context).load(path).into(imageView)
+        banner = (View.inflate(mContext, R.layout.layout_home_header, null) as Banner)
+            .apply {
+                layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, dp2px(180f))
+                setBannerStyle(BannerConfig.NUM_INDICATOR_TITLE)//设置banner样式-数字+标题
+                setIndicatorGravity(BannerConfig.RIGHT)//设置指针的位置
+                setBannerAnimation(Transformer.DepthPage)//设置切换动画
+                isAutoPlay(true)
+                setDelayTime(5000)
+                setImageLoader(object : ImageLoader() {
+                    override fun displayImage(context: Context?, path: Any?, imageView: ImageView?) {
+                        Glide.with(context).load(path).into(imageView)
+                    }
+                })
+                setOnBannerListener { position ->
+                    val url = bannerList[position]
                 }
-            })
-            setOnBannerListener { position ->
-                val url = bannerList[position]
             }
-        }
         mAdapter = HomeArticleAdapter(null).apply {
             addHeaderView(banner)
             setOnItemClickListener { _, _, _ ->
@@ -65,6 +68,16 @@ class HomeFragment : BaseMvpListFragment<HomeContract.View, HomeContract.Present
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        banner.startAutoPlay()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        banner.stopAutoPlay()
+    }
+
     override fun initLoad() {
         super.initLoad()
         onRetry()
@@ -75,7 +88,6 @@ class HomeFragment : BaseMvpListFragment<HomeContract.View, HomeContract.Present
         mPresenter.requestBanner()
         mPresenter.requestArticleList(pageNum)
     }
-
 
     override fun onRequestBannerSuccess(bannerList: List<BannerBean>) {
         if (!bannerList.isNullOrEmpty()) {
