@@ -25,7 +25,7 @@ abstract class BaseMvpListFragment<V : ITopView, P : ITopPresenter> : BaseMvpFra
 //        list_rv?.let {
 //            it.setBackgroundColor(recyclerViewBgColor)
 //        }
-        list_sv.onRetry = {
+        mStateView.onRetry = {
             onRetry()
         }
         refreshLayout.isEnableRefresh = isEnableRefresh
@@ -33,11 +33,11 @@ abstract class BaseMvpListFragment<V : ITopView, P : ITopPresenter> : BaseMvpFra
     }
 
     override fun loadDataError() {
-        list_sv.showError()
+        mStateView.showError()
     }
 
     override fun noData() {
-        list_sv.showEmpty()
+        mStateView.showEmpty()
     }
 
     override fun loadMoreError() {

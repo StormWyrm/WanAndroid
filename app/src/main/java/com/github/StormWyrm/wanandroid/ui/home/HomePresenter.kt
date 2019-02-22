@@ -23,8 +23,8 @@ class HomePresenter : BasePresenterKt<HomeContract.View>(), HomeContract.Present
                         }
                     } else {
                         mView?.onRequestArticleSuccess(data)
-
                     }
+
                 }
 
                 override fun onError(e: ResponseException) {

@@ -1,6 +1,6 @@
 package com.github.StormWyrm.wanandroid.bean.project
 
-data class ProjectIDataItem(
+data class ProjectDataItem(
     val apkLink: String,
     val author: String,
     val chapterId: Int,

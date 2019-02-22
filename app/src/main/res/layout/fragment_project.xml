@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.github.StormWyrm.wanandroid.base.state.StateView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/stateView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:bindId="@id/ll_real">
+
+    <LinearLayout
+        android:id="@+id/ll_real"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tabIndicator="@color/colorPrimary"
+            app:tabIndicatorColor="@color/colorPrimary"
+            app:tabIndicatorFullWidth="false"
+            app:tabIndicatorHeight="2dp"
+            app:tabMode="scrollable"
+            app:tabSelectedTextColor="@color/colorPrimary"
+            app:tabTextColor="@color/textTitleColor" />
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/vpProject"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+</com.github.StormWyrm.wanandroid.base.state.StateView>
