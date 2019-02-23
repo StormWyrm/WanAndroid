@@ -109,16 +109,14 @@ class HomeFragment : BaseMvpListFragment<HomeContract.View, HomeContract.Present
     }
 
     override fun onRequestArticleSuccess(articleList: ArticleBean) {
-        if (pageNum == 0) {
+        if (pageNum ++== 0) {
             mStateView.showSuccess()
             mAdapter.setNewData(articleList.datas)
         } else {
             mAdapter.addData(articleList.datas)
             mRefreshLayout.finishLoadMore(true)
         }
-        if (pageNum++ >= articleList.pageCount) {
-            noMoreData()
-        }
+
     }
 
 

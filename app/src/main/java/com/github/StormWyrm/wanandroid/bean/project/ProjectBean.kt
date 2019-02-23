@@ -10,5 +10,3 @@ data class ProjectBean(
     val total: Int
 )
 
-
-

@@ -24,7 +24,11 @@ class HomePresenter : BasePresenterKt<HomeContract.View>(), HomeContract.Present
                     } else {
                         mView?.onRequestArticleSuccess(data)
                     }
-
+                    data.run {
+                        if (curPage >= size - 1) {
+                            mView?.noMoreData()
+                        }
+                    }
                 }
 
                 override fun onError(e: ResponseException) {

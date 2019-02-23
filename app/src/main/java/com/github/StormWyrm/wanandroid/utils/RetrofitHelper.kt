@@ -1,6 +1,8 @@
 package com.github.StormWyrm.wanandroid.utils
 
+import com.orhanobut.logger.Logger
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -18,7 +20,10 @@ abstract class RetrofitHelper<T> {
                 val builder = it.request().newBuilder()
 
                 it.proceed(builder.build())
-            }.connectTimeout(timeOut, TimeUnit.SECONDS)
+            }.addInterceptor(HttpLoggingInterceptor(HttpLoggingInterceptor.Logger {
+                Logger.d(it)
+            }).setLevel(HttpLoggingInterceptor.Level.BODY))
+            .connectTimeout(timeOut, TimeUnit.SECONDS)
             .readTimeout(timeOut, TimeUnit.SECONDS)
             .build()
 
@@ -31,5 +36,5 @@ abstract class RetrofitHelper<T> {
             .create(getClazz())
     }
 
-    abstract fun getClazz() : Class<T>
+    abstract fun getClazz(): Class<T>
 }

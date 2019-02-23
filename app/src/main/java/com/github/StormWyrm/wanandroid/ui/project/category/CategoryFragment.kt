@@ -45,14 +45,14 @@ class CategoryFragment : BaseMvpListFragment<CategoryContract.View, CategoryCont
         }
         mRecyclerView.run {
             layoutManager = LinearLayoutManager(mContext)
-            adapter = adapter
+            adapter = mAdapter
         }
     }
 
     override fun initListener() {
         super.initListener()
         mRefreshLayout.setOnLoadMoreListener {
-            mPresenter.requestProjectAricle(categoryId, pageNum)
+            mPresenter.requestProjectAricle(pageNum, categoryId)
         }
     }
 
@@ -62,11 +62,11 @@ class CategoryFragment : BaseMvpListFragment<CategoryContract.View, CategoryCont
 
     override fun onRetry() {
         mStateView.showLoading()
-        mPresenter.requestProjectAricle(categoryId, pageNum)
+        mPresenter.requestProjectAricle(pageNum, categoryId)
     }
 
     override fun onrequestProjectAricleSuccess(categoryBeans: ProjectBean) {
-        if (pageNum == 0) {
+        if (pageNum++ == 0) {
             mStateView.showSuccess()
             mAdapter.setNewData(categoryBeans.datas)
         } else {
