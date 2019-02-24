@@ -85,6 +85,15 @@ interface IModel : ITopModel {
     }
 }
 
+interface ILoadView<P : ITopPresenter> : IView<P> {
+    val mStateView: IStateView
+
+    fun showLoading()
+    fun showSuccess()
+    fun showError()
+    fun showEmpty()
+}
+
 interface IListView<P : ITopPresenter> : IView<P> {
     val mRecyclerView: RecyclerView?
     val mStateView: IStateView?

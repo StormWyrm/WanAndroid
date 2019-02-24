@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.github.StormWyrm.wanandroid.base.state.StateView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/sv"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:bindId="@id/fl_container">
+
+    <FrameLayout
+        android:id="@+id/fl_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </com.github.StormWyrm.wanandroid.base.state.StateView>
