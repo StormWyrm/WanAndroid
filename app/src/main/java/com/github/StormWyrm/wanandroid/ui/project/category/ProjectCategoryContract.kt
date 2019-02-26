@@ -7,7 +7,7 @@ import com.github.StormWyrm.wanandroid.bean.BaseResponse
 import com.github.StormWyrm.wanandroid.bean.project.ProjectBean
 import io.reactivex.Observable
 
-interface CategoryContract {
+interface ProjectCategoryContract {
     interface Model : IModel {
         fun requestProjectAricle(pageNum: Int, categoryId: Int): Observable<BaseResponse<ProjectBean>>
     }

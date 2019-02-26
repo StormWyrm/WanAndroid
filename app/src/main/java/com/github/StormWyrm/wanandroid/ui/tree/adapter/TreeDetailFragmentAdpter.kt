@@ -1,24 +1,27 @@
-package com.github.StormWyrm.wanandroid.ui.project.adapter
+package com.github.StormWyrm.wanandroid.ui.tree.adapter
 
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
-import com.github.StormWyrm.wanandroid.bean.project.ProjectCategoryBean
-import com.github.StormWyrm.wanandroid.ui.project.category.ProjectCategoryFragment
+import com.github.StormWyrm.wanandroid.bean.tree.TreeBean
+import com.github.StormWyrm.wanandroid.bean.tree.TreeDataItem
+import com.github.StormWyrm.wanandroid.ui.tree.detail.TreeDetailFragment
 
-class ProjectFragmentAdpter(val categoryBeans: List<ProjectCategoryBean>, fm: FragmentManager) :
+class TreeDetailFragmentAdpter(private val treeBean: TreeBean, fm: FragmentManager) :
     FragmentStatePagerAdapter(fm) {
     private val titles = arrayListOf<String>()
+    private val dataItems = arrayListOf<TreeDataItem>()
 
     init {
-        for (categoryBean in categoryBeans) {
-            titles.add(categoryBean.name)
+        for (treeDataItem in treeBean.children) {
+            dataItems.add(treeDataItem)
+            titles.add(treeDataItem.name)
         }
     }
 
     override fun getItem(position: Int): Fragment {
-        return ProjectCategoryFragment.newInstance(categoryBeans[position].id)
+        return TreeDetailFragment.newInstance(dataItems[position].id)
     }
 
     override fun getCount(): Int {

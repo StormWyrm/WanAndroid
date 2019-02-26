@@ -5,14 +5,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.StormWyrm.wanandroid.base.fragment.BaseMvpListFragment
 import com.github.StormWyrm.wanandroid.bean.project.ProjectBean
 import com.github.StormWyrm.wanandroid.ui.detail.ArticleDetailActivity
-import com.github.StormWyrm.wanandroid.ui.project.CategoryContract
-import com.github.StormWyrm.wanandroid.ui.project.CategoryPresenter
+import com.github.StormWyrm.wanandroid.ui.project.ProjectCategoryContract
+import com.github.StormWyrm.wanandroid.ui.project.ProjectCategoryPresenter
 import com.github.StormWyrm.wanandroid.ui.project.adapter.CategoryAdapter
 
-class CategoryFragment : BaseMvpListFragment<CategoryContract.View, CategoryContract.Presenter>(),
-    CategoryContract.View {
+class ProjectCategoryFragment : BaseMvpListFragment<ProjectCategoryContract.View, ProjectCategoryContract.Presenter>(),
+    ProjectCategoryContract.View {
 
-    override var mPresenter: CategoryContract.Presenter = CategoryPresenter()
+    override var mPresenter: ProjectCategoryContract.Presenter = ProjectCategoryPresenter()
 
     private var pageNum = 0
     private val categoryId: Int by lazy {
@@ -23,11 +23,11 @@ class CategoryFragment : BaseMvpListFragment<CategoryContract.View, CategoryCont
 
 
     companion object {
-        fun newInstance(categoryId: Int): CategoryFragment {
+        fun newInstance(categoryId: Int): ProjectCategoryFragment {
             val bundle = Bundle().apply {
                 putInt("categoryId", categoryId)
             }
-            return CategoryFragment().apply {
+            return ProjectCategoryFragment().apply {
                 arguments = bundle
             }
         }

@@ -4,11 +4,12 @@ import android.view.View
 import android.widget.TextView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
+import com.github.StormWyrm.flowlayout_library.TagAdapter
+import com.github.StormWyrm.flowlayout_library.TagFlowLayout
 import com.github.StormWyrm.wanandroid.R
 import com.github.StormWyrm.wanandroid.bean.tree.TreeBean
 import com.github.StormWyrm.wanandroid.bean.tree.TreeDataItem
-import com.qingfeng.flowlayout_ibrary.TagAdapter
-import com.qingfeng.flowlayout_ibrary.TagFlowLayout
+
 
 class TreeAdapter : BaseQuickAdapter<TreeBean, BaseViewHolder>(R.layout.item_tree, null) {
     init {

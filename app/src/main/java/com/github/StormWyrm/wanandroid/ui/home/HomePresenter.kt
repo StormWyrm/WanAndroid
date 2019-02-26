@@ -15,17 +15,18 @@ class HomePresenter : BasePresenterKt<HomeContract.View>(), HomeContract.Present
         RequestManager.execute(this, mModel?.requestArticleList(pageNum),
             object : BaseObserver<ArticleBean>(false) {
                 override fun onSuccess(data: ArticleBean) {
-                    if (data.size == 0) {
-                        if (pageNum == 0) {
-                            mView?.noData()
-                        } else {
-                            mView?.noMoreData()
-                        }
-                    } else {
-                        mView?.onRequestArticleSuccess(data)
-                    }
+
                     data.run {
-                        if (curPage >= size - 1) {
+                        if (data.size == 0) {
+                            if (pageNum == 0) {
+                                mView?.noData()
+                            } else {
+                                mView?.noMoreData()
+                            }
+                        } else {
+                            mView?.onRequestArticleSuccess(data)
+                        }
+                        if (over) {
                             mView?.noMoreData()
                         }
                     }

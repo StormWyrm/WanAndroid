@@ -6,24 +6,24 @@ import com.github.StormWyrm.wanandroid.base.net.RequestManager
 import com.github.StormWyrm.wanandroid.base.net.observer.BaseObserver
 import com.github.StormWyrm.wanandroid.bean.project.ProjectBean
 
-class CategoryPresenter : BasePresenterKt<CategoryContract.View>(), CategoryContract.Presenter {
-    override var mModel: CategoryContract.Model? = CategoryModel()
+class ProjectCategoryPresenter : BasePresenterKt<ProjectCategoryContract.View>(), ProjectCategoryContract.Presenter {
+    override var mModel: ProjectCategoryContract.Model? = ProjectCategoryModel()
 
     override fun requestProjectAricle(categoryId: Int, pageNum: Int) {
         RequestManager.execute(this, mModel?.requestProjectAricle(categoryId, pageNum),
             object : BaseObserver<ProjectBean>(false) {
                 override fun onSuccess(data: ProjectBean) {
-                    if (data.size == 0) {
-                        if (pageNum == 0) {
-                            mView?.noData()
-                        } else {
-                            mView?.noMoreData()
-                        }
-                    } else {
-                        mView?.onrequestProjectAricleSuccess(data)
-                    }
                     data.run {
-                        if (curPage == pageCount - 1) {
+                        if (size == 0) {
+                            if (pageNum == 0) {
+                                mView?.noData()
+                            } else {
+                                mView?.noMoreData()
+                            }
+                        } else {
+                            mView?.onrequestProjectAricleSuccess(data)
+                        }
+                        if (over) {
                             mView?.noMoreData()
                         }
                     }

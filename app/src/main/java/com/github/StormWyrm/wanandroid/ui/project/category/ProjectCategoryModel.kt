@@ -6,7 +6,7 @@ import com.github.StormWyrm.wanandroid.bean.BaseResponse
 import com.github.StormWyrm.wanandroid.bean.project.ProjectBean
 import io.reactivex.Observable
 
-class CategoryModel : BaseModelKt(), CategoryContract.Model {
+class ProjectCategoryModel : BaseModelKt(), ProjectCategoryContract.Model {
     override fun requestProjectAricle(pageNum: Int,categoryId: Int): Observable<BaseResponse<ProjectBean>> {
         return WanAndroidRetrofitHelper.instace.projectList( pageNum,categoryId)
     }

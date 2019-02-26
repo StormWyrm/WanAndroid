@@ -4,6 +4,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.StormWyrm.wanandroid.base.fragment.BaseMvpListFragment
 import com.github.StormWyrm.wanandroid.bean.tree.TreeBean
 import com.github.StormWyrm.wanandroid.ui.tree.adapter.TreeAdapter
+import com.github.StormWyrm.wanandroid.ui.tree.detail.TreeDetailActivity
 
 class TreeFragment : BaseMvpListFragment<TreeContract.View, TreeContract.Presenter>(), TreeContract.View {
     override var mPresenter: TreeContract.Presenter = TreePresenter()
@@ -19,7 +20,9 @@ class TreeFragment : BaseMvpListFragment<TreeContract.View, TreeContract.Present
         super.initView()
         mAdapter = TreeAdapter().apply {
             setOnItemClickListener { adapter, view, position ->
-
+                getItem(position)?.let {
+                    TreeDetailActivity.start(mActivity, it)
+                }
             }
         }
         mRecyclerView.run {
