@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tv_chapter_name"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:gravity="center"
+    android:textColor="@color/textTitleColor"
+    android:foreground="?attr/selectableItemBackground"
+    android:textSize="@dimen/font_larger"
+    tools:background="@color/colorPrimary"
+    tools:text="@string/app_name" />

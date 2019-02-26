@@ -4,19 +4,18 @@ import androidx.core.view.GravityCompat
 import androidx.viewpager.widget.ViewPager
 import com.github.StormWyrm.wanandroid.R
 import com.github.StormWyrm.wanandroid.adapter.ViewPagerAdapter
-import com.github.StormWyrm.wanandroid.base.activity.BaseMvpActivity
+import com.github.StormWyrm.wanandroid.base.activity.BaseActivity
 import com.github.StormWyrm.wanandroid.base.fragment.BaseFragment
 import com.github.StormWyrm.wanandroid.ui.chapter.ChapterFragment
+import com.github.StormWyrm.wanandroid.ui.chapter.ChapterContract
+import com.github.StormWyrm.wanandroid.ui.chapter.ChapterPresenter
 import com.github.StormWyrm.wanandroid.ui.home.HomeFragment
 import com.github.StormWyrm.wanandroid.ui.navi.NaviFragment
 import com.github.StormWyrm.wanandroid.ui.project.ProjectFragment
 import com.github.StormWyrm.wanandroid.ui.tree.TreeFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : BaseMvpActivity<MainContract.View, MainContract.Presenter>() {
-
-    override var mPresenter: MainContract.Presenter = MainPresenter()
-
+class MainActivity : BaseActivity() {
     private val fragments: ArrayList<BaseFragment> by lazy {
         arrayListOf(
             HomeFragment.newInstance(),
