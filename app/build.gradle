@@ -70,4 +70,8 @@ dependencies {
 
     //banner
     implementation 'com.youth.banner:banner:1.4.10'  //最新版本
+
+    //流布局
+    implementation 'com.github.StormWyrm:FlowLayout:1.0.0'
+
 }

@@ -71,7 +71,7 @@ interface WanAndroidApis {
      * 体系数据
      */
     @GET("tree/json")
-    fun treeList(): Observable<BaseResponse<TreeBean>>
+    fun treeList(): Observable<BaseResponse<List<TreeBean>>>
 
 
     /**

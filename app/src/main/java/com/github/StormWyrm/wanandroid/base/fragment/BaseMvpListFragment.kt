@@ -32,6 +32,11 @@ abstract class BaseMvpListFragment<V : ITopView, P : ITopPresenter> : BaseMvpFra
         refreshLayout.isEnableLoadMore = isEnableLoadmore
     }
 
+
+    override fun showSuccess() {
+        mStateView.showSuccess()
+    }
+
     override fun loadDataError() {
         mStateView.showError()
     }

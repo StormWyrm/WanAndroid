@@ -99,6 +99,8 @@ interface IListView<P : ITopPresenter> : IView<P> {
     val mStateView: IStateView?
     val mRefreshLayout: SmartRefreshLayout
 
+    fun showSuccess()
+
     fun loadDataError()
     fun noData()
     fun loadMoreError()

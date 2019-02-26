@@ -10,7 +10,7 @@ import com.github.StormWyrm.wanandroid.base.state.IStateView
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import kotlinx.android.synthetic.main.layout_list.*
 
-abstract class BaseMvpListActivity<V : ITopView,P : ITopPresenter> : BaseActivity() ,IListView<P> {
+abstract class BaseMvpListActivity<V : ITopView, P : ITopPresenter> : BaseActivity(), IListView<P> {
     override val mStateView: IStateView by lazy { list_sv }
     override val mRecyclerView: RecyclerView by lazy { list_rv }
     override val mRefreshLayout: SmartRefreshLayout by lazy { refreshLayout }
@@ -41,6 +41,10 @@ abstract class BaseMvpListActivity<V : ITopView,P : ITopPresenter> : BaseActivit
     override fun getContext(): Context? = mActivity
 
     override fun finishActivity() = finish()
+
+    override fun showSuccess() {
+        mStateView.showSuccess()
+    }
 
     override fun loadDataError() {
         list_sv.showError()

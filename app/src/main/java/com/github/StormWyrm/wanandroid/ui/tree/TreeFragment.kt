@@ -1,19 +1,44 @@
 package com.github.StormWyrm.wanandroid.ui.tree
 
-import com.github.StormWyrm.wanandroid.R
-import com.github.StormWyrm.wanandroid.base.fragment.BaseFragment
-import com.github.StormWyrm.wanandroid.ui.navi.NaviFragment
-import kotlinx.android.synthetic.main.fragment_base.*
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.github.StormWyrm.wanandroid.base.fragment.BaseMvpListFragment
+import com.github.StormWyrm.wanandroid.bean.tree.TreeBean
+import com.github.StormWyrm.wanandroid.ui.tree.adapter.TreeAdapter
 
-class TreeFragment : BaseFragment() {
+class TreeFragment : BaseMvpListFragment<TreeContract.View, TreeContract.Presenter>(), TreeContract.View {
+    override var mPresenter: TreeContract.Presenter = TreePresenter()
+    override val isEnableLoadmore: Boolean = false
+
+    private lateinit var mAdapter: TreeAdapter
+
     companion object {
         fun newInstance() = TreeFragment()
     }
 
-    override fun getLayoutId(): Int = R.layout.fragment_base
-
     override fun initView() {
         super.initView()
-        tvContent.setText(R.string.main_tree_title)
+        mAdapter = TreeAdapter().apply {
+            setOnItemClickListener { adapter, view, position ->
+
+            }
+        }
+        mRecyclerView.run {
+            layoutManager = LinearLayoutManager(mContext)
+            adapter = mAdapter
+        }
+    }
+
+    override fun initLoad() {
+        super.initLoad()
+        onRetry()
+    }
+
+    override fun onRetry() {
+        mStateView.showLoading()
+        mPresenter.requestTreeList()
+    }
+
+    override fun onRequestTreeListSuccess(datas: List<TreeBean>) {
+        mAdapter.setNewData(datas)
     }
 }
