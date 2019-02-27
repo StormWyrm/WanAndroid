@@ -1,10 +1,10 @@
 package com.github.StormWyrm.wanandroid.ui.chapter
 
 import androidx.recyclerview.widget.GridLayoutManager
-import com.github.StormWyrm.wanandroid.R
 import com.github.StormWyrm.wanandroid.base.fragment.BaseMvpListFragment
 import com.github.StormWyrm.wanandroid.bean.chapter.ChapterBean
 import com.github.StormWyrm.wanandroid.ui.chapter.adapter.ChapterAdapter
+import com.github.StormWyrm.wanandroid.ui.chapter.detail.ChapterDetailActivity
 
 class ChapterFragment : BaseMvpListFragment<ChapterContract.View, ChapterContract.Presenter>(), ChapterContract.View {
     override var mPresenter: ChapterContract.Presenter = ChapterPresenter()
@@ -20,9 +20,9 @@ class ChapterFragment : BaseMvpListFragment<ChapterContract.View, ChapterContrac
     override fun initView() {
         super.initView()
         mAdapter = ChapterAdapter().apply {
-            setOnItemChildClickListener { adapter, view, position ->
-                getItem(position).run {
-
+            setOnItemClickListener { _, _, position ->
+                getItem(position)?.run {
+                    ChapterDetailActivity.start(mActivity, id, name)
                 }
             }
         }

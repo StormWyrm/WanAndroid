@@ -1,6 +1,7 @@
 package com.github.StormWyrm.wanandroid.base.activity
 
 import android.content.Context
+import android.os.Bundle
 import androidx.recyclerview.widget.RecyclerView
 import com.github.StormWyrm.wanandroid.R
 import com.github.StormWyrm.wanandroid.base.mvp.IListView
@@ -21,11 +22,16 @@ abstract class BaseMvpListActivity<V : ITopView, P : ITopPresenter> : BaseActivi
 
     override fun getLayoutId(): Int = R.layout.layout_list
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        bindToPresenter()
+    }
+
     override fun initView() {
         super.initView()
-        list_rv?.let {
-            it.setBackgroundColor(recyclerViewBgColor)
-        }
+//        list_rv?.let {
+//            it.setBackgroundColor(recyclerViewBgColor)
+//        }
         list_sv.onRetry = {
             onRetry()
         }
