@@ -2,6 +2,7 @@ package com.github.StormWyrm.wanandroid.base.fragment
 
 import android.view.View
 import androidx.annotation.LayoutRes
+import com.github.StormWyrm.wanandroid.R
 import com.github.StormWyrm.wanandroid.base.mvp.ILoadView
 import com.github.StormWyrm.wanandroid.base.mvp.ITopPresenter
 import com.github.StormWyrm.wanandroid.base.mvp.ITopView
@@ -10,6 +11,10 @@ import kotlinx.android.synthetic.main.fragment_base_load.*
 
 abstract class BaseMvpLoadFragment<V : ITopView, P : ITopPresenter> : BaseMvpFragment<V, P>(), ILoadView<P> {
     override val mStateView: IStateView by lazy { sv }
+
+    override fun getLayoutId(): Int {
+        return R.layout.fragment_base_load
+    }
 
     override fun initView() {
         super.initView()

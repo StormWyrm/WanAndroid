@@ -85,7 +85,7 @@ interface WanAndroidApis {
      * 导航数据
      */
     @GET("navi/json")
-    fun naviList(): Observable<BaseResponse<NaviBean>>
+    fun naviList(): Observable<BaseResponse<List<NaviBean>>>
 
 
     /**

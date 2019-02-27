@@ -7,8 +7,6 @@ import com.github.StormWyrm.wanandroid.adapter.ViewPagerAdapter
 import com.github.StormWyrm.wanandroid.base.activity.BaseActivity
 import com.github.StormWyrm.wanandroid.base.fragment.BaseFragment
 import com.github.StormWyrm.wanandroid.ui.chapter.ChapterFragment
-import com.github.StormWyrm.wanandroid.ui.chapter.ChapterContract
-import com.github.StormWyrm.wanandroid.ui.chapter.ChapterPresenter
 import com.github.StormWyrm.wanandroid.ui.home.HomeFragment
 import com.github.StormWyrm.wanandroid.ui.navi.NaviFragment
 import com.github.StormWyrm.wanandroid.ui.project.ProjectFragment
@@ -17,7 +15,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
     private val fragments: ArrayList<BaseFragment> by lazy {
-        arrayListOf(
+        arrayListOf<BaseFragment>(
             HomeFragment.newInstance(),
             ProjectFragment.newInstance(),
             TreeFragment.newInstance(),
