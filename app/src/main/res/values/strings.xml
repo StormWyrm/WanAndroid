@@ -9,6 +9,10 @@
     <string name="main_setting_title">设置</string>
     <string name="main_about_title">关于</string>
     <string name="main_logout_title">退出</string>
+
+    <string name="home_author">作者：%1$s</string>
+    <string name="home_time">时间：%1$s</string>
+
     <string name="loading_msg">加载中...</string>
     <string name="detail_share">分享项目</string>
     <string name="detail_copy_link">复制链接</string>

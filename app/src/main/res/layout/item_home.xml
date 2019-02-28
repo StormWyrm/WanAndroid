@@ -21,51 +21,51 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="15dp"
             android:textColor="@color/textTitleColor"
+            android:layout_toLeftOf="@id/ivStar"
+            android:layout_alignParentLeft="true"
             android:textSize="@dimen/font_normal"
             tools:text="This is a title" />
-
-        <TextView
-            android:id="@+id/tvAuthor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tvTitle"
-            android:layout_marginBottom="10dp"
-            android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/font_small"
-            android:background="@drawable/bg_home_author"
-            tools:text="Author" />
-
 
         <TextView
             android:id="@+id/tvOrigin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_toRightOf="@id/tvAuthor"
-            android:layout_alignBottom="@id/tvAuthor"
-            android:textColor="@color/colorAccent"
+            android:layout_below="@id/tvTitle"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/bg_home_author"
+            android:textColor="@color/colorPrimary"
             android:textSize="@dimen/font_small"
-            android:background="@drawable/bg_home_origin"
             tools:text="Origin" />
+
+        <TextView
+            android:id="@+id/tvAuthor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/tvOrigin"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@id/tvOrigin"
+            android:textColor="@color/subtextTitleColor"
+            android:textSize="@dimen/font_smaller"
+            tools:text="作者：李青峰" />
 
         <TextView
             android:id="@+id/tvPushlishTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
-            android:layout_toRightOf="@id/tvOrigin"
             android:layout_alignBottom="@id/tvAuthor"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@id/tvAuthor"
             android:textColor="@color/subtextTitleColor"
-            android:textSize="@dimen/font_small"
-            tools:text="Origin" />
+            android:textSize="@dimen/font_smaller"
+            tools:text="时间：一天前" />
 
         <ImageView
             android:id="@+id/ivStar"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_alignBottom="@id/tvAuthor"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_centerVertical="true"
             android:foreground="?attr/selectableItemBackground"
             android:src="@drawable/ic_like" />
     </RelativeLayout>

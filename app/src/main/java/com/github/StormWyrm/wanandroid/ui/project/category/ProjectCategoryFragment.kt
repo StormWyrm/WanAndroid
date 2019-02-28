@@ -7,7 +7,7 @@ import com.github.StormWyrm.wanandroid.bean.project.ProjectBean
 import com.github.StormWyrm.wanandroid.ui.detail.ArticleDetailActivity
 import com.github.StormWyrm.wanandroid.ui.project.ProjectCategoryContract
 import com.github.StormWyrm.wanandroid.ui.project.ProjectCategoryPresenter
-import com.github.StormWyrm.wanandroid.ui.project.adapter.CategoryAdapter
+import com.github.StormWyrm.wanandroid.ui.project.adapter.ProjectCategoryAdapter
 
 class ProjectCategoryFragment : BaseMvpListFragment<ProjectCategoryContract.View, ProjectCategoryContract.Presenter>(),
     ProjectCategoryContract.View {
@@ -19,7 +19,7 @@ class ProjectCategoryFragment : BaseMvpListFragment<ProjectCategoryContract.View
         arguments?.getInt("categoryId") ?: -1
     }
 
-    private lateinit var mAdapter: CategoryAdapter
+    private lateinit var mAdapter: ProjectCategoryAdapter
 
 
     companion object {
@@ -36,7 +36,7 @@ class ProjectCategoryFragment : BaseMvpListFragment<ProjectCategoryContract.View
 
     override fun initView() {
         super.initView()
-        mAdapter = CategoryAdapter().apply {
+        mAdapter = ProjectCategoryAdapter().apply {
             setOnItemClickListener { adapter, _, position ->
                 getItem(position)?.run {
                     ArticleDetailActivity.start(mActivity, title, link)
