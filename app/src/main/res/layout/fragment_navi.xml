@@ -16,8 +16,11 @@
 
     </ScrollView>
 
-    <FrameLayout
-        android:id="@+id/fl_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+   <com.github.StormWyrm.wanandroid.widget.VerticalViewPager
+       android:id="@+id/vvp"
+       android:layout_width="0dp"
+       android:layout_weight="1"
+       android:overScrollMode="never"
+       android:layout_height="match_parent"/>
+
 </LinearLayout>

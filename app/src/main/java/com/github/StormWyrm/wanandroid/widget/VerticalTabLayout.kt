@@ -41,7 +41,7 @@ class VerticalTabLayout : LinearLayout {
         addView(tab)
     }
 
-    private fun switchTab(destTabIndex: Int) {
+    public fun switchTab(destTabIndex: Int) {
         val destTab: TabItem = getChildAt(destTabIndex) as TabItem
         destTab.select()
         val currentTab: TabItem = getChildAt(currentTabIndex) as TabItem

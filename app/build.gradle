@@ -66,6 +66,7 @@ dependencies {
 
     //Logger
     implementation 'com.orhanobut:logger:2.2.0'
+
     implementation 'de.hdodenhof:circleimageview:3.0.0'
 
     //banner
@@ -73,8 +74,5 @@ dependencies {
 
     //流布局
     implementation 'com.github.StormWyrm:FlowLayout:1.0.2'
-
-    //VerticalTabLayout
-    implementation 'q.rorbin:VerticalTabLayout:1.2.5'
 
 }

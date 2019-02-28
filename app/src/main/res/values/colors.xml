@@ -5,7 +5,7 @@
     <color name="colorAccent">#E76150</color>
 
     <color name="textTitleColor">#181616</color>
-    <color name="subtextTitleColor">#BDB9B9</color>
+    <color name="subtextTitleColor">#D3CFCF</color>
     <color name="themeTextColor">#fff</color>
     <color name="white">#fff</color>
 </resources>

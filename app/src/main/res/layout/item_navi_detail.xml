@@ -4,9 +4,9 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@drawable/select_navi_detail"
-    android:paddingLeft="5dp"
+    android:paddingLeft="7dp"
     android:paddingTop="2dp"
-    android:paddingRight="5dp"
+    android:paddingRight="7dp"
     android:paddingBottom="2dp"
     android:textColor="@color/textTitleColor"
     tools:text="@string/app_name" />
