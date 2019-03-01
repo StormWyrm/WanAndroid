@@ -10,6 +10,7 @@ import com.github.StormWyrm.wanandroid.ui.chapter.ChapterFragment
 import com.github.StormWyrm.wanandroid.ui.home.HomeFragment
 import com.github.StormWyrm.wanandroid.ui.navi.NaviFragment
 import com.github.StormWyrm.wanandroid.ui.project.ProjectFragment
+import com.github.StormWyrm.wanandroid.ui.search.SearchActivity
 import com.github.StormWyrm.wanandroid.ui.tree.TreeFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -35,6 +36,9 @@ class MainActivity : BaseActivity() {
             drawerLayout.openDrawer(GravityCompat.START)
         }
 
+        ivHomeSearch.setOnClickListener {
+            SearchActivity.start(mContext)
+        }
         vpMain.setOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrollStateChanged(state: Int) {
             }

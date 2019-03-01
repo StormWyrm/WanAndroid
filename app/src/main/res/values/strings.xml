@@ -20,4 +20,9 @@
     <string name="detail_select_browser">请选择浏览器：</string>
     <string name="detail_copy_success">已复制到剪切板！</string>
     <string name="detail_select_share">分享到：</string>
+    <string name="search_history_record">历史记录</string>
+    <string name="search_hot_word">热门搜索</string>
+    <string name="search_clear_record">清空记录</string>
+    <string name="search_title">搜索</string>
+    <string name="search_hint">输入关键词，多个用空格间隔</string>
 </resources>

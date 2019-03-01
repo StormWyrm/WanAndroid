@@ -17,6 +17,7 @@
         <activity android:name=".ui.detail.ArticleDetailActivity" />
         <activity android:name=".ui.tree.detail.TreeDetailActivity" />
         <activity android:name=".ui.chapter.detail.ChapterDetailActivity" />
+        <activity android:name=".ui.search.SearchActivity" />
         <activity android:name=".ui.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
