@@ -25,4 +25,5 @@
     <string name="search_clear_record">清空记录</string>
     <string name="search_title">搜索</string>
     <string name="search_hint">输入关键词，多个用空格间隔</string>
+    <string name="search_key_empty">搜索词不能为空</string>
 </resources>
