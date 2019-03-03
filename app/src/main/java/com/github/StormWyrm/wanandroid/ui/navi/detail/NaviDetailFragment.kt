@@ -8,7 +8,7 @@ import com.github.StormWyrm.flowlayout_library.TagFlowLayout
 import com.github.StormWyrm.wanandroid.R
 import com.github.StormWyrm.wanandroid.base.fragment.BaseFragment
 import com.github.StormWyrm.wanandroid.bean.navi.NaviDataItem
-import com.github.StormWyrm.wanandroid.ui.detail.ArticleDetailActivity
+import com.github.StormWyrm.wanandroid.ui.detail.article.ArticleDetailActivity
 import kotlinx.android.synthetic.main.fragment_navi_detail.*
 
 class NaviDetailFragment : BaseFragment() {

@@ -36,15 +36,4 @@ class TreeDetailActivity : BaseActivity() {
         vpTreeDetail.adapter = TreeDetailFragmentAdpter(treeBean, supportFragmentManager)
         tabLayout.setupWithViewPager(vpTreeDetail)
     }
-
-    private fun initToolbar(titleStr: String) {
-        toolbar.run {
-            title = titleStr
-            setSupportActionBar(this)
-            setNavigationOnClickListener {
-                finish()
-            }
-            supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        }
-    }
 }

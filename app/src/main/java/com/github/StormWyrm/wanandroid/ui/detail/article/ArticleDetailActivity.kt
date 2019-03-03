@@ -1,4 +1,4 @@
-package com.github.StormWyrm.wanandroid.ui.detail
+package com.github.StormWyrm.wanandroid.ui.detail.article
 
 import android.content.ClipData
 import android.content.ClipboardManager
@@ -15,7 +15,6 @@ import com.github.StormWyrm.wanandroid.base.activity.BaseTitleLoadActivity
 import com.github.StormWyrm.wanandroid.base.state.STATE_LOADING
 import com.github.StormWyrm.wanandroid.utils.ToastUtil
 import kotlinx.android.synthetic.main.activity_article_detail.*
-import kotlinx.android.synthetic.main.layout_toolbar.*
 
 class ArticleDetailActivity : BaseTitleLoadActivity() {
     private lateinit var title: String
@@ -104,17 +103,6 @@ class ArticleDetailActivity : BaseTitleLoadActivity() {
     override fun onRetry() {
         showLoading()
         webview.reload()
-    }
-
-    private fun initToolbar(titleStr: String) {
-        toolbar.run {
-            title = titleStr
-            setSupportActionBar(this)
-            setNavigationOnClickListener {
-                finish()
-            }
-            supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        }
     }
 
     private fun onOpenBrowserClick() {

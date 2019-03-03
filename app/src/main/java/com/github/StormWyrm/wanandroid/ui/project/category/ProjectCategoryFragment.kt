@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.StormWyrm.wanandroid.base.fragment.BaseMvpListFragment
 import com.github.StormWyrm.wanandroid.bean.project.ProjectBean
-import com.github.StormWyrm.wanandroid.ui.detail.ArticleDetailActivity
+import com.github.StormWyrm.wanandroid.ui.detail.article.ArticleDetailActivity
 import com.github.StormWyrm.wanandroid.ui.project.ProjectCategoryContract
 import com.github.StormWyrm.wanandroid.ui.project.ProjectCategoryPresenter
 import com.github.StormWyrm.wanandroid.ui.project.adapter.ProjectCategoryAdapter

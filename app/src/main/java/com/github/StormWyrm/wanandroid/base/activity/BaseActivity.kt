@@ -11,6 +11,7 @@ import com.github.StormWyrm.wanandroid.App
 import com.github.StormWyrm.wanandroid.registerEventBus
 import com.github.StormWyrm.wanandroid.unregisterEventBus
 import com.squareup.leakcanary.RefWatcher
+import kotlinx.android.synthetic.main.layout_toolbar.*
 
 abstract class BaseActivity : AppCompatActivity() {
     private var refWatcher: RefWatcher? = null
@@ -77,4 +78,14 @@ abstract class BaseActivity : AppCompatActivity() {
         overridePendingTransition(R.anim.in_from_left, R.anim.out_from_right)
     }
 
+    protected fun initToolbar(titleStr: String) {
+        toolbar.run {
+            title = titleStr
+            setSupportActionBar(this)
+            setNavigationOnClickListener {
+                finish()
+            }
+            supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        }
+    }
 }

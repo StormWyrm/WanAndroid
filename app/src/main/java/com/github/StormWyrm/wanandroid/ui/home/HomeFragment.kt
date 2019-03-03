@@ -11,7 +11,7 @@ import com.github.StormWyrm.wanandroid.base.fragment.BaseMvpListFragment
 import com.github.StormWyrm.wanandroid.bean.BannerBean
 import com.github.StormWyrm.wanandroid.bean.article.ArticleBean
 import com.github.StormWyrm.wanandroid.dp2px
-import com.github.StormWyrm.wanandroid.ui.detail.ArticleDetailActivity
+import com.github.StormWyrm.wanandroid.ui.detail.article.ArticleDetailActivity
 import com.github.StormWyrm.wanandroid.ui.home.adapter.HomeArticleAdapter
 import com.youth.banner.Banner
 import com.youth.banner.BannerConfig

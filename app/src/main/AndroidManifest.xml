@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.detail.ArticleDetailActivity" />
+        <activity android:name=".ui.detail.article.ArticleDetailActivity" />
+        <activity android:name=".ui.detail.search.SearchDetailActivity" />
         <activity android:name=".ui.tree.detail.TreeDetailActivity" />
         <activity android:name=".ui.chapter.detail.ChapterDetailActivity" />
         <activity android:name=".ui.search.SearchActivity" />

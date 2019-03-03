@@ -7,8 +7,7 @@ import com.github.StormWyrm.wanandroid.R
 import com.github.StormWyrm.wanandroid.base.activity.BaseMvpListActivity
 import com.github.StormWyrm.wanandroid.bean.chapter.ChapterDetailDataItem
 import com.github.StormWyrm.wanandroid.ui.chapter.adapter.ChapterDetailAdapter
-import com.github.StormWyrm.wanandroid.ui.detail.ArticleDetailActivity
-import kotlinx.android.synthetic.main.layout_toolbar.*
+import com.github.StormWyrm.wanandroid.ui.detail.article.ArticleDetailActivity
 
 class ChapterDetailActivity : BaseMvpListActivity<ChapterDetailContract.View, ChapterDetailContract.Presenter>(),
     ChapterDetailContract.View {
@@ -78,17 +77,6 @@ class ChapterDetailActivity : BaseMvpListActivity<ChapterDetailContract.View, Ch
         } else {
             mRefreshLayout.finishLoadMore()
             mAdapter.addData(datas)
-        }
-    }
-
-    private fun initToolbar(titleStr: String) {
-        toolbar.run {
-            title = titleStr
-            setSupportActionBar(this)
-            setNavigationOnClickListener {
-                finish()
-            }
-            supportActionBar?.setDisplayHomeAsUpEnabled(true)
         }
     }
 

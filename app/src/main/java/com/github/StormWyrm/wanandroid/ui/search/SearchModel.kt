@@ -11,9 +11,4 @@ class SearchModel : SearchContract.Model, BaseModelKt() {
     override fun requestHotKey(): Observable<BaseResponse<List<HotKeyBean>>> {
         return WanAndroidRetrofitHelper.instace.hotKey()
     }
-
-    override fun requestQueryKey(queryKey: String, pageNum: Int): Observable<BaseResponse<QueryBean>> {
-        return WanAndroidRetrofitHelper.instace.query(pageNum, queryKey)
-    }
-
 }
