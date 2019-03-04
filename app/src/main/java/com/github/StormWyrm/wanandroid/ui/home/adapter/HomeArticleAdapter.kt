@@ -1,6 +1,9 @@
 package com.github.StormWyrm.wanandroid.ui.home.adapter
 
+import android.text.Html
 import android.text.format.DateFormat
+import android.view.View
+import android.widget.TextView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.github.StormWyrm.wanandroid.App
@@ -21,9 +24,18 @@ class HomeArticleAdapter(articles: List<ArticleDataItem>?) :
                 R.id.tvPushlishTime,
                 App.getApp().getString(R.string.home_time, DateFormat.format("yyyy-MM-dd", item?.publishTime ?: 0))
             )
-            setText(R.id.tvOrigin, item?.superChapterName)
-            setText(R.id.tvTitle, item?.title)
+            setText(R.id.tvTitle, Html.fromHtml(item?.title).toString())
+
+            item?.tags?.run {
+                if (isEmpty()) {
+                    getView<TextView>(R.id.tvOrigin).visibility = View.GONE
+                } else {
+                    getView<TextView>(R.id.tvOrigin).visibility = View.VISIBLE
+                    setText(R.id.tvOrigin, this[0].name)
+                }
+            }
+            addOnClickListener(R.id.tvOrigin)
+            addOnClickListener(R.id.tvAuthor)
         }
     }
-
 }

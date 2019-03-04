@@ -14,7 +14,7 @@ class TreePresenter : TreeContract.Presenter, BasePresenterKt<TreeContract.View>
             object : BaseObserver<List<TreeBean>>(false) {
                 override fun onSuccess(datas: List<TreeBean>) {
                     datas.run {
-                        if (size == 0) {
+                        if (isNullOrEmpty()) {
                             mView?.noData()
                         } else {
                             mView?.showSuccess()

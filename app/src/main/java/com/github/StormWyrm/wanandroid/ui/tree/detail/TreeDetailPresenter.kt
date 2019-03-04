@@ -14,7 +14,7 @@ class TreeDetailPresenter : TreeDetailContract.Presenter, BasePresenterKt<TreeDe
             object : BaseObserver<TreeDetailBean>() {
                 override fun onSuccess(data: TreeDetailBean) {
                     data.run {
-                        if (size == 0 || datas == null) {
+                        if (datas.isNullOrEmpty()) {
                             if (pageNum == 0) {
                                 mView?.noData()
                             } else {

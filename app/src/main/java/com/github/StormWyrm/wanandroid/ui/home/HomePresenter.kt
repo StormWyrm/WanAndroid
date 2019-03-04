@@ -15,9 +15,8 @@ class HomePresenter : BasePresenterKt<HomeContract.View>(), HomeContract.Present
         RequestManager.execute(this, mModel?.requestArticleList(pageNum),
             object : BaseObserver<ArticleBean>(false) {
                 override fun onSuccess(data: ArticleBean) {
-
                     data.run {
-                        if (data.size == 0) {
+                        if (datas.isNullOrEmpty()) {
                             if (pageNum == 0) {
                                 mView?.noData()
                             } else {

@@ -55,6 +55,7 @@
             android:layout_marginTop="10dp"
             android:layout_alignBottom="@id/ivThumb"
             android:layout_toRightOf="@id/ivThumb"
+            android:foreground="?attr/selectableItemBackground"
             android:textColor="@color/subtextTitleColor"
             android:textSize="@dimen/font_smaller"
             tools:text="作者：李青峰" />

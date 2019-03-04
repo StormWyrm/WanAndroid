@@ -34,6 +34,7 @@
             android:layout_alignBottom="@id/tvOrigin"
             android:layout_below="@id/tvTitle"
             android:layout_toRightOf="@id/tvOrigin"
+            android:foreground="?attr/selectableItemBackground"
             android:textColor="@color/subtextTitleColor"
             android:textSize="@dimen/font_smaller"
             tools:text="作者：李青峰" />

@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.github.StormWyrm.wanandroid.R
@@ -12,7 +13,9 @@ import com.github.StormWyrm.wanandroid.bean.BannerBean
 import com.github.StormWyrm.wanandroid.bean.article.ArticleBean
 import com.github.StormWyrm.wanandroid.dp2px
 import com.github.StormWyrm.wanandroid.ui.detail.article.ArticleDetailActivity
+import com.github.StormWyrm.wanandroid.ui.detail.search.SearchDetailActivity
 import com.github.StormWyrm.wanandroid.ui.home.adapter.HomeArticleAdapter
+import com.github.StormWyrm.wanandroid.ui.main.MainActivity
 import com.youth.banner.Banner
 import com.youth.banner.BannerConfig
 import com.youth.banner.Transformer
@@ -20,7 +23,6 @@ import com.youth.banner.loader.ImageLoader
 
 class HomeFragment : BaseMvpListFragment<HomeContract.View, HomeContract.Presenter>(), HomeContract.View {
     override var mPresenter: HomeContract.Presenter = HomePresenter()
-
     private lateinit var mAdapter: HomeArticleAdapter
     private var pageNum: Int = 0
     private lateinit var banner: Banner
@@ -53,9 +55,21 @@ class HomeFragment : BaseMvpListFragment<HomeContract.View, HomeContract.Present
             }
         mAdapter = HomeArticleAdapter(null).apply {
             addHeaderView(banner)
-            setOnItemClickListener { _, _, positon ->
-                mAdapter.getItem(positon)?.run {
+            setOnItemClickListener { _, _, position ->
+                getItem(position)?.run {
                     ArticleDetailActivity.start(mActivity, title, link)
+                }
+            }
+            setOnItemChildClickListener { _, view, position ->
+                when (view.id) {
+                    R.id.tvOrigin -> {
+                        onOriginClick((view as TextView).text.toString())
+                    }
+                    R.id.tvAuthor -> {
+                        getItem(position)?.run {
+                            SearchDetailActivity.start(mActivity, author, SearchDetailActivity.AUTHOR)
+                        }
+                    }
                 }
             }
         }
@@ -109,15 +123,28 @@ class HomeFragment : BaseMvpListFragment<HomeContract.View, HomeContract.Present
     }
 
     override fun onRequestArticleSuccess(articleList: ArticleBean) {
-        if (pageNum ++== 0) {
+        if (pageNum++ == 0) {
             mStateView.showSuccess()
             mAdapter.setNewData(articleList.datas)
         } else {
             mAdapter.addData(articleList.datas)
             mRefreshLayout.finishLoadMore(true)
         }
-
     }
 
+    private fun onOriginClick(title: String) {
+        var position = 0
+        when (title) {
+            "项目" -> {
+                position = 1
+            }
+            "公众号" -> {
+                position = 4
+            }
+        }
+        (mActivity as? MainActivity)?.run {
+            onPositionChange(position)
+        }
+    }
 
 }

@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
+import android.text.Html
 import android.view.Menu
 import android.view.MenuItem
 import android.webkit.*
@@ -45,7 +46,7 @@ class ArticleDetailActivity : BaseTitleLoadActivity() {
 
     override fun initView() {
         super.initView()
-        initToolbar(title)
+        initToolbar(Html.fromHtml(title).toString())
 
         webview.settings.run {
             javaScriptEnabled = true

@@ -14,7 +14,7 @@ class ChapterDetailPresenter : ChapterDetailContract.Presenter, BasePresenterKt<
             object : BaseObserver<ChapterDetailBean>() {
                 override fun onSuccess(data: ChapterDetailBean) {
                     data.run {
-                        if (size == 0) {
+                        if (datas.isNullOrEmpty()) {
                             if (pageNum == 0) {
                                 mView?.noData()
                             } else {

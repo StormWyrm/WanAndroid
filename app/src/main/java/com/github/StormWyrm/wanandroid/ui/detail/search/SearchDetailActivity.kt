@@ -13,18 +13,24 @@ class SearchDetailActivity : BaseMvpListActivity<SearchDetailContract.View, Sear
     SearchDetailContract.View {
 
     override var mPresenter: SearchDetailContract.Presenter = SearchDetailPresenter()
-
     private var pageNum: Int = 0
     private val queryKey: String by lazy {
         intent.getStringExtra("queryKey")
     }
+    private val category: Int by lazy {
+        intent.getIntExtra("catecory", KEY)
+    }
     private lateinit var mSearchQueryAdapter: SearchDetailAdapter
 
     companion object {
-        fun start(context: Context, queryKey: String) {
+        const val KEY = 0
+        const val AUTHOR = 1
+
+        fun start(context: Context, queryKey: String,catecory : Int) {
             val intent = Intent().apply {
                 setClass(context, SearchDetailActivity::class.java)
                 putExtra("queryKey", queryKey)
+                putExtra("catecory",catecory)
             }
             context.startActivity(intent)
         }
@@ -39,7 +45,7 @@ class SearchDetailActivity : BaseMvpListActivity<SearchDetailContract.View, Sear
         initToolbar(queryKey)
 
         mSearchQueryAdapter = SearchDetailAdapter(null).apply {
-            setOnItemClickListener { adapter, view, position ->
+            setOnItemClickListener { _, _, position ->
                 getItem(position)?.apply {
                     ArticleDetailActivity.start(mActivity, title, link)
                 }
@@ -57,13 +63,13 @@ class SearchDetailActivity : BaseMvpListActivity<SearchDetailContract.View, Sear
     override fun initLisenter() {
         super.initLisenter()
         mRefreshLayout.setOnLoadMoreListener {
-            mPresenter.requestQueryKey(queryKey, pageNum)
+            mPresenter.requestQueryKey(category, queryKey, pageNum)
         }
     }
 
     override fun onRetry() {
         mStateView.showLoading()
-        mPresenter.requestQueryKey(queryKey, pageNum)
+        mPresenter.requestQueryKey(category, queryKey, pageNum)
     }
 
     override fun onQueryKeySuccess(data: List<QueryDataItem>) {

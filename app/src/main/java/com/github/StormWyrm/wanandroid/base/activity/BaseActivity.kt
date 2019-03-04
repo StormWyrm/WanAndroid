@@ -6,8 +6,8 @@ import android.content.pm.ActivityInfo
 import android.os.Bundle
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
-import com.github.StormWyrm.wanandroid.R
 import com.github.StormWyrm.wanandroid.App
+import com.github.StormWyrm.wanandroid.R
 import com.github.StormWyrm.wanandroid.registerEventBus
 import com.github.StormWyrm.wanandroid.unregisterEventBus
 import com.squareup.leakcanary.RefWatcher
@@ -42,10 +42,10 @@ abstract class BaseActivity : AppCompatActivity() {
     }
 
     override fun onDestroy() {
-        super.onDestroy()
         if (isUseEventBus)
             unregisterEventBus(this)
         refWatcher?.watch(this)
+        super.onDestroy()
 
     }
 

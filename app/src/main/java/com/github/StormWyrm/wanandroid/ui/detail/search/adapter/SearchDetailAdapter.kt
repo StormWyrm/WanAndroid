@@ -1,5 +1,6 @@
 package com.github.StormWyrm.wanandroid.ui.detail.search.adapter
 
+import android.text.Html
 import android.text.format.DateFormat
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
@@ -21,7 +22,7 @@ class SearchDetailAdapter(articles: List<QueryDataItem>?) :
                 R.id.tvPushlishTime,
                 App.getApp().getString(R.string.home_time, DateFormat.format("yyyy-MM-dd", item?.publishTime ?: 0))
             )
-            setText(R.id.tvTitle, item?.title)
+            setText(R.id.tvTitle, Html.fromHtml(item?.title).toString())
         }
     }
 

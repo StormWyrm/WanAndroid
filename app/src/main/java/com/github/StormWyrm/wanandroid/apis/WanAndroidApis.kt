@@ -138,5 +138,11 @@ interface WanAndroidApis {
     @POST("article/query/{pageNum}/json")
     fun query(@Path("pageNum") pageNum: Int, @Query("k") k: String): Observable<BaseResponse<QueryBean>>
 
+    /**
+     * 搜索作者
+     */
+    @GET("article/list/{pageNum}/json")
+    fun queryAuthor(@Path("pageNum") pageNum: Int, @Query("author") author: String): Observable<BaseResponse<QueryBean>>
+
 
 }

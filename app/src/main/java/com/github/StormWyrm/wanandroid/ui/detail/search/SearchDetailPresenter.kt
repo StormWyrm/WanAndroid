@@ -9,12 +9,12 @@ import com.github.StormWyrm.wanandroid.bean.query.QueryBean
 class SearchDetailPresenter : SearchDetailContract.Presenter, BasePresenterKt<SearchDetailContract.View>() {
     override var mModel: SearchDetailContract.Model? = SearchDetailModel()
 
-    override fun requestQueryKey(queryKey: String, pageNum: Int) {
-        RequestManager.execute(this, mModel?.requestQueryKey(queryKey, pageNum),
+    override fun requestQueryKey(category: Int, queryKey: String, pageNum: Int) {
+        RequestManager.execute(this, mModel?.requestQueryKey(category, queryKey, pageNum),
             object : BaseObserver<QueryBean>(false) {
                 override fun onSuccess(data: QueryBean) {
                     data.run {
-                        if (size == 0) {
+                        if (datas.isNullOrEmpty()) {
                             if (pageNum == 0) {
                                 mView?.noData()
                             } else {
@@ -39,6 +39,5 @@ class SearchDetailPresenter : SearchDetailContract.Presenter, BasePresenterKt<Se
 
             })
     }
-
 
 }

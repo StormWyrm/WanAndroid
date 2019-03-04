@@ -8,14 +8,20 @@ import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import com.github.StormWyrm.wanandroid.App
 import com.github.StormWyrm.wanandroid.base.activity.BaseActivity
+import com.github.StormWyrm.wanandroid.registerEventBus
+import com.github.StormWyrm.wanandroid.unregisterEventBus
+import com.squareup.leakcanary.RefWatcher
 
 abstract class BaseFragment : Fragment() {
     lateinit var mContext: Context
         private set
     lateinit var mActivity: BaseActivity
         private set
+    open var isUseEventBus: Boolean = false
 
+    private var refWatcher: RefWatcher? = null
     private var isViewCreated: Boolean = false//见面是否创建成功
     private var isVisibleToUser: Boolean = false//是否对用户可见
     private var isDataLoaded: Boolean = false//数据是否已经请求
@@ -26,6 +32,14 @@ abstract class BaseFragment : Fragment() {
         super.onAttach(context)
         mContext = context.applicationContext
         mActivity = context as? BaseActivity ?: throw RuntimeException("fragment必须依赖于BaseActivity之上")
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        if (isUseEventBus)
+            registerEventBus(this)
+
+        refWatcher = App.getRefWatcher(mActivity)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
@@ -49,6 +63,10 @@ abstract class BaseFragment : Fragment() {
         isVisibleToUser = false
         isDataLoaded = false
         isFragmentHidden = true
+        if (isUseEventBus)
+            unregisterEventBus(this)
+
+        refWatcher?.watch(this)
         super.onDestroy()
     }
 

@@ -20,22 +20,6 @@ fun unregisterEventBus(obj: Any) {
 @SuppressLint("CheckResult")
 fun sendEvent(obj: Any) {
     EventBus.getDefault().post(obj)
-    Observable.create<String> {
-        val request = Request.Builder()
-            .build()
-        val call = OkHttpClient().newCall(request)
-        call.enqueue(object : Callback {
-
-            override fun onFailure(call: Call, e: IOException) {
-                it.onError(e)
-            }
-
-            override fun onResponse(call: Call, response: Response) {
-                it.onNext("")
-                it.onComplete()
-            }
-        })
-    }
 }
 
 fun dp2px(dpValue: Float): Int = (0.5f + dpValue * Resources.getSystem().displayMetrics.density).toInt()

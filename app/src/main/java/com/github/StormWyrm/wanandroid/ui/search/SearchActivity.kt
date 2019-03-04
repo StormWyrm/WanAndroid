@@ -52,7 +52,7 @@ class SearchActivity : BaseMvpTitleLoadActivity<SearchContract.View, SearchContr
             setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(query: String?): Boolean {
                     query?.let {
-                        SearchDetailActivity.start(mContext, it)
+                        SearchDetailActivity.start(mContext, it,SearchDetailActivity.KEY)
                     } ?: ToastUtil.showToast(mContext, R.string.search_key_empty)
 
                     return true
@@ -86,7 +86,7 @@ class SearchActivity : BaseMvpTitleLoadActivity<SearchContract.View, SearchContr
             }
             adapter.setOnTagClickListener { _, _, position ->
                 datas[position].let {
-                    SearchDetailActivity.start(mContext, it.name)
+                    SearchDetailActivity.start(mContext, it.name,SearchDetailActivity.KEY)
                 }
                 true
             }

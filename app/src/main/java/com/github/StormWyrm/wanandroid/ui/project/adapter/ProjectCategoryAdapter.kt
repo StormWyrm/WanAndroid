@@ -1,5 +1,6 @@
 package com.github.StormWyrm.wanandroid.ui.project.adapter
 
+import android.text.Html
 import android.text.format.DateFormat
 import android.widget.ImageView
 import com.bumptech.glide.Glide
@@ -16,8 +17,10 @@ class ProjectCategoryAdapter : BaseQuickAdapter<ProjectDataItem, BaseViewHolder>
 
     override fun convert(helper: BaseViewHolder?, item: ProjectDataItem?) {
         helper?.apply {
-            setText(R.id.tvTitle, item?.title)
-            setText(R.id.tvContent, item?.desc)
+            addOnClickListener(R.id.tvAuthor)
+
+            setText(R.id.tvTitle, Html.fromHtml(item?.title).toString())
+            setText(R.id.tvContent,Html.fromHtml(item?.desc).toString() )
             setText(R.id.tvAuthor, App.getApp().getString(R.string.home_author, item?.author))
             setText(
                 R.id.tvPushlishTime,

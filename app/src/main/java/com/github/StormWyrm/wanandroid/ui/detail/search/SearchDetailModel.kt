@@ -7,7 +7,12 @@ import com.github.StormWyrm.wanandroid.bean.query.QueryBean
 import io.reactivex.Observable
 
 class SearchDetailModel : SearchDetailContract.Model, BaseModelKt() {
-    override fun requestQueryKey(queryKey: String, pageNum: Int): Observable<BaseResponse<QueryBean>> {
-        return WanAndroidRetrofitHelper.instace.query(pageNum, queryKey)
+    override fun requestQueryKey(catory: Int, queryKey: String, pageNum: Int): Observable<BaseResponse<QueryBean>> {
+        return when (catory) {
+            SearchDetailActivity.AUTHOR -> WanAndroidRetrofitHelper.instace.queryAuthor(pageNum, queryKey)
+            else -> {
+                WanAndroidRetrofitHelper.instace.query(pageNum, queryKey)
+            }
+        }
     }
 }

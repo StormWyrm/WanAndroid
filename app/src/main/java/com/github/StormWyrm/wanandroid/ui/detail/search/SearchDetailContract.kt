@@ -14,10 +14,10 @@ interface SearchDetailContract {
     }
 
     interface Presenter : IPresenter<View, Model> {
-        fun requestQueryKey(queryKey: String, pageNum: Int)
+        fun requestQueryKey(category: Int, queryKey: String, pageNum: Int)
     }
 
     interface Model : IModel {
-        fun requestQueryKey(queryKey: String, pageNum: Int): Observable<BaseResponse<QueryBean>>
+        fun requestQueryKey(category: Int, queryKey: String, pageNum: Int): Observable<BaseResponse<QueryBean>>
     }
 }

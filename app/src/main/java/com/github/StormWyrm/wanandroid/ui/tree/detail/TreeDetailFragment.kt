@@ -1,10 +1,13 @@
 package com.github.StormWyrm.wanandroid.ui.tree.detail
 
 import android.os.Bundle
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.github.StormWyrm.wanandroid.R
 import com.github.StormWyrm.wanandroid.base.fragment.BaseMvpListFragment
 import com.github.StormWyrm.wanandroid.bean.tree.detail.TreeDetailDataItem
 import com.github.StormWyrm.wanandroid.ui.detail.article.ArticleDetailActivity
+import com.github.StormWyrm.wanandroid.ui.detail.search.SearchDetailActivity
 import com.github.StormWyrm.wanandroid.ui.tree.adapter.TreeDetailAdapter
 
 class TreeDetailFragment : BaseMvpListFragment<TreeDetailContract.View, TreeDetailContract.Presenter>(),
@@ -36,6 +39,15 @@ class TreeDetailFragment : BaseMvpListFragment<TreeDetailContract.View, TreeDeta
             setOnItemClickListener { _, _, position ->
                 getItem(position)?.run {
                     ArticleDetailActivity.start(mActivity, title, link)
+                }
+            }
+            setOnItemChildClickListener { _, view, position ->
+                when (view.id) {
+                    R.id.tvAuthor -> {
+                        getItem(position)?.run {
+                            SearchDetailActivity.start(mActivity, author, SearchDetailActivity.AUTHOR)
+                        }
+                    }
                 }
             }
         }

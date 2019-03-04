@@ -62,7 +62,7 @@ dependencies {
     debugImplementation 'com.squareup.leakcanary:leakcanary-support-fragment:1.6.2'
 
     //eventbus
-    implementation 'org.greenrobot:eventbus:3.0.0'
+    implementation 'org.greenrobot:eventbus:3.1.1'
 
     //Logger
     implementation 'com.orhanobut:logger:2.2.0'

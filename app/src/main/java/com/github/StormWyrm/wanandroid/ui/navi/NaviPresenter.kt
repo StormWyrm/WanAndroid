@@ -14,7 +14,7 @@ class NaviPresenter : NaviContract.Presenter, BasePresenterKt<NaviContract.View>
             object : BaseObserver<List<NaviBean>>() {
                 override fun onSuccess(data: List<NaviBean>) {
                     data.run {
-                        if (size == 0) {
+                        if (isNullOrEmpty()) {
                             mView?.showEmpty()
                         } else {
                             mView?.onRequestNaviListSuccess(this)

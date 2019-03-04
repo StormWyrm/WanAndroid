@@ -13,6 +13,8 @@ import com.github.StormWyrm.wanandroid.ui.project.ProjectFragment
 import com.github.StormWyrm.wanandroid.ui.search.SearchActivity
 import com.github.StormWyrm.wanandroid.ui.tree.TreeFragment
 import kotlinx.android.synthetic.main.activity_main.*
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 
 class MainActivity : BaseActivity() {
     private val fragments: ArrayList<BaseFragment> by lazy {
@@ -96,7 +98,7 @@ class MainActivity : BaseActivity() {
 
     }
 
-    private fun onPositionChange(position: Int) {
+    fun onPositionChange(position: Int) {
         when (position) {
             0 -> tvHomeTitle.setText(R.string.main_home_title)
             1 -> tvHomeTitle.setText(R.string.main_project_title)
