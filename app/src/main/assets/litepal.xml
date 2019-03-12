@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<litepal>
+    <dbname value="db_litepal"/>//数据库的名字
+    <version value="1"/>//版本
+    //表
+    <list>
+        <mapping class="com.github.StormWyrm.wanandroid.bean.SearchHistory"></mapping>
+    </list>
+
+</litepal>

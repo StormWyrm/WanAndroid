@@ -37,8 +37,8 @@ abstract class BaseActivity : AppCompatActivity() {
         refWatcher = App.getRefWatcher(this)
 
         initData()
-        initLisenter()
         initView()
+        initLisenter()
     }
 
     override fun onDestroy() {

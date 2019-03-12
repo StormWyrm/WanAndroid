@@ -7,8 +7,9 @@ import com.orhanobut.logger.Logger
 import com.orhanobut.logger.PrettyFormatStrategy
 import com.squareup.leakcanary.LeakCanary
 import com.squareup.leakcanary.RefWatcher
+import org.litepal.LitePalApplication
 
-open class App : Application() {
+open class App : LitePalApplication() {
     private var refWatcher: RefWatcher? = null
 
     companion object {

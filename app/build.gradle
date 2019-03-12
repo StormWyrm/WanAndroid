@@ -75,4 +75,8 @@ dependencies {
     //流布局
     implementation 'com.github.StormWyrm:FlowLayout:1.0.2'
 
+    //LitePal
+    implementation 'org.litepal.android:kotlin:3.0.0'
+
+
 }

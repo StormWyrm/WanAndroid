@@ -1,9 +1,9 @@
 package com.github.StormWyrm.wanandroid.ui.detail.search
 
-import android.content.Context
 import android.content.Intent
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.StormWyrm.wanandroid.R
+import com.github.StormWyrm.wanandroid.base.activity.BaseActivity
 import com.github.StormWyrm.wanandroid.base.activity.BaseMvpListActivity
 import com.github.StormWyrm.wanandroid.bean.query.QueryDataItem
 import com.github.StormWyrm.wanandroid.ui.detail.article.ArticleDetailActivity
@@ -26,7 +26,7 @@ class SearchDetailActivity : BaseMvpListActivity<SearchDetailContract.View, Sear
         const val KEY = 0
         const val AUTHOR = 1
 
-        fun start(context: Context, queryKey: String,catecory : Int) {
+        fun start(context: BaseActivity, queryKey: String,catecory : Int) {
             val intent = Intent().apply {
                 setClass(context, SearchDetailActivity::class.java)
                 putExtra("queryKey", queryKey)

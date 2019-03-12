@@ -39,7 +39,7 @@ class MainActivity : BaseActivity() {
         }
 
         ivHomeSearch.setOnClickListener {
-            SearchActivity.start(mContext)
+            SearchActivity.start(mActivity)
         }
         vpMain.setOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrollStateChanged(state: Int) {
