@@ -106,13 +106,14 @@ class SearchActivity : BaseMvpTitleLoadActivity<SearchContract.View, SearchContr
                         text = item?.name
                     }
                 }
-            }
-            adapter.setOnTagClickListener { _, _, position ->
-                datas[position].run {
-                    SearchDetailActivity.start(mActivity, name, SearchDetailActivity.KEY)
-                    recordSearchHistory(name)
+            }.apply {
+                setOnTagClickListener { _, _, position ->
+                    getItem(position).run {
+                        SearchDetailActivity.start(mActivity, name, SearchDetailActivity.KEY)
+                        recordSearchHistory(name)
+                    }
+                    true
                 }
-                true
             }
             tflHot.setAdapter(adapter)
         }

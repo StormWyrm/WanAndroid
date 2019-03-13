@@ -24,12 +24,12 @@ class VerticalViewPager : ViewPager {
     }
 
     override fun onInterceptTouchEvent(event: MotionEvent): Boolean {
-        swapTouchEvent(event)
+//        swapTouchEvent(event)
         return false
     }
 
     override fun onTouchEvent(ev: MotionEvent): Boolean {
-        super.onTouchEvent(swapTouchEvent(ev))
+//        super.onTouchEvent(swapTouchEvent(ev))
         return false
     }
 }

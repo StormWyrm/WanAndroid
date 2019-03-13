@@ -28,24 +28,27 @@ class NaviDetailFragment : BaseFragment() {
         return R.layout.fragment_navi_detail
     }
 
-    override fun initView() {
-        super.initView()
+    override fun initLoad() {
+        super.initLoad()
         datas = arguments?.run {
             getParcelableArrayList<NaviDataItem>("naviDataItem")
         } ?: throw RuntimeException()
         val adapter = object : TagAdapter<NaviDataItem>(datas) {
             override fun getView(tagFlowLayout: TagFlowLayout?, position: Int, item: NaviDataItem?): View {
-                return (View.inflate(mContext, R.layout.item_navi_detail, null) as TextView).apply {
-                    text = item?.title
+                return (View.inflate(mContext, R.layout.item_navi_detail, null) as TextView)
+                    .apply {
+                        text = item?.title
+                    }
+            }
+        }.apply {
+            setOnTagClickListener { _, _, position ->
+                getItem(position).run {
+                    ArticleDetailActivity.start(mActivity, title, link)
                 }
+                true
             }
-        }
-        adapter.setOnTagClickListener { _, _, position ->
-            datas[position].run {
-                ArticleDetailActivity.start(mActivity, title, link)
-            }
-            true
         }
         tfl.setAdapter(adapter)
     }
+
 }

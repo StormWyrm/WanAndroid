@@ -73,7 +73,7 @@ dependencies {
     implementation 'com.youth.banner:banner:1.4.10'  //最新版本
 
     //流布局
-    implementation 'com.github.StormWyrm:FlowLayout:1.0.2'
+    implementation 'com.github.StormWyrm:FlowLayout:1.0.3'
 
     //LitePal
     implementation 'org.litepal.android:kotlin:3.0.0'
