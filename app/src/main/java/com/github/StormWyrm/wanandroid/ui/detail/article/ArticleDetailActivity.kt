@@ -61,7 +61,6 @@ class ArticleDetailActivity : BaseTitleLoadActivity() {
             }
 
             override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
-                showLoading()
             }
 
 
@@ -69,16 +68,20 @@ class ArticleDetailActivity : BaseTitleLoadActivity() {
                 showError()
             }
 
+//            override fun onPageFinished(view: WebView?, url: String?) {
+//                super.onPageFinished(view, url)
+//                showSuccess()
+//            }
+
         }
         webview.webChromeClient = object : WebChromeClient() {
             override fun onProgressChanged(view: WebView?, newProgress: Int) {
-                if (newProgress > 75 && mStateView.curState == STATE_LOADING) {
+                if (newProgress > 55 && mStateView.curState == STATE_LOADING) {
                     showSuccess()
                 }
             }
-
         }
-        webview.loadUrl(link)
+        onRetry()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -103,7 +106,7 @@ class ArticleDetailActivity : BaseTitleLoadActivity() {
 
     override fun onRetry() {
         showLoading()
-        webview.reload()
+        webview.loadUrl(link)
     }
 
     private fun onOpenBrowserClick() {
