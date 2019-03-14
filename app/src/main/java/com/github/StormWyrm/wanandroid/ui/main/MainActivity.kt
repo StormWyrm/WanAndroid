@@ -1,22 +1,30 @@
 package com.github.StormWyrm.wanandroid.ui.main
 
+import android.view.View
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.core.view.GravityCompat
 import androidx.viewpager.widget.ViewPager
 import com.github.StormWyrm.wanandroid.R
 import com.github.StormWyrm.wanandroid.adapter.ViewPagerAdapter
 import com.github.StormWyrm.wanandroid.base.activity.BaseActivity
 import com.github.StormWyrm.wanandroid.base.fragment.BaseFragment
+import com.github.StormWyrm.wanandroid.bean.LoginBean
 import com.github.StormWyrm.wanandroid.ui.chapter.ChapterFragment
 import com.github.StormWyrm.wanandroid.ui.home.HomeFragment
+import com.github.StormWyrm.wanandroid.ui.login.LoginActivity
 import com.github.StormWyrm.wanandroid.ui.navi.NaviFragment
 import com.github.StormWyrm.wanandroid.ui.project.ProjectFragment
 import com.github.StormWyrm.wanandroid.ui.search.SearchActivity
 import com.github.StormWyrm.wanandroid.ui.tree.TreeFragment
+import com.github.StormWyrm.wanandroid.utils.UserUtils
 import kotlinx.android.synthetic.main.activity_main.*
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 
 class MainActivity : BaseActivity() {
+    override var isUseEventBus: Boolean = true
+
     private val fragments: ArrayList<BaseFragment> by lazy {
         arrayListOf<BaseFragment>(
             HomeFragment.newInstance(),
@@ -29,8 +37,18 @@ class MainActivity : BaseActivity() {
     private val mAdapter: ViewPagerAdapter by lazy {
         ViewPagerAdapter(fragments = fragments, fm = supportFragmentManager)
     }
+    private lateinit var headerview: View
+    private lateinit var tvUsername: TextView
 
     override fun getLayoutId(): Int = R.layout.activity_main
+
+    override fun initView() {
+        super.initView()
+        headerview = navigationView.getHeaderView(0)
+        tvUsername = headerview.findViewById(R.id.tvUsername)
+        vpMain.adapter = mAdapter
+        vpMain.offscreenPageLimit = fragments.size
+    }
 
     override fun initLisenter() {
         super.initLisenter()
@@ -64,7 +82,12 @@ class MainActivity : BaseActivity() {
             return@setOnNavigationItemSelectedListener true
         }
 
-        nvaigationView.setNavigationItemSelectedListener {
+        headerview.findViewById<LinearLayout>(R.id.ll_header)
+            .setOnClickListener {
+                LoginActivity.start(mActivity)
+            }
+
+        navigationView.setNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.main_left_collect -> collect()
                 R.id.main_left_setting -> setting()
@@ -76,10 +99,22 @@ class MainActivity : BaseActivity() {
         }
     }
 
-    override fun initView() {
-        super.initView()
-        vpMain.adapter = mAdapter
-        vpMain.offscreenPageLimit = fragments.size
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onAccountEvent(event: LoginBean) {
+        val headerView = navigationView.getHeaderView(0)
+        headerView.findViewById<TextView>(R.id.ll_header)
+        tvUsername.text = UserUtils.getUsername()
+    }
+
+    fun onPositionChange(position: Int) {
+        when (position) {
+            0 -> tvHomeTitle.setText(R.string.main_home_title)
+            1 -> tvHomeTitle.setText(R.string.main_project_title)
+            2 -> tvHomeTitle.setText(R.string.main_tree_title)
+            3 -> tvHomeTitle.setText(R.string.main_navi_title)
+            4 -> tvHomeTitle.setText(R.string.main_chapter_title)
+        }
+        vpMain.setCurrentItem(position, false)
     }
 
     private fun logout() {
@@ -96,17 +131,6 @@ class MainActivity : BaseActivity() {
 
     private fun collect() {
 
-    }
-
-    fun onPositionChange(position: Int) {
-        when (position) {
-            0 -> tvHomeTitle.setText(R.string.main_home_title)
-            1 -> tvHomeTitle.setText(R.string.main_project_title)
-            2 -> tvHomeTitle.setText(R.string.main_tree_title)
-            3 -> tvHomeTitle.setText(R.string.main_navi_title)
-            4 -> tvHomeTitle.setText(R.string.main_chapter_title)
-        }
-        vpMain.setCurrentItem(position, false)
     }
 
     private fun onPageSelected(postion: Int) {

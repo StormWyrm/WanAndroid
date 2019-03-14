@@ -1,8 +1,6 @@
 package com.github.StormWyrm.wanandroid.apis
 
-import com.github.StormWyrm.wanandroid.bean.BannerBean
-import com.github.StormWyrm.wanandroid.bean.BaseResponse
-import com.github.StormWyrm.wanandroid.bean.HotKeyBean
+import com.github.StormWyrm.wanandroid.bean.*
 import com.github.StormWyrm.wanandroid.bean.article.ArticleBean
 import com.github.StormWyrm.wanandroid.bean.chapter.ChapterBean
 import com.github.StormWyrm.wanandroid.bean.chapter.detail.ChapterDetailBean
@@ -21,13 +19,13 @@ interface WanAndroidApis {
      * 登录
      */
     @POST("user/login")
-    fun login(@QueryMap param: Map<String, String>)
+    fun login(@QueryMap param: Map<String, String>) : Observable<BaseResponse<LoginBean>>
 
     /**
      * 注册
      */
     @POST("user/register")
-    fun register(@QueryMap param: Map<String, String>)
+    fun register(@QueryMap param: Map<String, String>) : Observable<BaseResponse<RegisterBean>>
 
 
     /**
