@@ -22,6 +22,7 @@ class ChapterDetailAdapter :
                 R.id.tvPushlishTime,
                 App.getApp().getString(R.string.home_time, DateFormat.format("yyyy-MM-dd", item?.publishTime ?: 0))
             )
+            addOnClickListener(R.id.ivStar)
         }
     }
 }

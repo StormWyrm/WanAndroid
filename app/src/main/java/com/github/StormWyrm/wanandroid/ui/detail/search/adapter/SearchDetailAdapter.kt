@@ -23,6 +23,7 @@ class SearchDetailAdapter(articles: List<QueryDataItem>?) :
                 App.getApp().getString(R.string.home_time, DateFormat.format("yyyy-MM-dd", item?.publishTime ?: 0))
             )
             setText(R.id.tvTitle, Html.fromHtml(item?.title).toString())
+            addOnClickListener(R.id.ivStar)
         }
     }
 

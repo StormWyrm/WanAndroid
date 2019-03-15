@@ -13,4 +13,10 @@ class CollectionModel : BaseModelKt(), CollectionContract.Model {
             .collectArticleList(pageNum)
     }
 
+    override fun requestRemoveMyCollection(id: Int, originId: Int):Observable<BaseResponse<String>> {
+        return WanAndroidRetrofitHelper
+            .instace
+            .removeMyCollection(id,originId)
+    }
+
 }

@@ -3,7 +3,9 @@ package com.github.StormWyrm.wanandroid.base.mvp
 import android.content.Context
 import androidx.recyclerview.widget.RecyclerView
 import com.github.StormWyrm.wanandroid.base.state.IStateView
+import com.github.StormWyrm.wanandroid.bean.BaseResponse
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
+import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 
@@ -105,4 +107,24 @@ interface IListView<P : ITopPresenter> : IView<P> {
     fun noData()
     fun loadMoreError()
     fun noMoreData()
+}
+
+interface ICollectView<P : ITopPresenter> : IListView<P> {
+    fun onCollectSuccess(position: Int)
+
+    fun onUncollectSuccess(position: Int)
+
+    fun notLogin()
+}
+
+interface ICollectPresenter<V : ITopView, M : ITopModel> : IPresenter<V, M> {
+    fun requestCollect(id: Int, position: Int)
+
+    fun requestUncollect(id: Int, position: Int)
+}
+
+interface ICollectModel : IModel {
+    fun requestCollect(id: Int): Observable<BaseResponse<String>>
+
+    fun requestUncollect(id: Int): Observable<BaseResponse<String>>
 }

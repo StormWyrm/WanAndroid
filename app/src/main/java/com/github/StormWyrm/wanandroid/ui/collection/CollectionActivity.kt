@@ -6,9 +6,11 @@ import com.github.StormWyrm.wanandroid.R
 import com.github.StormWyrm.wanandroid.base.activity.BaseActivity
 import com.github.StormWyrm.wanandroid.base.activity.BaseMvpListActivity
 import com.github.StormWyrm.wanandroid.bean.article.ArticleBean
+import com.github.StormWyrm.wanandroid.bean.article.ArticleDataItem
 import com.github.StormWyrm.wanandroid.ui.collection.adapter.CollectionAdapter
 import com.github.StormWyrm.wanandroid.ui.detail.article.ArticleDetailActivity
 import com.github.StormWyrm.wanandroid.ui.detail.search.SearchDetailActivity
+import com.github.StormWyrm.wanandroid.utils.ToastUtil
 
 class CollectionActivity : BaseMvpListActivity<CollectionContract.View, CollectionContract.Presenter>(),
     CollectionContract.View {
@@ -35,6 +37,12 @@ class CollectionActivity : BaseMvpListActivity<CollectionContract.View, Collecti
                     R.id.tvAuthor -> {
                         getItem(position)?.run {
                             SearchDetailActivity.start(mActivity, author, SearchDetailActivity.AUTHOR)
+                        }
+                    }
+
+                    R.id.ivStar -> {
+                        getItem(position)?.run {
+                            onStarClick(this, position)
                         }
                     }
                 }
@@ -65,6 +73,20 @@ class CollectionActivity : BaseMvpListActivity<CollectionContract.View, Collecti
         } else {
             mAdapter.addData(articleList.datas)
             mRefreshLayout.finishLoadMore(true)
+        }
+    }
+
+    override fun onRemoveMyCollectionSuccess(position: Int) {
+        mAdapter.remove(position)
+        if (mAdapter.data.isNullOrEmpty()) {
+            mStateView.showEmpty()
+        }
+        ToastUtil.showToast(mActivity, R.string.uncollect_success)
+    }
+
+    private fun onStarClick(dataItem: ArticleDataItem, position: Int) {
+        dataItem.run {
+            mPresenter.requestRemoveMyCollection(id, originId, position)
         }
     }
 

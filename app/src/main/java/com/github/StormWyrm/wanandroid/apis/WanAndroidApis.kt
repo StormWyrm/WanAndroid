@@ -19,13 +19,13 @@ interface WanAndroidApis {
      * 登录
      */
     @POST("user/login")
-    fun login(@QueryMap param: Map<String, String>) : Observable<BaseResponse<LoginBean>>
+    fun login(@QueryMap param: Map<String, String>): Observable<BaseResponse<LoginBean>>
 
     /**
      * 注册
      */
     @POST("user/register")
-    fun register(@QueryMap param: Map<String, String>) : Observable<BaseResponse<RegisterBean>>
+    fun register(@QueryMap param: Map<String, String>): Observable<BaseResponse<RegisterBean>>
 
 
     /**
@@ -110,6 +110,11 @@ interface WanAndroidApis {
     @GET("lg/collect/list/{pageNum}/json")
     fun collectArticleList(@Path("pageNum") pageNum: Int): Observable<BaseResponse<ArticleBean>>
 
+    /**
+     * 在文章列表点击收藏
+     */
+    @POST("lg/collect/{id}/json")
+    fun collectArticle(@Path("id") id: Int): Observable<BaseResponse<String>>
 
     /**
      * 在文章列表取消收藏
@@ -117,11 +122,13 @@ interface WanAndroidApis {
     @POST("lg/uncollect_originId/{id}/json")
     fun uncollectArticle(@Path("id") id: Int): Observable<BaseResponse<String>>
 
+
     /**
      * 在收藏列表取消收藏
      */
     @POST("lg/uncollect/{id}/json")
-    fun cancelMyCollection(@Path("id") id: Int, @Query("originId") originId: Int): Observable<BaseResponse<String>>
+    fun removeMyCollection(@Path("id") id: Int, @Query("originId") originId: Int): Observable<BaseResponse<String>>
+
 
     /**
      * 热搜词

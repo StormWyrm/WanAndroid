@@ -42,4 +42,8 @@
     <string name="register_inconsistent_password">前后密码不一致!</string>
     <string name="dialog_register_success">注册成功,现在去登录？</string>
     <string name="not_login">请先登录</string>
+    <string name="dialog_login_hint">亲，您尚未登录，现在去登录？</string>
+    <string name="dialog_logout_hint">亲，确定要退出登录么？</string>
+    <string name="collect_success">收藏成功！</string>
+    <string name="uncollect_success">取消收藏成功！</string>
 </resources>

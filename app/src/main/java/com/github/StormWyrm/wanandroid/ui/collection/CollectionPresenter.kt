@@ -5,6 +5,7 @@ import com.github.StormWyrm.wanandroid.base.mvp.BasePresenterKt
 import com.github.StormWyrm.wanandroid.base.net.RequestManager
 import com.github.StormWyrm.wanandroid.base.net.observer.BaseObserver
 import com.github.StormWyrm.wanandroid.bean.article.ArticleBean
+import com.github.StormWyrm.wanandroid.utils.ToastUtil
 import com.orhanobut.logger.Logger
 
 class CollectionPresenter : BasePresenterKt<CollectionContract.View>(),
@@ -38,6 +39,19 @@ class CollectionPresenter : BasePresenterKt<CollectionContract.View>(),
                     } else {
                         mView?.loadMoreError()
                     }
+                }
+            })
+    }
+
+    override fun requestRemoveMyCollection(id: Int, originId: Int, position: Int) {
+        RequestManager.execute(this, mModel?.requestRemoveMyCollection(id, originId),
+            object : BaseObserver<String>(showErrorTip = false) {
+                override fun onSuccess(data: String) {
+                    mView?.onRemoveMyCollectionSuccess(position)
+                }
+
+                override fun onError(e: ResponseException) {
+                    ToastUtil.showToast(mView?.getContext(), e.getErrorMessage())
                 }
             })
     }

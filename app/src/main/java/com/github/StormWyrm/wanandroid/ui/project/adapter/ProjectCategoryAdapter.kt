@@ -29,6 +29,8 @@ class ProjectCategoryAdapter : BaseQuickAdapter<ProjectDataItem, BaseViewHolder>
 
             val ivThumb = getView<ImageView>(R.id.ivThumb)
             Glide.with(helper.convertView.context).load(item?.envelopePic).into(ivThumb)
+
+            addOnClickListener(R.id.ivStar)
         }
 
     }

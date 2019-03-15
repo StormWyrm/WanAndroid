@@ -8,19 +8,23 @@ import com.github.StormWyrm.wanandroid.App
 import com.github.StormWyrm.wanandroid.R
 import com.github.StormWyrm.wanandroid.bean.article.ArticleDataItem
 
-class CollectionAdapter : BaseQuickAdapter<ArticleDataItem, BaseViewHolder>(R.layout.item_home, null) {
+class CollectionAdapter : BaseQuickAdapter<ArticleDataItem, BaseViewHolder>(R.layout.item_collect, null) {
     init {
         openLoadAnimation()//开启加载动画
     }
 
     override fun convert(helper: BaseViewHolder?, item: ArticleDataItem?) {
         helper?.run {
-            setText(R.id.tvAuthor, App.getApp().getString(R.string.home_author, item?.author))
-            setText(
-                R.id.tvPushlishTime,
-                App.getApp().getString(R.string.home_time, DateFormat.format("yyyy-MM-dd", item?.publishTime ?: 0))
-            )
-            setText(R.id.tvTitle, Html.fromHtml(item?.title).toString())
+            item?.let {
+                setText(R.id.tvAuthor, App.getApp().getString(R.string.home_author, it.author))
+                setText(
+                    R.id.tvPushlishTime,
+                    App.getApp().getString(R.string.home_time, DateFormat.format("yyyy-MM-dd", it.publishTime))
+                )
+                setText(R.id.tvTitle, Html.fromHtml(it.title).toString())
+            }
+
+            addOnClickListener(R.id.ivStar)
         }
     }
 }

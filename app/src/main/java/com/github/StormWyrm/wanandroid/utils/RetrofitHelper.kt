@@ -11,7 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 abstract class RetrofitHelper<T> {
-    open val timeOut: Long = 10
+    open val timeOut: Long = 5
     val instace: T
 
     abstract val baseUrl: String

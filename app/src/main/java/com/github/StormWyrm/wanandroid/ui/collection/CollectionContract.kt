@@ -10,14 +10,19 @@ import io.reactivex.Observable
 interface CollectionContract {
     interface Model : IModel {
         fun requestCollectionList(pageNum: Int): Observable<BaseResponse<ArticleBean>>
-    }
 
-    interface View : IListView<Presenter> {
-
-        fun onRequestCollectionListSuccess(articleList: ArticleBean)
+        fun requestRemoveMyCollection(id: Int, originId: Int):Observable<BaseResponse<String>>
     }
 
     interface Presenter : IPresenter<View, Model> {
         fun requestCollectionList(pageNum: Int)
+
+        fun requestRemoveMyCollection(id: Int, originId: Int, position: Int)
+    }
+
+    interface View : IListView<Presenter> {
+        fun onRequestCollectionListSuccess(articleList: ArticleBean)
+
+        fun onRemoveMyCollectionSuccess(position: Int)
     }
 }

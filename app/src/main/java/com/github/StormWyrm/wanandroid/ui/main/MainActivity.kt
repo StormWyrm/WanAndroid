@@ -1,5 +1,7 @@
 package com.github.StormWyrm.wanandroid.ui.main
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -122,7 +124,18 @@ class MainActivity : BaseActivity() {
     }
 
     private fun logout() {
-
+        AlertDialog.Builder(mActivity)
+            .setTitle(R.string.dialog_hit)
+            .setMessage(R.string.dialog_logout_hint)
+            .setPositiveButton(R.string.dialog_ok) { dialogInterface: DialogInterface, i: Int ->
+                UserUtils.removeCookie()
+                UserUtils.removeUsername()
+                tvUsername.text = UserUtils.getUsername()
+                dialogInterface.dismiss()
+            }
+            .setNegativeButton(R.string.dialog_cancel) { dialogInterface: DialogInterface, i: Int ->
+                dialogInterface.dismiss()
+            }.show()
     }
 
     private fun about() {
@@ -135,9 +148,18 @@ class MainActivity : BaseActivity() {
 
     private fun collect() {
         val cookie = UserUtils.getCookie()
-        if(cookie.isNullOrEmpty()){
-            ToastUtil.showToast(mActivity,R.string.not_login)
-        }else{
+        if (cookie.isNullOrEmpty()) {
+            AlertDialog.Builder(mActivity)
+                .setTitle(R.string.dialog_hit)
+                .setMessage(R.string.dialog_login_hint)
+                .setPositiveButton(R.string.dialog_ok) { dialogInterface: DialogInterface, i: Int ->
+                    LoginActivity.start(mActivity)
+                    dialogInterface.dismiss()
+                }
+                .setNegativeButton(R.string.dialog_cancel) { dialogInterface: DialogInterface, i: Int ->
+                    dialogInterface.dismiss()
+                }
+        } else {
             CollectionActivity.start(mActivity)
         }
     }

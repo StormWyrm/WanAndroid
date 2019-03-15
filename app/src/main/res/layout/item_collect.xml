@@ -58,7 +58,7 @@
             android:layout_marginLeft="15dp"
             android:layout_centerVertical="true"
             android:foreground="?attr/selectableItemBackground"
-            android:src="@drawable/ic_like" />
+            android:src="@drawable/ic_like_fill" />
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>
