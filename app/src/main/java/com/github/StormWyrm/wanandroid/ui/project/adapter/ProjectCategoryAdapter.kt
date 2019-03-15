@@ -17,18 +17,28 @@ class ProjectCategoryAdapter : BaseQuickAdapter<ProjectDataItem, BaseViewHolder>
 
     override fun convert(helper: BaseViewHolder?, item: ProjectDataItem?) {
         helper?.apply {
+            item?.let {
+                setText(R.id.tvTitle, Html.fromHtml(it.title).toString())
+                setText(R.id.tvContent, Html.fromHtml(it.desc).toString())
+                setText(R.id.tvAuthor, App.getApp().getString(R.string.home_author, it.author))
+                setText(
+                    R.id.tvPushlishTime,
+                    App.getApp().getString(R.string.home_time, DateFormat.format("yyyy-MM-dd", item?.publishTime ?: 0))
+                )
+
+                getView<ImageView>(R.id.ivStar).run {
+                    if (it.collect) {
+                        setImageDrawable(mContext.resources.getDrawable(R.drawable.ic_like_fill))
+                    } else {
+                        setImageDrawable(mContext.resources.getDrawable(R.drawable.ic_like))
+                    }
+                }
+
+                val ivThumb = getView<ImageView>(R.id.ivThumb)
+                Glide.with(mContext).load(item.envelopePic).into(ivThumb)
+            }
+
             addOnClickListener(R.id.tvAuthor)
-
-            setText(R.id.tvTitle, Html.fromHtml(item?.title).toString())
-            setText(R.id.tvContent,Html.fromHtml(item?.desc).toString() )
-            setText(R.id.tvAuthor, App.getApp().getString(R.string.home_author, item?.author))
-            setText(
-                R.id.tvPushlishTime,
-                App.getApp().getString(R.string.home_time, DateFormat.format("yyyy-MM-dd", item?.publishTime ?: 0))
-            )
-
-            val ivThumb = getView<ImageView>(R.id.ivThumb)
-            Glide.with(helper.convertView.context).load(item?.envelopePic).into(ivThumb)
 
             addOnClickListener(R.id.ivStar)
         }

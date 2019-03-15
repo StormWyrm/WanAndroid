@@ -24,11 +24,11 @@
             android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignTop="@id/ivThumb"
             android:layout_toLeftOf="@id/ivStar"
             android:layout_toRightOf="@id/ivThumb"
-            android:layout_alignTop="@id/ivThumb"
-            android:maxLines="1"
             android:ellipsize="end"
+            android:maxLines="1"
             android:textColor="@color/textTitleColor"
             android:textSize="@dimen/font_normal"
             tools:text="This is a title" />
@@ -38,22 +38,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/tvTitle"
-            android:layout_toRightOf="@id/ivThumb"
             android:layout_centerVertical="true"
             android:layout_marginTop="10dp"
-            android:maxLines="5"
-            android:ellipsize="end"
-            android:textSize="@dimen/font_small"
-            android:textColor="@color/subtextTitleColor"
             android:layout_toLeftOf="@id/ivStar"
+            android:layout_toRightOf="@id/ivThumb"
+            android:ellipsize="end"
+            android:maxLines="5"
+            android:textColor="@color/subtextTitleColor"
+            android:textSize="@dimen/font_small"
             tools:text="中看到吉安康复的骄傲开发的空间啊啊减肥的空间打开就飞快的接口奋达科技奋达科技奋达科技" />
 
         <TextView
             android:id="@+id/tvAuthor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_alignBottom="@id/ivThumb"
+            android:layout_marginTop="10dp"
             android:layout_toRightOf="@id/ivThumb"
             android:foreground="?attr/selectableItemBackground"
             android:textColor="@color/subtextTitleColor"
@@ -73,12 +73,13 @@
 
         <ImageView
             android:id="@+id/ivStar"
-            android:layout_width="18dp"
-            android:layout_height="18dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="15dp"
+            android:layout_marginLeft="5dp"
             android:foreground="?attr/selectableItemBackground"
+            android:padding="4dp"
             android:src="@drawable/ic_like" />
     </RelativeLayout>
 

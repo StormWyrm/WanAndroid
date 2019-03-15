@@ -20,7 +20,6 @@ import com.github.StormWyrm.wanandroid.ui.navi.NaviFragment
 import com.github.StormWyrm.wanandroid.ui.project.ProjectFragment
 import com.github.StormWyrm.wanandroid.ui.search.SearchActivity
 import com.github.StormWyrm.wanandroid.ui.tree.TreeFragment
-import com.github.StormWyrm.wanandroid.utils.ToastUtil
 import com.github.StormWyrm.wanandroid.utils.UserUtils
 import kotlinx.android.synthetic.main.activity_main.*
 import org.greenrobot.eventbus.Subscribe
@@ -159,6 +158,7 @@ class MainActivity : BaseActivity() {
                 .setNegativeButton(R.string.dialog_cancel) { dialogInterface: DialogInterface, i: Int ->
                     dialogInterface.dismiss()
                 }
+                .show()
         } else {
             CollectionActivity.start(mActivity)
         }

@@ -1,14 +1,17 @@
 package com.github.StormWyrm.wanandroid.ui.tree.detail
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
-import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.StormWyrm.wanandroid.R
 import com.github.StormWyrm.wanandroid.base.fragment.BaseMvpListFragment
 import com.github.StormWyrm.wanandroid.bean.tree.detail.TreeDetailDataItem
 import com.github.StormWyrm.wanandroid.ui.detail.article.ArticleDetailActivity
 import com.github.StormWyrm.wanandroid.ui.detail.search.SearchDetailActivity
+import com.github.StormWyrm.wanandroid.ui.login.LoginActivity
 import com.github.StormWyrm.wanandroid.ui.tree.adapter.TreeDetailAdapter
+import com.github.StormWyrm.wanandroid.utils.ToastUtil
 
 class TreeDetailFragment : BaseMvpListFragment<TreeDetailContract.View, TreeDetailContract.Presenter>(),
     TreeDetailContract.View {
@@ -20,18 +23,6 @@ class TreeDetailFragment : BaseMvpListFragment<TreeDetailContract.View, TreeDeta
 
     private var pageNum: Int = 0
     lateinit var mAdapter: TreeDetailAdapter
-
-    companion object {
-
-        fun newInstance(cid: Int): TreeDetailFragment {
-            val bundle = Bundle().apply {
-                putInt("cid", cid)
-            }
-            return TreeDetailFragment().apply {
-                arguments = bundle
-            }
-        }
-    }
 
     override fun initView() {
         super.initView()
@@ -46,6 +37,11 @@ class TreeDetailFragment : BaseMvpListFragment<TreeDetailContract.View, TreeDeta
                     R.id.tvAuthor -> {
                         getItem(position)?.run {
                             SearchDetailActivity.start(mActivity, author, SearchDetailActivity.AUTHOR)
+                        }
+                    }
+                    R.id.ivStar -> {
+                        getItem(position)?.run {
+                            onStarClick(this, position)
                         }
                     }
                 }
@@ -84,4 +80,51 @@ class TreeDetailFragment : BaseMvpListFragment<TreeDetailContract.View, TreeDeta
         }
     }
 
+    override fun onCollectSuccess(position: Int) {
+        mAdapter.getItem(position)?.run {
+            collect = true
+            mAdapter.setData(position, this)
+        }
+        ToastUtil.showToast(mActivity, R.string.collect_success)
+    }
+
+    override fun onUncollectSuccess(position: Int) {
+        mAdapter.getItem(position)?.run {
+            collect = false
+            mAdapter.setData(position, this)
+        }
+        ToastUtil.showToast(mActivity, R.string.uncollect_success)
+    }
+
+    override fun notLogin() {
+        AlertDialog.Builder(mActivity)
+            .setTitle(R.string.dialog_hit)
+            .setMessage(R.string.dialog_login_hint)
+            .setPositiveButton(R.string.dialog_ok) { dialogInterface: DialogInterface, i: Int ->
+                LoginActivity.start(mActivity)
+                dialogInterface.dismiss()
+            }
+            .setNegativeButton(R.string.dialog_cancel) { dialogInterface: DialogInterface, i: Int ->
+                dialogInterface.dismiss()
+            }.show()
+    }
+
+    private fun onStarClick(dataItem: TreeDetailDataItem, position: Int) {
+        if (dataItem.collect) {
+            mPresenter.requestUncollect(dataItem.id, position)
+        } else {
+            mPresenter.requestCollect(dataItem.id, position)
+        }
+    }
+
+    companion object {
+        fun newInstance(cid: Int): TreeDetailFragment {
+            val bundle = Bundle().apply {
+                putInt("cid", cid)
+            }
+            return TreeDetailFragment().apply {
+                arguments = bundle
+            }
+        }
+    }
 }

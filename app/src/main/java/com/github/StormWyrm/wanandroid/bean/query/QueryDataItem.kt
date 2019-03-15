@@ -21,7 +21,7 @@ data class QueryDataItem(
     val superChapterId: Int = 0,
     val id: Int = 0,
     val fresh: Boolean = false,
-    val collect: Boolean = false,
+    var collect: Boolean = false,
     val courseId: Int = 0,
     val desc: String = ""
 )

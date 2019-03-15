@@ -38,10 +38,10 @@
                 android:id="@+id/tvOrigin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
                 android:background="@drawable/bg_home_author"
                 android:foreground="?attr/selectableItemBackground"
                 android:textColor="@color/colorPrimary"
-                android:layout_marginRight="15dp"
                 android:textSize="@dimen/font_small"
                 tools:text="Origin" />
 
@@ -49,8 +49,8 @@
                 android:id="@+id/tvAuthor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/subtextTitleColor"
                 android:foreground="?attr/selectableItemBackground"
+                android:textColor="@color/subtextTitleColor"
                 android:textSize="@dimen/font_smaller"
                 tools:text="作者：李青峰" />
 
@@ -66,12 +66,12 @@
 
         <ImageView
             android:id="@+id/ivStar"
-            android:layout_width="18dp"
-            android:layout_height="18dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="15dp"
             android:foreground="?attr/selectableItemBackground"
+            android:padding="4dp"
             android:src="@drawable/ic_like" />
     </RelativeLayout>
 

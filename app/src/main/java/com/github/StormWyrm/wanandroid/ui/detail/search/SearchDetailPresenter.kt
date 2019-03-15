@@ -1,12 +1,13 @@
 package com.github.StormWyrm.wanandroid.ui.detail.search
 
 import com.github.StormWyrm.wanandroid.base.exception.ResponseException
-import com.github.StormWyrm.wanandroid.base.mvp.BasePresenterKt
+import com.github.StormWyrm.wanandroid.base.mvp.BaseCollectPresenterKt
 import com.github.StormWyrm.wanandroid.base.net.RequestManager
 import com.github.StormWyrm.wanandroid.base.net.observer.BaseObserver
 import com.github.StormWyrm.wanandroid.bean.query.QueryBean
 
-class SearchDetailPresenter : SearchDetailContract.Presenter, BasePresenterKt<SearchDetailContract.View>() {
+class SearchDetailPresenter : BaseCollectPresenterKt<SearchDetailContract.View, SearchDetailContract.Model>(),
+    SearchDetailContract.Presenter {
     override var mModel: SearchDetailContract.Model? = SearchDetailModel()
 
     override fun requestQueryKey(category: Int, queryKey: String, pageNum: Int) {

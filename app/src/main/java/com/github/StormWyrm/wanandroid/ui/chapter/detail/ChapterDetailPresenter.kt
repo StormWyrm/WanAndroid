@@ -1,12 +1,13 @@
 package com.github.StormWyrm.wanandroid.ui.chapter.detail
 
 import com.github.StormWyrm.wanandroid.base.exception.ResponseException
-import com.github.StormWyrm.wanandroid.base.mvp.BasePresenterKt
+import com.github.StormWyrm.wanandroid.base.mvp.BaseCollectPresenterKt
 import com.github.StormWyrm.wanandroid.base.net.RequestManager
 import com.github.StormWyrm.wanandroid.base.net.observer.BaseObserver
 import com.github.StormWyrm.wanandroid.bean.chapter.detail.ChapterDetailBean
 
-class ChapterDetailPresenter : ChapterDetailContract.Presenter, BasePresenterKt<ChapterDetailContract.View>() {
+class ChapterDetailPresenter : BaseCollectPresenterKt<ChapterDetailContract.View, ChapterDetailContract.Model>(),
+    ChapterDetailContract.Presenter {
     override var mModel: ChapterDetailContract.Model? = ChapterDetailModel()
 
     override fun requestChapterDetailArticle(chapterId: Int, pageNum: Int) {

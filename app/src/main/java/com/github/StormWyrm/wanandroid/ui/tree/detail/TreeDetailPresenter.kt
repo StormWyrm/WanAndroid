@@ -1,12 +1,14 @@
 package com.github.StormWyrm.wanandroid.ui.tree.detail
 
 import com.github.StormWyrm.wanandroid.base.exception.ResponseException
+import com.github.StormWyrm.wanandroid.base.mvp.BaseCollectPresenterKt
 import com.github.StormWyrm.wanandroid.base.mvp.BasePresenterKt
 import com.github.StormWyrm.wanandroid.base.net.RequestManager
 import com.github.StormWyrm.wanandroid.base.net.observer.BaseObserver
 import com.github.StormWyrm.wanandroid.bean.tree.detail.TreeDetailBean
 
-class TreeDetailPresenter : TreeDetailContract.Presenter, BasePresenterKt<TreeDetailContract.View>() {
+class TreeDetailPresenter : BaseCollectPresenterKt<TreeDetailContract.View, TreeDetailContract.Model>(),
+    TreeDetailContract.Presenter {
     override var mModel: TreeDetailContract.Model? = TreeDetailModel()
 
     override fun requestTreeDetailList(pageNum: Int, cid: Int) {

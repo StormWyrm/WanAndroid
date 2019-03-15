@@ -1,12 +1,13 @@
 package com.github.StormWyrm.wanandroid.ui.project
 
 import com.github.StormWyrm.wanandroid.base.exception.ResponseException
-import com.github.StormWyrm.wanandroid.base.mvp.BasePresenterKt
+import com.github.StormWyrm.wanandroid.base.mvp.BaseCollectPresenterKt
 import com.github.StormWyrm.wanandroid.base.net.RequestManager
 import com.github.StormWyrm.wanandroid.base.net.observer.BaseObserver
 import com.github.StormWyrm.wanandroid.bean.project.ProjectBean
 
-class ProjectCategoryPresenter : BasePresenterKt<ProjectCategoryContract.View>(), ProjectCategoryContract.Presenter {
+class ProjectCategoryPresenter : BaseCollectPresenterKt<ProjectCategoryContract.View, ProjectCategoryContract.Model>(),
+    ProjectCategoryContract.Presenter {
     override var mModel: ProjectCategoryContract.Model? = ProjectCategoryModel()
 
     override fun requestProjectAricle(categoryId: Int, pageNum: Int) {

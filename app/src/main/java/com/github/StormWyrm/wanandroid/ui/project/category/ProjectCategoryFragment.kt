@@ -1,16 +1,20 @@
 package com.github.StormWyrm.wanandroid.ui.project.category
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
-import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.StormWyrm.wanandroid.R
 import com.github.StormWyrm.wanandroid.base.fragment.BaseMvpListFragment
 import com.github.StormWyrm.wanandroid.bean.project.ProjectBean
+import com.github.StormWyrm.wanandroid.bean.project.ProjectDataItem
 import com.github.StormWyrm.wanandroid.ui.detail.article.ArticleDetailActivity
 import com.github.StormWyrm.wanandroid.ui.detail.search.SearchDetailActivity
+import com.github.StormWyrm.wanandroid.ui.login.LoginActivity
 import com.github.StormWyrm.wanandroid.ui.project.ProjectCategoryContract
 import com.github.StormWyrm.wanandroid.ui.project.ProjectCategoryPresenter
 import com.github.StormWyrm.wanandroid.ui.project.adapter.ProjectCategoryAdapter
+import com.github.StormWyrm.wanandroid.utils.ToastUtil
 
 class ProjectCategoryFragment : BaseMvpListFragment<ProjectCategoryContract.View, ProjectCategoryContract.Presenter>(),
     ProjectCategoryContract.View {
@@ -23,19 +27,6 @@ class ProjectCategoryFragment : BaseMvpListFragment<ProjectCategoryContract.View
     }
 
     private lateinit var mAdapter: ProjectCategoryAdapter
-
-
-    companion object {
-        fun newInstance(categoryId: Int): ProjectCategoryFragment {
-            val bundle = Bundle().apply {
-                putInt("categoryId", categoryId)
-            }
-            return ProjectCategoryFragment().apply {
-                arguments = bundle
-            }
-        }
-
-    }
 
     override fun initView() {
         super.initView()
@@ -50,6 +41,11 @@ class ProjectCategoryFragment : BaseMvpListFragment<ProjectCategoryContract.View
                     R.id.tvAuthor -> {
                         getItem(position)?.run {
                             SearchDetailActivity.start(mActivity, author, SearchDetailActivity.AUTHOR)
+                        }
+                    }
+                    R.id.ivStar -> {
+                        getItem(position)?.run {
+                            onStarClick(this, position)
                         }
                     }
                 }
@@ -85,5 +81,54 @@ class ProjectCategoryFragment : BaseMvpListFragment<ProjectCategoryContract.View
             mAdapter.addData(categoryBeans.datas)
             mRefreshLayout.finishLoadMore(true)
         }
+    }
+
+    override fun onCollectSuccess(position: Int) {
+        mAdapter.getItem(position)?.run {
+            collect = true
+            mAdapter.setData(position, this)
+        }
+        ToastUtil.showToast(mActivity, R.string.collect_success)
+    }
+
+    override fun onUncollectSuccess(position: Int) {
+        mAdapter.getItem(position)?.run {
+            collect = false
+            mAdapter.setData(position, this)
+        }
+        ToastUtil.showToast(mActivity, R.string.uncollect_success)
+    }
+
+    override fun notLogin() {
+        AlertDialog.Builder(mActivity)
+            .setTitle(R.string.dialog_hit)
+            .setMessage(R.string.dialog_login_hint)
+            .setPositiveButton(R.string.dialog_ok) { dialogInterface: DialogInterface, i: Int ->
+                LoginActivity.start(mActivity)
+                dialogInterface.dismiss()
+            }
+            .setNegativeButton(R.string.dialog_cancel) { dialogInterface: DialogInterface, i: Int ->
+                dialogInterface.dismiss()
+            }.show()
+    }
+
+    private fun onStarClick(dataItem: ProjectDataItem, position: Int) {
+        if (dataItem.collect) {
+            mPresenter.requestUncollect(dataItem.id, position)
+        } else {
+            mPresenter.requestCollect(dataItem.id, position)
+        }
+    }
+
+    companion object {
+        fun newInstance(categoryId: Int): ProjectCategoryFragment {
+            val bundle = Bundle().apply {
+                putInt("categoryId", categoryId)
+            }
+            return ProjectCategoryFragment().apply {
+                arguments = bundle
+            }
+        }
+
     }
 }
