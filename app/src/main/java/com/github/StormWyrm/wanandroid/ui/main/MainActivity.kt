@@ -12,15 +12,16 @@ import com.github.StormWyrm.wanandroid.adapter.ViewPagerAdapter
 import com.github.StormWyrm.wanandroid.base.activity.BaseActivity
 import com.github.StormWyrm.wanandroid.base.fragment.BaseFragment
 import com.github.StormWyrm.wanandroid.bean.LoginBean
+import com.github.StormWyrm.wanandroid.ui.about.AboutActivity
 import com.github.StormWyrm.wanandroid.ui.chapter.ChapterFragment
 import com.github.StormWyrm.wanandroid.ui.collection.CollectionActivity
+import com.github.StormWyrm.wanandroid.ui.detail.article.ArticleDetailActivity
 import com.github.StormWyrm.wanandroid.ui.home.HomeFragment
 import com.github.StormWyrm.wanandroid.ui.login.LoginActivity
 import com.github.StormWyrm.wanandroid.ui.navi.NaviFragment
 import com.github.StormWyrm.wanandroid.ui.project.ProjectFragment
 import com.github.StormWyrm.wanandroid.ui.search.SearchActivity
 import com.github.StormWyrm.wanandroid.ui.tree.TreeFragment
-import com.github.StormWyrm.wanandroid.utils.ToastUtil
 import com.github.StormWyrm.wanandroid.utils.UserUtils
 import kotlinx.android.synthetic.main.activity_main.*
 import org.greenrobot.eventbus.Subscribe
@@ -91,9 +92,9 @@ class MainActivity : BaseActivity() {
         headerview.findViewById<LinearLayout>(R.id.ll_header)
             .setOnClickListener {
                 val cookie = UserUtils.getCookie()
-                if(cookie.isNullOrEmpty()){
+                if (cookie.isNullOrEmpty()) {
                     LoginActivity.start(mActivity)
-                }else{
+                } else {
 //                    ToastUtil.showToast(mActivity,R.string.main_logined)
                 }
             }
@@ -101,7 +102,7 @@ class MainActivity : BaseActivity() {
         navigationView.setNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.main_left_collect -> collect()
-                R.id.main_left_setting -> setting()
+                R.id.main_left_source -> source()
                 R.id.main_left_about -> about()
                 R.id.main_left_logout -> logout()
             }
@@ -144,11 +145,11 @@ class MainActivity : BaseActivity() {
     }
 
     private fun about() {
-
+        AboutActivity.start(mActivity)
     }
 
-    private fun setting() {
-
+    private fun source() {
+        ArticleDetailActivity.start(mActivity, getString(R.string.app_name), "https://github.com/StormWyrm/WanAndroid")
     }
 
     private fun collect() {

@@ -46,4 +46,9 @@
     <string name="dialog_logout_hint">亲，确定要退出登录么？</string>
     <string name="collect_success">收藏成功！</string>
     <string name="uncollect_success">取消收藏成功！</string>
+    <string name="main_setting_project">项目源码</string>
+    <string name="main_source_title">源码</string>
+    <string name="project_explain">项目说明</string>
+    <string name="project_explain_detail">本项目是基于鸿样大神的开源 WanAndroid API开发，目的是学习Kotlin,该项目完成了开源API中的绝大部分功能，以后会逐步完善，若有什么问题，欢迎Issue!</string>
+    <string name="github_title">本人Github</string>
 </resources>
