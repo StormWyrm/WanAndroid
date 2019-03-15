@@ -36,6 +36,12 @@ interface WanAndroidApis {
 
 
     /**
+     * 重置密码
+     */
+    @POST("user/lg/password")
+    fun resetPassword(@QueryMap param: Map<String, String>) :
+
+    /**
      * 首页banner
      */
     @GET("banner/json")

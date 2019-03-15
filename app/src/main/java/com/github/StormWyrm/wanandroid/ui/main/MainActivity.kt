@@ -20,6 +20,7 @@ import com.github.StormWyrm.wanandroid.ui.navi.NaviFragment
 import com.github.StormWyrm.wanandroid.ui.project.ProjectFragment
 import com.github.StormWyrm.wanandroid.ui.search.SearchActivity
 import com.github.StormWyrm.wanandroid.ui.tree.TreeFragment
+import com.github.StormWyrm.wanandroid.utils.ToastUtil
 import com.github.StormWyrm.wanandroid.utils.UserUtils
 import kotlinx.android.synthetic.main.activity_main.*
 import org.greenrobot.eventbus.Subscribe
@@ -89,7 +90,12 @@ class MainActivity : BaseActivity() {
 
         headerview.findViewById<LinearLayout>(R.id.ll_header)
             .setOnClickListener {
-                LoginActivity.start(mActivity)
+                val cookie = UserUtils.getCookie()
+                if(cookie.isNullOrEmpty()){
+                    LoginActivity.start(mActivity)
+                }else{
+//                    ToastUtil.showToast(mActivity,R.string.main_logined)
+                }
             }
 
         navigationView.setNavigationItemSelectedListener {
