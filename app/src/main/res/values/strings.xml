@@ -41,4 +41,5 @@
     <string name="login_repassword_empty">确认密码不能为空！</string>
     <string name="register_inconsistent_password">前后密码不一致!</string>
     <string name="dialog_register_success">注册成功,现在去登录？</string>
+    <string name="not_login">请先登录</string>
 </resources>

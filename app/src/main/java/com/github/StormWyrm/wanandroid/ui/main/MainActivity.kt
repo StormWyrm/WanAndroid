@@ -11,12 +11,14 @@ import com.github.StormWyrm.wanandroid.base.activity.BaseActivity
 import com.github.StormWyrm.wanandroid.base.fragment.BaseFragment
 import com.github.StormWyrm.wanandroid.bean.LoginBean
 import com.github.StormWyrm.wanandroid.ui.chapter.ChapterFragment
+import com.github.StormWyrm.wanandroid.ui.collection.CollectionActivity
 import com.github.StormWyrm.wanandroid.ui.home.HomeFragment
 import com.github.StormWyrm.wanandroid.ui.login.LoginActivity
 import com.github.StormWyrm.wanandroid.ui.navi.NaviFragment
 import com.github.StormWyrm.wanandroid.ui.project.ProjectFragment
 import com.github.StormWyrm.wanandroid.ui.search.SearchActivity
 import com.github.StormWyrm.wanandroid.ui.tree.TreeFragment
+import com.github.StormWyrm.wanandroid.utils.ToastUtil
 import com.github.StormWyrm.wanandroid.utils.UserUtils
 import kotlinx.android.synthetic.main.activity_main.*
 import org.greenrobot.eventbus.Subscribe
@@ -48,6 +50,8 @@ class MainActivity : BaseActivity() {
         tvUsername = headerview.findViewById(R.id.tvUsername)
         vpMain.adapter = mAdapter
         vpMain.offscreenPageLimit = fragments.size
+
+        tvUsername.text = UserUtils.getUsername()
     }
 
     override fun initLisenter() {
@@ -130,7 +134,12 @@ class MainActivity : BaseActivity() {
     }
 
     private fun collect() {
-
+        val cookie = UserUtils.getCookie()
+        if(cookie.isNullOrEmpty()){
+            ToastUtil.showToast(mActivity,R.string.not_login)
+        }else{
+            CollectionActivity.start(mActivity)
+        }
     }
 
     private fun onPageSelected(postion: Int) {

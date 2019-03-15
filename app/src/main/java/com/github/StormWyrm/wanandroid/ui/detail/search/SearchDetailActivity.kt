@@ -11,8 +11,8 @@ import com.github.StormWyrm.wanandroid.ui.detail.search.adapter.SearchDetailAdap
 
 class SearchDetailActivity : BaseMvpListActivity<SearchDetailContract.View, SearchDetailContract.Presenter>(),
     SearchDetailContract.View {
-
     override var mPresenter: SearchDetailContract.Presenter = SearchDetailPresenter()
+
     private var pageNum: Int = 0
     private val queryKey: String by lazy {
         intent.getStringExtra("queryKey")
@@ -21,20 +21,6 @@ class SearchDetailActivity : BaseMvpListActivity<SearchDetailContract.View, Sear
         intent.getIntExtra("catecory", KEY)
     }
     private lateinit var mSearchQueryAdapter: SearchDetailAdapter
-
-    companion object {
-        const val KEY = 0
-        const val AUTHOR = 1
-
-        fun start(context: BaseActivity, queryKey: String,catecory : Int) {
-            val intent = Intent().apply {
-                setClass(context, SearchDetailActivity::class.java)
-                putExtra("queryKey", queryKey)
-                putExtra("catecory",catecory)
-            }
-            context.startActivity(intent)
-        }
-    }
 
     override fun getLayoutId(): Int {
         return R.layout.activity_search_detail
@@ -79,6 +65,20 @@ class SearchDetailActivity : BaseMvpListActivity<SearchDetailContract.View, Sear
         } else {
             mRefreshLayout.finishLoadMore()
             mSearchQueryAdapter.addData(data)
+        }
+    }
+
+    companion object {
+        const val KEY = 0
+        const val AUTHOR = 1
+
+        fun start(context: BaseActivity, queryKey: String,catecory : Int) {
+            val intent = Intent().apply {
+                setClass(context, SearchDetailActivity::class.java)
+                putExtra("queryKey", queryKey)
+                putExtra("catecory",catecory)
+            }
+            context.startActivity(intent)
         }
     }
 }
