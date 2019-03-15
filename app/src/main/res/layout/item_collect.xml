@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:foreground="?attr/selectableItemBackground"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="3dp"
+    app:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="15dp"
+            android:textColor="@color/textTitleColor"
+            android:layout_toLeftOf="@id/ivStar"
+            android:layout_alignParentLeft="true"
+            android:textSize="@dimen/font_normal"
+            tools:text="This is a title" />
+
+
+        <TextView
+            android:id="@+id/tvAuthor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/tvOrigin"
+            android:layout_below="@id/tvTitle"
+            android:layout_toRightOf="@id/tvOrigin"
+            android:foreground="?attr/selectableItemBackground"
+            android:textColor="@color/subtextTitleColor"
+            android:textSize="@dimen/font_smaller"
+            tools:text="作者：李青峰" />
+
+        <TextView
+            android:id="@+id/tvPushlishTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/tvAuthor"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@id/tvAuthor"
+            android:textColor="@color/subtextTitleColor"
+            android:textSize="@dimen/font_smaller"
+            tools:text="时间：一天前" />
+
+        <ImageView
+            android:id="@+id/ivStar"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="15dp"
+            android:layout_centerVertical="true"
+            android:foreground="?attr/selectableItemBackground"
+            android:src="@drawable/ic_like" />
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
