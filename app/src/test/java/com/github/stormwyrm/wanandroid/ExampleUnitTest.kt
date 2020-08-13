@@ -1,4 +1,4 @@
-package com.github.StormWyrm.wanandroid
+package com.github.stormwyrm.wanandroid
 
 import org.junit.Test
 
