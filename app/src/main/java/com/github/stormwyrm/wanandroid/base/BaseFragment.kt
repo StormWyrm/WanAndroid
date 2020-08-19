@@ -33,6 +33,7 @@ abstract class BaseFragment : Fragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
+        initLisenter()
         initData()
     }
 
@@ -78,6 +79,13 @@ abstract class BaseFragment : Fragment(){
      */
     open fun initView() {
         // Override if need
+    }
+
+    /**
+     * 监听器初始化相关
+     */
+    open fun initLisenter(){
+
     }
 
     /**
