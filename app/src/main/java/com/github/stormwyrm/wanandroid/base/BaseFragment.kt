@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentContainer
 
 abstract class BaseFragment : Fragment(){
     private var isLoaded = false//是否加载过数据
@@ -32,9 +33,9 @@ abstract class BaseFragment : Fragment(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initData()
         initView()
         initLisenter()
-        initData()
     }
 
     override fun onResume() {

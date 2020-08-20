@@ -5,6 +5,8 @@ import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import com.blankj.utilcode.util.BarUtils
 import com.github.stormwyrm.wanandroid.common.dialog.ProgressDialogFragment
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.runBlocking
 
 abstract class BaseActivity : AppCompatActivity() {
 
@@ -17,17 +19,23 @@ abstract class BaseActivity : AppCompatActivity() {
         BarUtils.setStatusBarLightMode(this,true)
         BarUtils.setNavBarLightMode(this,true)
         setContentView(getLayoutResId())
-        initView()
+        initData(savedInstanceState)
+        initView(savedInstanceState)
         initLisenter()
-        initData()
     }
 
+    /**
+     * 数据初始化相关
+     */
+    open fun initData(savedInstanceState: Bundle?) {
+        // Override if need
+    }
 
 
     /**
      * View初始化相关
      */
-    open fun initView() {
+    open fun initView(savedInstanceState: Bundle?) {
         // Override if need
     }
 
@@ -38,12 +46,6 @@ abstract class BaseActivity : AppCompatActivity() {
 
     }
 
-    /**
-     * 数据初始化相关
-     */
-    open fun initData() {
-        // Override if need
-    }
 
 
 
