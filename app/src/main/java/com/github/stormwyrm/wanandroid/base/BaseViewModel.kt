@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.blankj.utilcode.util.ToastUtils
 import com.github.stormwyrm.wanandroid.R
-import com.github.stormwyrm.wanandroid.model.api.ApiExceptioin
+import com.github.stormwyrm.wanandroid.api.ApiException
 import com.google.gson.JsonParseException
 import kotlinx.coroutines.*
 import retrofit2.HttpException
@@ -51,7 +51,7 @@ open class BaseViewModel : ViewModel() {
 
     private fun onError(e: Exception, showErrorToast: Boolean) {
         when (e) {
-            is ApiExceptioin -> {
+            is ApiException -> {
                 when (e.code) {
                     -100 -> {
                         // TODO: 2020/8/14 登录过期
