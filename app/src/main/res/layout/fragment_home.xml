@@ -1,0 +1,63 @@
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.github.stormwyrm.wanandroid.ui.BlankFragment">
+
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:background="@color/bgColorPrimary"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:contentInsetStart="0dp">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipSearch"
+                style="@style/Widget.MaterialComponents.Chip.Action"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:paddingTop="0dp"
+                android:paddingBottom="0dp"
+                android:text="@string/search_hint"
+                android:textColor="@color/textColorThird"
+                android:textSize="14sp"
+                app:chipBackgroundColor="@color/bgColorThird"
+                app:chipCornerRadius="18dp"
+                app:chipIcon="@drawable/ic_search_black_24dp"
+                app:chipIconSize="20dp"
+                app:chipIconTint="@color/textColorThird"
+                app:chipMinHeight="35dp"
+                app:chipStartPadding="10dp"
+                app:rippleColor="@color/bgColorSecondary"
+                app:textStartPadding="5dp" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:background="@color/bgColorPrimary"
+            app:tabIndicator="@color/textColorPrimary"
+            app:tabTextAppearance="@style/TextAppearance.AppCompat.Small"
+            app:tabSelectedTextColor="@color/textColorPrimary"
+            app:tabTextColor="@color/textColorThird" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

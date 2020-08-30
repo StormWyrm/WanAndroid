@@ -5,7 +5,7 @@ data class ApiResult<T>(
     val errorCode: Int,
     val errorMsg: String
 ) {
-    fun getData(): T {
+    fun apiData(): T {
         if (errorCode == 0) {
             return data
         } else {

@@ -18,8 +18,8 @@ open class BaseViewModel : ViewModel() {
 
     protected fun launch(
         block: suspend () -> Unit,
-        error: (suspend (e: Exception) -> Unit)?,
-        cancel: (suspend (e: Exception) -> Unit)?,
+        error: (suspend (e: Exception) -> Unit)? = null,
+        cancel: (suspend (e: Exception) -> Unit)? = null,
         showErrorToast: Boolean = true
     ): Job = viewModelScope.launch {
         try {

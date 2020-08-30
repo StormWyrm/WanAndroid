@@ -7,14 +7,8 @@ import com.github.stormwyrm.wanandroid.ui.main.home.HomeFragment
 import kotlinx.android.synthetic.main.fragment_blank.*
 
 class SystemFragment : BaseFragment(){
-    private var param: String? = null
 
     override fun getLayoutResId(): Int = R.layout.fragment_blank
-
-    override fun initData() {
-        super.initData()
-        param = arguments?.getString("param")
-    }
 
     override fun initView() {
         super.initView()

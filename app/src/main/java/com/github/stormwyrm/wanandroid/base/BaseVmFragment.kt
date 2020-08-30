@@ -6,7 +6,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 
 abstract class BaseVmFragment<VM : BaseViewModel> : BaseFragment() {
-    private lateinit var mViewModel: BaseViewModel
+    protected lateinit var mViewModel: VM
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         initViewModel()

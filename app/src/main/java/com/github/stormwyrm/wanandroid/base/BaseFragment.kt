@@ -1,5 +1,6 @@
 package com.github.stormwyrm.wanandroid.base
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,6 +10,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentContainer
 
 abstract class BaseFragment : Fragment(){
+    protected var param: String? = null
+
     private var isLoaded = false//是否加载过数据
     private var isVisibleToUser = false//是否对用户可见
     /**
@@ -22,6 +25,11 @@ abstract class BaseFragment : Fragment(){
      * onHiddenChanged 方法，进而不执行懒加载方法的问题。
      */
     private var isCallUserVisibleHint = false
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        param = arguments?.getString("param")
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -71,8 +79,11 @@ abstract class BaseFragment : Fragment(){
     private fun judgeLazyInit() {
         if (!isLoaded && isVisibleToUser && isCallResume) {
             isLoaded = true
+            lazyLoadData()
         }
     }
+
+    abstract fun getLayoutResId(): Int
 
 
     /**
@@ -100,6 +111,6 @@ abstract class BaseFragment : Fragment(){
         // Override if need
     }
 
-    abstract fun getLayoutResId(): Int
+
 
 }

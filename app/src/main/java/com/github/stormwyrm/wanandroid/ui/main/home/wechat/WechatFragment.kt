@@ -1,12 +1,12 @@
-package com.github.stormwyrm.wanandroid.ui.main.mine
+package com.github.stormwyrm.wanandroid.ui.main.home.wechat
 
 import android.os.Bundle
 import com.github.stormwyrm.wanandroid.R
 import com.github.stormwyrm.wanandroid.base.BaseFragment
-import com.github.stormwyrm.wanandroid.ui.main.navigation.NavigationFragment
+import com.github.stormwyrm.wanandroid.ui.main.mine.MineFragment
 import kotlinx.android.synthetic.main.fragment_blank.*
 
-class MineFragment : BaseFragment(){
+class WechatFragment : BaseFragment(){
     override fun getLayoutResId(): Int = R.layout.fragment_blank
 
     override fun initView() {
@@ -16,7 +16,7 @@ class MineFragment : BaseFragment(){
         }
     }
     companion object{
-        fun newInstance(param: String? = null) = MineFragment().apply {
+        fun newInstance(param: String? = null) = WechatFragment().apply {
             param?.let {
                 arguments = Bundle().apply {
                     putString("param", it)

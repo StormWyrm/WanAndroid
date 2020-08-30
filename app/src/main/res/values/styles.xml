@@ -1,11 +1,17 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <!--View阴影轮廓的 background会按照背景来设置阴影形状 bounds会按照view的大小来描绘阴影-->
+        <item name="android:outlineProvider">background</item>
+        <!--window背景-->
+        <item name="android:windowBackground">@color/bgColorSecondary</item>
+        <item name="android:textAllCaps">false</item>
+
     </style>
 
     <!-- Base application theme. -->
