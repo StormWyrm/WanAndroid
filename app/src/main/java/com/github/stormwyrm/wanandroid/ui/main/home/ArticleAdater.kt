@@ -17,8 +17,8 @@ class ArticleAdapter(layoutResId: Int = R.layout.item_article) :
     BaseQuickAdapter<Article, BaseViewHolder>(layoutResId), LoadMoreModule {
 
     @SuppressLint("SetTextI18n")
-    override fun convert(helper: BaseViewHolder, item: Article) {
-        helper.run {
+    override fun convert(holder: BaseViewHolder, item: Article) {
+        holder.run {
             itemView.run {
                 tvTop.isVisible = item.top
 

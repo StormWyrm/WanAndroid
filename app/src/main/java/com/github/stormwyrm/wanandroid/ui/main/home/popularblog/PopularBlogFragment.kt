@@ -31,9 +31,11 @@ class PopularBlogFragment : BaseVmFragment<PopularBlogViewModel>() {
             setOnItemChildClickListener { adapter, view, position ->
 
             }
+
             setOnItemClickListener { adapter, view, position ->
 
             }
+
             loadMoreModule.loadMoreView = CommonLoadMoreView()
             loadMoreModule.setOnLoadMoreListener {
                 mViewModel.loadMoreArticleList()
@@ -42,6 +44,7 @@ class PopularBlogFragment : BaseVmFragment<PopularBlogViewModel>() {
 
         recyclerView.adapter = mAdapter
     }
+
 
     override fun observe() {
         super.observe()

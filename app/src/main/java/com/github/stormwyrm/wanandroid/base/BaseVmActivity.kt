@@ -5,13 +5,12 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 
 abstract class BaseVmActivity<VM : BaseViewModel> : BaseActivity() {
-    private lateinit var mViewModel: VM
+    protected lateinit var mViewModel: VM
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
         initViewModel()
         observe()
-
+        super.onCreate(savedInstanceState)
     }
 
     protected abstract fun viewModelClass(): Class<VM>

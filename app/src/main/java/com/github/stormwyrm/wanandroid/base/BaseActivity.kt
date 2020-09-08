@@ -5,19 +5,21 @@ import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import com.blankj.utilcode.util.BarUtils
 import com.github.stormwyrm.wanandroid.common.dialog.ProgressDialogFragment
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.runBlocking
 
 abstract class BaseActivity : AppCompatActivity() {
+    protected val mActivity: BaseActivity by lazy{
+        this
+    }
 
     private val progressDialog: ProgressDialogFragment by lazy {
         ProgressDialogFragment.newInstance()
     }
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        BarUtils.setStatusBarLightMode(this,true)
-        BarUtils.setNavBarLightMode(this,true)
+        BarUtils.setStatusBarLightMode(this, true)
+        BarUtils.setNavBarLightMode(this, true)
         setContentView(getLayoutResId())
         initData(savedInstanceState)
         initView(savedInstanceState)
@@ -42,11 +44,9 @@ abstract class BaseActivity : AppCompatActivity() {
     /**
      * 监听器初始化相关
      */
-    open fun initLisenter(){
+    open fun initLisenter() {
 
     }
-
-
 
 
     fun showProgressDialog(@StringRes messageId: Int) {

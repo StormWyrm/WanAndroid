@@ -7,15 +7,18 @@ import com.blankj.utilcode.util.StringUtils
 import com.github.stormwyrm.wanandroid.R
 import com.github.stormwyrm.wanandroid.base.BaseFragment
 import com.github.stormwyrm.wanandroid.common.adapter.SimpleFragmentPagerAdapter
+import com.github.stormwyrm.wanandroid.ui.main.MainActivity
 import com.github.stormwyrm.wanandroid.ui.search.SearchActivity
 import com.github.stormwyrm.wanandroid.ui.main.home.palaza.PalazaFragment
 import com.github.stormwyrm.wanandroid.ui.main.home.popularblog.PopularBlogFragment
 import com.github.stormwyrm.wanandroid.ui.main.home.popularproject.PopularProjectFragment
 import com.github.stormwyrm.wanandroid.ui.main.home.project.ProjectFragment
 import com.github.stormwyrm.wanandroid.ui.main.home.wechat.WechatFragment
+import com.google.android.material.appbar.AppBarLayout
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : BaseFragment() {
+    private var currentOffset = 0
     private val titles = arrayListOf(
         StringUtils.getString(R.string.popular_blog),
         StringUtils.getString(R.string.popular_project),
@@ -51,10 +54,15 @@ class HomeFragment : BaseFragment() {
 
     override fun initLisenter() {
         super.initLisenter()
-
         chipSearch.setOnClickListener {
             ActivityUtils.startActivity(SearchActivity::class.java)
         }
+        appbarLayout.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { _, offset ->
+            if (activity is MainActivity && this.currentOffset != offset) {
+                (activity as MainActivity).animateBottomNavigationView(offset > currentOffset)
+                currentOffset = offset
+            }
+        })
     }
 
     companion object {
