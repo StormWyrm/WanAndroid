@@ -16,6 +16,9 @@ interface ApiService {
     @GET("/article/listproject/{page}/json")
     suspend fun getTopProjectList(@Path("page") page: Int): ApiResult<Pagination<Article>>
 
+    @GET("/user_article/list/{page}/json")
+    suspend fun getPalazaArticleList(@Path("page") page: Int): ApiResult<Pagination<Article>>
+
     companion object {
         const val BASE_URL = "https://www.wanandroid.com"
     }
