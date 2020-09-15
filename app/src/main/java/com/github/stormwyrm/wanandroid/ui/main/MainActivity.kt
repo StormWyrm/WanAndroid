@@ -30,7 +30,6 @@ class MainActivity : BaseActivity() {
             R.id.navigation to createFragment(NavigationFragment::class.java),
             R.id.mine to createFragment(MineFragment::class.java)
         )
-
     }
 
     override fun initView(savedInstanceState: Bundle?) {
@@ -117,6 +116,5 @@ class MainActivity : BaseActivity() {
         }
         return fragment
     }
-
 
 }

@@ -16,7 +16,7 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
-//        LoadMoreModuleConfig.defLoadMoreView = CommonLoadMoreView()
+        LoadMoreModuleConfig.defLoadMoreView = CommonLoadMoreView()
     }
 
 }

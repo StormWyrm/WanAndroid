@@ -36,7 +36,6 @@ class PopularBlogFragment : BaseVmFragment<PopularBlogViewModel>() {
 
             }
 
-            loadMoreModule.loadMoreView = CommonLoadMoreView()
             loadMoreModule.setOnLoadMoreListener {
                 mViewModel.loadMoreArticleList()
             }
