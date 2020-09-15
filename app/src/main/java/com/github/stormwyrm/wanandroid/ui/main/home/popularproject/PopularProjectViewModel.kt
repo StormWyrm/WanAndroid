@@ -4,7 +4,6 @@ import androidx.lifecycle.MutableLiveData
 import com.chad.library.adapter.base.loadmore.LoadMoreStatus
 import com.github.stormwyrm.wanandroid.base.BaseViewModel
 import com.github.stormwyrm.wanandroid.bean.Article
-import com.github.stormwyrm.wanandroid.ui.main.home.popularblog.PopularBlogRepository
 
 class PopularProjectViewModel : BaseViewModel() {
 
@@ -12,7 +11,7 @@ class PopularProjectViewModel : BaseViewModel() {
         const val INITIAL_PAGE = 0
     }
 
-    private val popularProjectRepository by lazy { PopularBlogRepository() }
+    private val popularProjectRepository by lazy { PopularProjectRepository() }
 
     val projectList: MutableLiveData<MutableList<Article>> = MutableLiveData()
     val loadMoreStatus = MutableLiveData<LoadMoreStatus>()
@@ -25,7 +24,7 @@ class PopularProjectViewModel : BaseViewModel() {
         refreshStatus.value = true
         launch(
             block = {
-                val pagination = popularProjectRepository.getArticleList(INITIAL_PAGE)
+                val pagination = popularProjectRepository.getTopProjectList(INITIAL_PAGE)
 
                 page = pagination.curPage
 
@@ -46,7 +45,7 @@ class PopularProjectViewModel : BaseViewModel() {
         loadMoreStatus.value = LoadMoreStatus.Loading
         launch(
             block = {
-                val pagination = popularProjectRepository.getArticleList(page)
+                val pagination = popularProjectRepository.getTopProjectList(page)
 
                 page = pagination.curPage
 

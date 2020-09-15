@@ -51,10 +51,10 @@
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayout"
             android:layout_width="match_parent"
-            android:layout_height="42dp"
+            android:layout_height="wrap_content"
             android:background="@color/bgColorPrimary"
+            app:tabMode="auto"
             app:tabIndicator="@color/textColorPrimary"
-            app:tabTextAppearance="@style/TextAppearance.AppCompat.Small"
             app:tabSelectedTextColor="@color/textColorPrimary"
             app:tabTextColor="@color/textColorThird" />
 

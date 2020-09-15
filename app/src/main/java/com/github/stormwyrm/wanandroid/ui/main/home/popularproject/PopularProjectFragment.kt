@@ -17,6 +17,27 @@ class PopularProjectFragment : BaseVmFragment<PopularProjectViewModel>() {
 
     override fun getLayoutResId(): Int = R.layout.fragment_popular_project
 
+    override fun initView() {
+        super.initView()
+        refreshLayout.run {
+            setColorSchemeResources(R.color.textColorPrimary)
+            setProgressBackgroundColorSchemeResource(R.color.bgColorPrimary)
+            setOnRefreshListener {
+                mViewModel.refreshProjectList()
+            }
+        }
+
+        mAdapter = ArticleAdapter().apply {
+            setOnItemClickListener { adapter, view, position ->
+
+            }
+            loadMoreModule.setOnLoadMoreListener {
+                mViewModel.loadMoreProjectList()
+            }
+        }
+        recyclerView.adapter = mAdapter
+    }
+
     override fun observe() {
         super.observe()
         mViewModel.run {
@@ -45,24 +66,6 @@ class PopularProjectFragment : BaseVmFragment<PopularProjectViewModel>() {
         }
     }
 
-    override fun initView() {
-        super.initView()
-        refreshLayout.run {
-            setColorSchemeResources(R.color.textColorPrimary)
-            setProgressBackgroundColorSchemeResource(R.color.bgColorPrimary)
-            setOnRefreshListener { mViewModel.refreshProjectList() }
-        }
-
-        mAdapter = ArticleAdapter().apply {
-            setOnItemClickListener { adapter, view, position ->
-
-            }
-            loadMoreModule.setOnLoadMoreListener {
-                mViewModel.loadMoreProjectList()
-            }
-        }
-        recyclerView.adapter = mAdapter
-    }
 
     override fun lazyLoadData() {
         super.lazyLoadData()
