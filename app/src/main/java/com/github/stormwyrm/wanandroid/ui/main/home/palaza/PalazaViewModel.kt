@@ -12,6 +12,7 @@ class PalazaViewModel : BaseViewModel() {
     private var page = INIT_PAGE
 
     val articleList = MutableLiveData<MutableList<Article>>()
+    val loadStatus = MutableLiveData<Boolean>()
     val refreshStatus = MutableLiveData<Boolean>()
     val loadMoreStatus = MutableLiveData<LoadMoreStatus>()
 
@@ -26,9 +27,12 @@ class PalazaViewModel : BaseViewModel() {
                 }
 
                 page = pagination.curPage
+
+                loadStatus.value = false
                 refreshStatus.value = false
             },
             error = {
+                loadStatus.value = page == INIT_PAGE
                 refreshStatus.value = false
             }
         )

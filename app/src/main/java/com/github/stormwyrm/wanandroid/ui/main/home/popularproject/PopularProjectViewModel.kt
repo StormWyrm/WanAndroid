@@ -16,7 +16,7 @@ class PopularProjectViewModel : BaseViewModel() {
     val projectList: MutableLiveData<MutableList<Article>> = MutableLiveData()
     val loadMoreStatus = MutableLiveData<LoadMoreStatus>()
     val refreshStatus = MutableLiveData<Boolean>()
-    val reloadStatus = MutableLiveData<Boolean>()
+    val loadStatus = MutableLiveData<Boolean>()
 
     private var page = INITIAL_PAGE
 
@@ -32,11 +32,12 @@ class PopularProjectViewModel : BaseViewModel() {
                     addAll(pagination.datas)
                 }
 
+                loadStatus.value = false
                 refreshStatus.value = false
             },
             error = {
                 refreshStatus.value = false
-                reloadStatus.value = page == INITIAL_PAGE
+                loadStatus.value = page == INITIAL_PAGE
             }
         )
     }

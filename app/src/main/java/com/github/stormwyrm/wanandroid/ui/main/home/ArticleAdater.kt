@@ -16,6 +16,10 @@ import kotlinx.android.synthetic.main.item_article.view.*
 class ArticleAdapter(layoutResId: Int = R.layout.item_article) :
     BaseQuickAdapter<Article, BaseViewHolder>(layoutResId), LoadMoreModule {
 
+    init {
+        loadMoreModule.isEnableLoadMoreIfNotFullPage = false
+    }
+
     @SuppressLint("SetTextI18n")
     override fun convert(holder: BaseViewHolder, item: Article) {
         holder.run {

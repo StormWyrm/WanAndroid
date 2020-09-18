@@ -1,15 +1,14 @@
 package com.github.stormwyrm.wanandroid.ui.main.home.popularblog
 
 import android.os.Bundle
+import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import com.chad.library.adapter.base.loadmore.LoadMoreStatus
-import com.chad.library.adapter.base.loadmore.SimpleLoadMoreView
 import com.github.stormwyrm.wanandroid.R
 import com.github.stormwyrm.wanandroid.base.BaseVmFragment
-import com.github.stormwyrm.wanandroid.common.loadmore.CommonLoadMoreView
 import com.github.stormwyrm.wanandroid.ui.main.home.ArticleAdapter
-import com.github.stormwyrm.wanandroid.ui.main.home.wechat.WechatFragment
 import kotlinx.android.synthetic.main.fragment_popular_blog.*
+import kotlinx.android.synthetic.main.view_load_error.*
 
 class PopularBlogFragment : BaseVmFragment<PopularBlogViewModel>() {
     private lateinit var mAdapter: ArticleAdapter
@@ -44,12 +43,22 @@ class PopularBlogFragment : BaseVmFragment<PopularBlogViewModel>() {
         recyclerView.adapter = mAdapter
     }
 
+    override fun initLisenter() {
+        super.initLisenter()
+        retry.setOnClickListener {
+            mViewModel.refreshArticleList()
+        }
+    }
 
     override fun observe() {
         super.observe()
         mViewModel.run {
             articleList.observe(viewLifecycleOwner, Observer {
                 mAdapter.setNewInstance(it)
+            })
+
+            loadStatus.observe(viewLifecycleOwner, Observer {
+                reload.isVisible = it
             })
 
             refreshStatus.observe(viewLifecycleOwner, Observer {
@@ -65,8 +74,7 @@ class PopularBlogFragment : BaseVmFragment<PopularBlogViewModel>() {
                 }
             })
 
-            reloadStatus.observe(viewLifecycleOwner, Observer {
-            })
+
         }
     }
 

@@ -1,6 +1,7 @@
 package com.github.stormwyrm.wanandroid.ui.main.home.popularproject
 
 import android.os.Bundle
+import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import com.chad.library.adapter.base.loadmore.LoadMoreStatus
 import com.github.stormwyrm.wanandroid.R
@@ -43,6 +44,10 @@ class PopularProjectFragment : BaseVmFragment<PopularProjectViewModel>() {
         mViewModel.run {
             projectList.observe(viewLifecycleOwner, Observer {
                 mAdapter.setNewInstance(it)
+            })
+
+            loadStatus.observe(viewLifecycleOwner, Observer {
+                reload.isVisible = it
             })
 
             refreshStatus.observe(viewLifecycleOwner, Observer {

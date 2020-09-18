@@ -6,11 +6,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+    <FrameLayout
         android:layout_width="match_parent"
-        tools:listitem="@layout/item_article"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_article" />
+
+        <include
+            android:id="@+id/reload"
+            layout="@layout/view_load_error"
+            android:visibility="gone" />
+
+    </FrameLayout>
+
 
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

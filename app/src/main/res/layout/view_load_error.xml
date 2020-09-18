@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/load_more_load_fail_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bgColorPrimary"
+    android:gravity="center"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/tv_prompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/network_error"
+        android:textColor="@color/textColorSecondary"
+        android:textSize="13sp" />
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/retry"
+        style="@style/Widget.MaterialComponents.Chip.Action"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/reload"
+        android:textColor="@color/textColorSecondary"
+        app:chipBackgroundColor="@color/bgColorThird"
+        app:chipEndPadding="15dp"
+        app:chipStartPadding="15dp"
+        app:rippleColor="@color/bgColorThird" />
+</LinearLayout>

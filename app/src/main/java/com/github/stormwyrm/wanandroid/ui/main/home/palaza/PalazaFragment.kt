@@ -1,12 +1,14 @@
 package com.github.stormwyrm.wanandroid.ui.main.home.palaza
 
 import android.os.Bundle
+import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import com.chad.library.adapter.base.loadmore.LoadMoreStatus
 import com.github.stormwyrm.wanandroid.R
 import com.github.stormwyrm.wanandroid.base.BaseVmFragment
 import com.github.stormwyrm.wanandroid.ui.main.home.ArticleAdapter
 import kotlinx.android.synthetic.main.fragment_palaza.*
+import kotlinx.android.synthetic.main.view_load_error.*
 
 class PalazaFragment : BaseVmFragment<PalazaViewModel>() {
 
@@ -40,11 +42,22 @@ class PalazaFragment : BaseVmFragment<PalazaViewModel>() {
         recyclerView.adapter = mAdapter
     }
 
+    override fun initLisenter() {
+        super.initLisenter()
+        retry.setOnClickListener {
+            mViewModel.refreshArticleList()
+        }
+    }
+
     override fun observe() {
         super.observe()
         mViewModel.run {
             articleList.observe(viewLifecycleOwner, Observer {
                 mAdapter.setNewInstance(it)
+            })
+
+            loadStatus.observe(viewLifecycleOwner, Observer {
+                reload.isVisible = it
             })
 
             refreshStatus.observe(viewLifecycleOwner, Observer {
