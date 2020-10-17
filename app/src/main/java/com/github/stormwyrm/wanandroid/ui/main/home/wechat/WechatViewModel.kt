@@ -1,22 +1,22 @@
-package com.github.stormwyrm.wanandroid.ui.main.home.project
+package com.github.stormwyrm.wanandroid.ui.main.home.wechat
 
 import androidx.lifecycle.MutableLiveData
 import com.chad.library.adapter.base.loadmore.LoadMoreStatus
 import com.github.stormwyrm.wanandroid.base.BaseViewModel
 import com.github.stormwyrm.wanandroid.bean.Article
-import com.github.stormwyrm.wanandroid.bean.LoadStatus
 import com.github.stormwyrm.wanandroid.bean.Category
+import com.github.stormwyrm.wanandroid.bean.LoadStatus
+import com.github.stormwyrm.wanandroid.ui.main.home.project.ProjectViewModel
 
-class ProjectViewModel : BaseViewModel() {
+class WechatViewModel : BaseViewModel() {
 
-    private val projectRepository by lazy {
-        ProjectRepository()
+    private val wechatRepository by lazy {
+        WechatRepository()
     }
 
     val categories = MutableLiveData<MutableList<Category>>()
-    val checkedPosition: MutableLiveData<Int> = MutableLiveData()
+    val checkedPosition = MutableLiveData<Int>()
     val articles = MutableLiveData<MutableList<Article>>()
-
     val loadStatus = MutableLiveData<LoadStatus>()
     val loadListStatus = MutableLiveData<Boolean>()
     val refreshStatus = MutableLiveData<Boolean>()
@@ -24,20 +24,20 @@ class ProjectViewModel : BaseViewModel() {
 
     var page = INIT_PAGE
 
-    fun getProjectCategories() {
+    fun getWechatCategory() {
         loadStatus.value = LoadStatus.LOADING
         launch(
             block = {
-                val categoryList = projectRepository.getProjectCategories()
-
-                if (categoryList.isEmpty()) {
+                val categoryList = wechatRepository.getWechatCategory()
+                if (categoryList.isEmpty())
                     loadStatus.value = LoadStatus.EMPTY
-                } else {
+                else {
                     categories.value = categoryList
                     loadStatus.value = LoadStatus.SUCCESS
 
-                    refreshProjectList()
+                    refreshWechatList()
                 }
+
             },
             error = {
                 loadStatus.value = LoadStatus.ERROR
@@ -45,36 +45,35 @@ class ProjectViewModel : BaseViewModel() {
         )
     }
 
-    fun refreshProjectList(checkedPosition: Int = this.checkedPosition.value ?: INIT_CHECKED) {
-        refreshStatus.value = true
+    fun refreshWechatList(checkedPosition: Int = this.checkedPosition.value ?: INIT_CHECKED) {
         loadListStatus.value = false
+        refreshStatus.value = true
         launch(
             block = {
                 this.checkedPosition.value = checkedPosition
                 val cid = categories.value!![checkedPosition].id
 
-                val pagination = projectRepository.getProjectList(cid, page)
+                val pagination = wechatRepository.getWechatList(cid, INIT_PAGE)
                 articles.value = pagination.datas.toMutableList()
 
                 page = pagination.curPage
-
                 refreshStatus.value = false
             },
             error = {
                 refreshStatus.value = false
-                loadListStatus.value = page == INIT_PAGE
+                loadListStatus.value = true
             }
         )
     }
 
-    fun loadMoreProjectList() {
+    fun loadMoreWechatList() {
         loadMoreStatus.value = LoadMoreStatus.Loading
         launch(
             block = {
                 val checkedCategoryIndex = checkedPosition.value ?: INIT_CHECKED
                 val cid = categories.value!![checkedCategoryIndex].id
 
-                val pagination = projectRepository.getProjectList(cid, page)
+                val pagination = wechatRepository.getWechatList(cid, page)
                 val curArticleList = articles.value ?: mutableListOf()
                 articles.value = curArticleList.apply { addAll(pagination.datas) }
 
@@ -92,7 +91,6 @@ class ProjectViewModel : BaseViewModel() {
 
     companion object {
         const val INIT_CHECKED = 0
-        const val INIT_PAGE = 1
+        const val INIT_PAGE = 0
     }
-
 }

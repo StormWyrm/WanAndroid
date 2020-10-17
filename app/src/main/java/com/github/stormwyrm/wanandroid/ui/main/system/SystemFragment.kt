@@ -8,7 +8,7 @@ import kotlinx.android.synthetic.main.fragment_blank.*
 
 class SystemFragment : BaseFragment(){
 
-    override fun getLayoutResId(): Int = R.layout.fragment_blank
+    override fun getLayoutResId(): Int = R.layout.fragment_system
 
     override fun initView() {
         super.initView()

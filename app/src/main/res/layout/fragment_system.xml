@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/bgColorSecondary"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbarLayout"
+        android:layout_width="match_parent"
+        android:background="@color/bgColorPrimary"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            app:contentInsetStart="0dp"
+            app:contentInsetEnd="0dp"
+            app:layout_scrollFlags="scroll|enterAlways"
+            android:background="@color/bgColorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize">
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/system"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif-medium"
+                android:layout_gravity="center"
+                android:textColor="@color/textColorPrimary" />
+
+            <ImageView
+                android:id="@+id/ivFliter"
+                android:layout_gravity="right"
+                android:src="@drawable/ic_filter"
+                android:padding="18dp"
+                android:visibility="gone"
+                tools:visibility="visible"
+                android:background="@drawable/ripple_item_select"
+                android:layout_width="?actionBarSize"
+                android:layout_height="?actionBarSize" />
+
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            app:tabMode="scrollable"
+            android:visibility="gone"
+            app:tabGravity="center"
+            app:tabIndicatorColor="@color/textColorPrimary"
+            app:tabSelectedTextColor="@color/textColorPrimary"
+            app:tabTextColor="@color/textColorSecondary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ViewFlipper
+        android:id="@+id/viewFlipper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewPager"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$Behavior"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <include layout="@layout/view_loading" />
+
+        <include layout="@layout/view_load_empty" />
+
+        <include
+            android:id="@+id/reload"
+            layout="@layout/view_load_error" />
+    </ViewFlipper>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

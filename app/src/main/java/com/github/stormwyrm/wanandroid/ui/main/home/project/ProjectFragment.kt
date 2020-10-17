@@ -110,7 +110,7 @@ class ProjectFragment : BaseVmFragment<ProjectViewModel>() {
                 }
             })
 
-            articleList.observe(viewLifecycleOwner, Observer {
+            articles.observe(viewLifecycleOwner, Observer {
                 projectAdapter.setNewInstance(it)
             })
         }
