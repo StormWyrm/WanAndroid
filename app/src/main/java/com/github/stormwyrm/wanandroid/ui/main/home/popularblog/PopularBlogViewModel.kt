@@ -24,21 +24,21 @@ class PopularBlogViewModel : BaseViewModel() {
         refreshStatus.value = true
         launch(
             block = {
-                val topArticleListDefferd = async {
+                val topArticleListDeferred = async {
                     popularBlogRepository.getTopArticleList()
                 }
 
-                val paginationDefferd = async {
+                val paginationDeferred = async {
                     popularBlogRepository.getArticleList(INITIAL_PAGE)
                 }
 
-                val topArticleList = topArticleListDefferd.await().apply {
+                val topArticleList = topArticleListDeferred.await().apply {
                     forEach {
                         it.top = true
                     }
                 }
 
-                val pagination = paginationDefferd.await()
+                val pagination = paginationDeferred.await()
 
                 page = pagination.curPage
 

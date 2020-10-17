@@ -16,8 +16,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
     private lateinit var mFragments: Map<Int, Fragment>
-    private var currentBottomNavagtionState = true
-    private var bottomNavigationViewAnimtor: ViewPropertyAnimator? = null
+    private var currentBottomNavigationState = true
+    private var bottomNavigationViewAnimator: ViewPropertyAnimator? = null
 
     override fun getLayoutResId(): Int = R.layout.activity_main
 
@@ -52,23 +52,23 @@ class MainActivity : BaseActivity() {
     }
 
     fun animateBottomNavigationView(show: Boolean) {
-        if (currentBottomNavagtionState == show)
+        if (currentBottomNavigationState == show)
             return
 
-        if (bottomNavigationViewAnimtor != null) {
-            bottomNavigationViewAnimtor?.cancel()
+        if (bottomNavigationViewAnimator != null) {
+            bottomNavigationViewAnimator?.cancel()
             bottomNavigationView.clearAnimation()
         }
 
-        currentBottomNavagtionState = show
+        currentBottomNavigationState = show
         val targetY = if (show) 0F else bottomNavigationView.measuredHeight.toFloat()
         val duration = if (show) 225L else 175L
-        bottomNavigationViewAnimtor = bottomNavigationView.animate()
+        bottomNavigationViewAnimator = bottomNavigationView.animate()
             .translationY(targetY)
             .setDuration(duration)
             .setInterpolator(AnimationUtils.FAST_OUT_SLOW_IN_INTERPOLATOR)
             .withEndAction {
-                bottomNavigationViewAnimtor = null
+                bottomNavigationViewAnimator = null
             }
     }
 
