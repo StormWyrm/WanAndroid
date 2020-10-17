@@ -7,6 +7,6 @@ class WechatRepository {
     suspend fun getWechatCategory() = RetrofitClient.getApiService().getWechatCategory().apiData()
 
     suspend fun getWechatList(cid: Int, page: Int) =
-        RetrofitClient.getApiService().getWechatList(cid, page).apiData()
+        RetrofitClient.getApiService().getWechatArticleList(cid, page).apiData()
 
 }

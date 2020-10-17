@@ -49,6 +49,7 @@
             android:id="@+id/tabLayout"
             app:tabMode="scrollable"
             android:visibility="gone"
+            tools:visibility="visible"
             app:tabGravity="center"
             app:tabIndicatorColor="@color/textColorPrimary"
             app:tabSelectedTextColor="@color/textColorPrimary"

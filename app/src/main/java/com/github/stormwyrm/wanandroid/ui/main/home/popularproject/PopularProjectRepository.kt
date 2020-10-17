@@ -4,6 +4,6 @@ import com.github.stormwyrm.wanandroid.api.RetrofitClient
 
 class PopularProjectRepository {
 
-    suspend fun getTopProjectList(page : Int) = RetrofitClient.getApiService().getTopProjectList(page).apiData()
+    suspend fun getTopProjectList(page : Int) = RetrofitClient.getApiService().getTopProjectArticleList(page).apiData()
 
 }

@@ -16,7 +16,7 @@ interface ApiService {
     suspend fun getTopArticleList(): ApiResult<List<Article>>
 
     @GET("/article/listproject/{page}/json")
-    suspend fun getTopProjectList(@Path("page") page: Int): ApiResult<Pagination<Article>>
+    suspend fun getTopProjectArticleList(@Path("page") page: Int): ApiResult<Pagination<Article>>
 
     @GET("/user_article/list/{page}/json")
     suspend fun getPalazaArticleList(@Path("page") page: Int): ApiResult<Pagination<Article>>
@@ -25,7 +25,7 @@ interface ApiService {
     suspend fun getProjectCategory(): ApiResult<MutableList<Category>>
 
     @GET("/project/list/{page}/json")
-    suspend fun getProjectList(
+    suspend fun getProjectArticleList(
         @Path("page") page: Int,
         @Query("cid") cid: Int
     ): ApiResult<Pagination<Article>>
@@ -34,10 +34,16 @@ interface ApiService {
     suspend fun getWechatCategory(): ApiResult<MutableList<Category>>
 
     @GET("/wxarticle/list/{cid}/{page}/json")
-    suspend fun getWechatList(
+    suspend fun getWechatArticleList(
         @Path("cid") cid: Int,
         @Path("page") page: Int
     ): ApiResult<Pagination<Article>>
+
+    @GET("/tree/json")
+    suspend fun getSystemCategory(): ApiResult<MutableList<Category>>
+
+    @GET("/tree/json")
+    suspend fun getSystemArticleList(@Query("cid") cid: Int): ApiResult<MutableList<Category>>
 
     companion object {
         const val BASE_URL = "https://www.wanandroid.com"

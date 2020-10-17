@@ -1,18 +1,11 @@
 package com.github.stormwyrm.wanandroid.bean
 
-data class Category(
-    val children: List<Children>,
-    val courseId: Int,
-    val id: Int,
-    val name: String,
-    val order: Int,
-    val parentChapterId: Int,
-    val userControlSetTop: Boolean,
-    val visible: Int
-)
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 
-data class Children(
-    val children: List<Any>,
+@Parcelize
+data class Category(
+    val children: ArrayList<Category>,
     val courseId: Int,
     val id: Int,
     val name: String,
@@ -20,4 +13,4 @@ data class Children(
     val parentChapterId: Int,
     val userControlSetTop: Boolean,
     val visible: Int
-)
+) : Parcelable

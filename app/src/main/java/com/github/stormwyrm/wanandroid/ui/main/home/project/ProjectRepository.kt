@@ -7,5 +7,5 @@ class ProjectRepository {
         RetrofitClient.getApiService().getProjectCategory().apiData()
 
     suspend fun getProjectList(cid: Int, page: Int) =
-        RetrofitClient.getApiService().getProjectList(page,cid).apiData()
+        RetrofitClient.getApiService().getProjectArticleList(page,cid).apiData()
 }
