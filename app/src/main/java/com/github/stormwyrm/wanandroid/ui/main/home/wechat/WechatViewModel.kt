@@ -6,7 +6,6 @@ import com.github.stormwyrm.wanandroid.base.BaseViewModel
 import com.github.stormwyrm.wanandroid.bean.Article
 import com.github.stormwyrm.wanandroid.bean.Category
 import com.github.stormwyrm.wanandroid.bean.LoadStatus
-import com.github.stormwyrm.wanandroid.ui.main.home.project.ProjectViewModel
 
 class WechatViewModel : BaseViewModel() {
 

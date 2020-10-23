@@ -42,8 +42,11 @@ interface ApiService {
     @GET("/tree/json")
     suspend fun getSystemCategory(): ApiResult<MutableList<Category>>
 
-    @GET("/tree/json")
-    suspend fun getSystemArticleList(@Query("cid") cid: Int): ApiResult<MutableList<Category>>
+    @GET("/article/list/{page}/json")
+    suspend fun getSystemArticleList(
+        @Path("page") page: Int,
+        @Query("cid") cid: Int
+    ): ApiResult<Pagination<Article>>
 
     companion object {
         const val BASE_URL = "https://www.wanandroid.com"

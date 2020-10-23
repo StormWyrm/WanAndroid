@@ -7,12 +7,15 @@ import com.github.stormwyrm.wanandroid.bean.Category
 import com.github.stormwyrm.wanandroid.common.ext.htmlToSpanned
 import kotlinx.android.synthetic.main.item_category_sub.view.*
 
-class CategoryAdapter(layoutResId: Int = R.layout.item_category_sub) :
-    BaseQuickAdapter<Category, BaseViewHolder>(layoutResId) {
+class CategoryAdapter(
+    layoutResId: Int = R.layout.item_category_sub,
+    datas: MutableList<Category>? = null
+) : BaseQuickAdapter<Category, BaseViewHolder>(layoutResId, datas) {
 
-    private var checkedPosition = 0
+    var checkedPosition = 0
+        get() = field
+
     var onCheckedListener: ((Int) -> Unit)? = null
-
 
     override fun convert(holder: BaseViewHolder, item: Category) {
         holder.itemView.run {

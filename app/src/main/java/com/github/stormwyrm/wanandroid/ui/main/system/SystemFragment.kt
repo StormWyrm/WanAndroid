@@ -1,24 +1,22 @@
 package com.github.stormwyrm.wanandroid.ui.main.system
 
 import android.os.Bundle
+import android.util.Log
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import com.github.stormwyrm.wanandroid.R
-import com.github.stormwyrm.wanandroid.base.BaseFragment
 import com.github.stormwyrm.wanandroid.base.BaseVmFragment
 import com.github.stormwyrm.wanandroid.bean.Category
 import com.github.stormwyrm.wanandroid.bean.LoadStatus
 import com.github.stormwyrm.wanandroid.common.adapter.SimpleFragmentPagerAdapter
-import com.github.stormwyrm.wanandroid.ui.main.home.HomeFragment
+import com.github.stormwyrm.wanandroid.ui.main.MainActivity
 import com.github.stormwyrm.wanandroid.ui.main.system.pager.SystemPagerFragment
-import kotlinx.android.synthetic.main.fragment_blank.*
-import kotlinx.android.synthetic.main.fragment_project.*
+import com.google.android.material.appbar.AppBarLayout
 import kotlinx.android.synthetic.main.fragment_system.*
-import kotlinx.android.synthetic.main.fragment_system.view.*
-import kotlinx.android.synthetic.main.fragment_system.viewFlipper
 import kotlinx.android.synthetic.main.view_load_error.view.*
 
 class SystemFragment : BaseVmFragment<SystemViewModel>(){
+    private var currentOffset = 0
 
     override fun getLayoutResId(): Int = R.layout.fragment_system
 
@@ -54,7 +52,15 @@ class SystemFragment : BaseVmFragment<SystemViewModel>(){
 
     override fun initLisenter() {
         super.initLisenter()
-        viewFlipper.reload.retry.setOnClickListener {
+        appbarLayout.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { _, offset ->
+            Log.d(SystemFragment::class.java.simpleName, "addOnOffsetChangedListener: $offset")
+            if (activity is MainActivity && this.currentOffset != offset) {
+                (activity as MainActivity).animateBottomNavigationView(offset > currentOffset)
+                currentOffset = offset
+            }
+        })
+
+        reload.retry.setOnClickListener {
             mViewModel.loadSystemCategory()
         }
 
