@@ -1,11 +1,12 @@
 package com.github.stormwyrm.wanandroid.bean
 
-data class Banner(
-    val category: String,
-    val icon: String,
+ data class Banner(
+    val desc: String,
     val id: Int,
-    val link: String,
-    val name: String,
+    val imagePath: String,
+    val isVisible: Int,
     val order: Int,
-    val visible: Int
+    val title: String,
+    val type: Int,
+    val url: String
 )

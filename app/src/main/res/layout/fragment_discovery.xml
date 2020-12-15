@@ -59,11 +59,13 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <ViewFlipper
+        android:id="@+id/viewFlipper"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <androidx.core.widget.NestedScrollView
+            android:id="@+id/nestedScrollView"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -74,7 +76,7 @@
                 android:padding="16dp">
 
                 <com.youth.banner.Banner
-                    android:id="@+id/banner"
+                    android:id="@+id/bannerView"
                     android:layout_width="match_parent"
                     android:layout_height="200dp" />
 
@@ -103,11 +105,11 @@
                     android:layout_marginBottom="16dp"
                     android:text="@string/frequently_website" />
 
-
                 <com.zhy.view.flowlayout.TagFlowLayout
                     android:id="@+id/tagFlowLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    app:max_select="1" />
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>
