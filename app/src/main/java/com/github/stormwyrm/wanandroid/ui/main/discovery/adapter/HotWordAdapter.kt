@@ -1,4 +1,4 @@
-package com.github.stormwyrm.wanandroid.ui.main.discovery
+package com.github.stormwyrm.wanandroid.ui.main.discovery.adapter
 
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder

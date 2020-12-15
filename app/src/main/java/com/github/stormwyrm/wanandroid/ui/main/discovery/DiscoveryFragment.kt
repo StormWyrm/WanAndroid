@@ -13,6 +13,9 @@ import com.github.stormwyrm.wanandroid.bean.FrequentlyWebsite
 import com.github.stormwyrm.wanandroid.bean.HotWord
 import com.github.stormwyrm.wanandroid.bean.LoadStatus
 import com.github.stormwyrm.wanandroid.ui.main.MainActivity
+import com.github.stormwyrm.wanandroid.ui.main.discovery.adapter.BannerImageAdapter
+import com.github.stormwyrm.wanandroid.ui.main.discovery.adapter.FrequentlyWebsiteAdapter
+import com.github.stormwyrm.wanandroid.ui.main.discovery.adapter.HotWordAdapter
 import com.github.stormwyrm.wanandroid.ui.search.SearchActivity
 import com.youth.banner.transformer.DepthPageTransformer
 import kotlinx.android.synthetic.main.fragment_discovery.*
@@ -102,7 +105,9 @@ class DiscoveryFragment : BaseVmFragment<DiscoveryViewModel>() {
         bannerView.run {
             setPageTransformer(DepthPageTransformer())
 
-            adapter = BannerImageAdapter(datas).apply {
+            adapter = BannerImageAdapter(
+                datas
+            ).apply {
                 setOnBannerListener { data, position ->
                     ToastUtils.showShort((data as Banner).title)
                 }
@@ -111,7 +116,8 @@ class DiscoveryFragment : BaseVmFragment<DiscoveryViewModel>() {
     }
 
     private fun setupHotwords() {
-        hotWordAdapter = HotWordAdapter().apply {
+        hotWordAdapter = HotWordAdapter()
+            .apply {
             setOnItemClickListener { adapter, view, position ->
                 ToastUtils.showShort((adapter.data[position] as HotWord).name)
             }
@@ -125,7 +131,10 @@ class DiscoveryFragment : BaseVmFragment<DiscoveryViewModel>() {
                 ToastUtils.showShort(datas[position].name)
                 return@setOnTagClickListener true
             }
-            adapter = FrequentlyWebsiteAdapter(datas)
+            adapter =
+                FrequentlyWebsiteAdapter(
+                    datas
+                )
         }
     }
 

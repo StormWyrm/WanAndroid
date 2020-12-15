@@ -1,4 +1,4 @@
-package com.github.stormwyrm.wanandroid.ui.main.discovery
+package com.github.stormwyrm.wanandroid.ui.main.discovery.adapter
 
 import android.view.ViewGroup
 import android.widget.ImageView

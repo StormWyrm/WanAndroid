@@ -55,6 +55,9 @@ interface ApiService {
     @GET("/friend/json")
     suspend fun getFrequentlyWebsiteList(): ApiResult<MutableList<FrequentlyWebsite>>
 
+    @GET("/navi/json")
+    suspend fun getNavigationList() : ApiResult<MutableList<Navigation>>
+
     companion object {
         const val BASE_URL = "https://www.wanandroid.com"
     }
