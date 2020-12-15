@@ -25,4 +25,6 @@
     <string name="no_data">没有任何数据!</string>
     <string name="network_error">网络似乎出了点问题...</string>
     <string name="reload">重新加载</string>
+    <string name="everyone_search">每一个人都在搜</string>
+    <string name="frequently_website">常用网址</string>
 </resources>

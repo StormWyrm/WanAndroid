@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bgColorPrimary">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            app:contentInsetStart="0dp">
+
+            <RelativeLayout
+                android:id="@+id/rlTitle"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@color/bgColorPrimary">
+
+                <ImageView
+                    android:id="@+id/ivAdd"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="start"
+                    android:layout_marginStart="5dp"
+                    android:background="?actionBarItemBackground"
+                    android:padding="11dp"
+                    android:src="@drawable/ic_add_black_24dp"
+                    app:tint="@color/textColorPrimary" />
+
+                <ImageView
+                    android:id="@+id/ivSearch"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="3dp"
+                    android:background="?actionBarItemBackground"
+                    android:padding="13dp"
+                    android:src="@drawable/ic_search_black_24dp"
+                    app:tint="@color/textColorPrimary" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="@string/discovery"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ViewFlipper
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <com.youth.banner.Banner
+                    android:id="@+id/banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp" />
+
+                <TextView
+                    android:id="@+id/tvHotWord"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:text="@string/everyone_search" />
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvHotWord"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:spanCount="3"
+                    tools:listitem="@layout/item_hot_word" />
+
+                <TextView
+                    android:id="@+id/tvFrequently"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:text="@string/frequently_website" />
+
+
+                <com.zhy.view.flowlayout.TagFlowLayout
+                    android:id="@+id/tagFlowLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <include layout="@layout/view_loading" />
+
+        <include layout="@layout/view_load_empty" />
+
+        <include
+            android:id="@+id/reload"
+            layout="@layout/view_load_error" />
+
+    </ViewFlipper>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -10,6 +10,7 @@ import com.github.stormwyrm.wanandroid.bean.Category
 import com.github.stormwyrm.wanandroid.bean.LoadStatus
 import com.github.stormwyrm.wanandroid.common.adapter.SimpleFragmentPagerAdapter
 import com.github.stormwyrm.wanandroid.ui.main.MainActivity
+import com.github.stormwyrm.wanandroid.ui.main.system.category.SystemCategoryFragment
 import com.github.stormwyrm.wanandroid.ui.main.system.pager.SystemPagerFragment
 import com.google.android.material.appbar.AppBarLayout
 import kotlinx.android.synthetic.main.fragment_system.*
@@ -17,6 +18,7 @@ import kotlinx.android.synthetic.main.view_load_error.view.*
 
 class SystemFragment : BaseVmFragment<SystemViewModel>(){
     private var currentOffset = 0
+    private var categoryFragment: SystemCategoryFragment? = null
 
     override fun getLayoutResId(): Int = R.layout.fragment_system
 
@@ -65,7 +67,7 @@ class SystemFragment : BaseVmFragment<SystemViewModel>(){
         }
 
         ivFliter.setOnClickListener {
-
+            categoryFragment?.show(childFragmentManager)
         }
     }
 
@@ -81,6 +83,8 @@ class SystemFragment : BaseVmFragment<SystemViewModel>(){
         val fragments = it.map {
             SystemPagerFragment.newInstance(it.name,it.children)
         }
+
+        categoryFragment = SystemCategoryFragment.newInstance(ArrayList(it))
 
         val fragmentPagerAdapter = SimpleFragmentPagerAdapter(
             fm = childFragmentManager,

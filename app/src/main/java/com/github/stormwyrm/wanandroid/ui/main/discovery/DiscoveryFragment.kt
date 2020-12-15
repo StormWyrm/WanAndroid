@@ -6,7 +6,8 @@ import com.github.stormwyrm.wanandroid.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_blank.*
 
 class DiscoveryFragment : BaseFragment() {
-    override fun getLayoutResId(): Int = R.layout.fragment_blank
+
+    override fun getLayoutResId(): Int = R.layout.fragment_discovery
 
     override fun initView() {
         super.initView()

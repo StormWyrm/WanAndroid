@@ -1,8 +1,6 @@
 package com.github.stormwyrm.wanandroid.api
 
-import com.github.stormwyrm.wanandroid.bean.Article
-import com.github.stormwyrm.wanandroid.bean.Category
-import com.github.stormwyrm.wanandroid.bean.Pagination
+import com.github.stormwyrm.wanandroid.bean.*
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -47,6 +45,15 @@ interface ApiService {
         @Path("page") page: Int,
         @Query("cid") cid: Int
     ): ApiResult<Pagination<Article>>
+
+    @GET("/banner/json")
+    suspend fun getBannerList(): ApiResult<MutableList<Banner>>
+
+    @GET("/hotkey/json")
+    suspend fun getHotWordList(): ApiResult<MutableList<HotWord>>
+
+    @GET("/friend/json")
+    suspend fun getFrequentlyWebsiteList(): ApiResult<MutableList<FrequentlyWebsite>>
 
     companion object {
         const val BASE_URL = "https://www.wanandroid.com"
